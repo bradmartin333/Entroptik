@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Repos\\EntroptikRepo\\Entroptik\\Entroptik.vbproj": {}
+    "X:\\Entroptik\\Entroptik\\Entroptik.vbproj": {}
   },
   "projects": {
-    "C:\\Repos\\EntroptikRepo\\Entroptik\\Entroptik.vbproj": {
+    "X:\\Entroptik\\Entroptik\\Entroptik.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Repos\\EntroptikRepo\\Entroptik\\Entroptik.vbproj",
+        "projectUniqueName": "X:\\Entroptik\\Entroptik\\Entroptik.vbproj",
         "projectName": "Entroptik",
-        "projectPath": "C:\\Repos\\EntroptikRepo\\Entroptik\\Entroptik.vbproj",
-        "packagesPath": "C:\\Users\\dingo\\.nuget\\packages\\",
-        "outputPath": "C:\\Repos\\EntroptikRepo\\Entroptik\\obj\\",
+        "projectPath": "X:\\Entroptik\\Entroptik\\Entroptik.vbproj",
+        "packagesPath": "C:\\Users\\space\\.nuget\\packages\\",
+        "outputPath": "X:\\Entroptik\\Entroptik\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\dingo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\space\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +39,12 @@
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
+          "dependencies": {
+            "MathNet.Numerics": {
+              "target": "Package",
+              "version": "[4.15.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -57,7 +63,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

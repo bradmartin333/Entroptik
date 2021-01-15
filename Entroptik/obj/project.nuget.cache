@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "XdrHkI730OW+Hyo1g1ghp5CG4od/mFDLof+AbKLFqMQ5Q+Vmdljl6PqWc18bS9BB0/uZvy1/rjyG6JTvEei4ZQ==",
+  "dgSpecHash": "XshngutH0OGwtrruE3km02c8kPbrH3gdicVSnlfcbb8v7/idRLJGnCLsN9Rug9rCs8WD6BoZ5h/PLO06k4zXlQ==",
   "success": true,
-  "projectFilePath": "C:\\Repos\\EntroptikRepo\\Entroptik\\Entroptik.vbproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "X:\\Entroptik\\Entroptik\\Entroptik.vbproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\space\\.nuget\\packages\\mathnet.numerics\\4.15.0\\mathnet.numerics.4.15.0.nupkg.sha512"
+  ],
   "logs": []
 }

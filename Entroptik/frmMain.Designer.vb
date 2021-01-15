@@ -24,12 +24,13 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.pbxFeatures = New System.Windows.Forms.PictureBox()
         Me.pbxCrop = New System.Windows.Forms.PictureBox()
-        Me.pbxImg = New System.Windows.Forms.PictureBox()
         Me.lblStatus = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DrawingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewDrawingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.toolStripSeparator = New System.Windows.Forms.ToolStripSeparator()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -40,15 +41,16 @@ Partial Class frmMain
         Me.NextStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RunAllStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ViewScoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.FormatToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ViewDrawingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1.SuspendLayout()
+        CType(Me.pbxFeatures, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbxCrop, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pbxImg, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -56,8 +58,8 @@ Partial Class frmMain
         '
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.pbxCrop, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.pbxImg, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.pbxFeatures, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.pbxCrop, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.lblStatus, 0, 2)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 24)
@@ -70,25 +72,25 @@ Partial Class frmMain
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(343, 506)
         Me.TableLayoutPanel1.TabIndex = 0
         '
+        'pbxFeatures
+        '
+        Me.pbxFeatures.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pbxFeatures.Location = New System.Drawing.Point(3, 3)
+        Me.pbxFeatures.Name = "pbxFeatures"
+        Me.pbxFeatures.Size = New System.Drawing.Size(337, 233)
+        Me.pbxFeatures.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pbxFeatures.TabIndex = 17
+        Me.pbxFeatures.TabStop = False
+        '
         'pbxCrop
         '
         Me.pbxCrop.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pbxCrop.Location = New System.Drawing.Point(3, 3)
+        Me.pbxCrop.Location = New System.Drawing.Point(3, 242)
         Me.pbxCrop.Name = "pbxCrop"
         Me.pbxCrop.Size = New System.Drawing.Size(337, 233)
         Me.pbxCrop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.pbxCrop.TabIndex = 17
+        Me.pbxCrop.TabIndex = 14
         Me.pbxCrop.TabStop = False
-        '
-        'pbxImg
-        '
-        Me.pbxImg.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pbxImg.Location = New System.Drawing.Point(3, 242)
-        Me.pbxImg.Name = "pbxImg"
-        Me.pbxImg.Size = New System.Drawing.Size(337, 233)
-        Me.pbxImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.pbxImg.TabIndex = 14
-        Me.pbxImg.TabStop = False
         '
         'lblStatus
         '
@@ -130,6 +132,12 @@ Partial Class frmMain
         Me.DrawingToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
         Me.DrawingToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
         Me.DrawingToolStripMenuItem.Text = "&Open Drawing"
+        '
+        'ViewDrawingToolStripMenuItem
+        '
+        Me.ViewDrawingToolStripMenuItem.Name = "ViewDrawingToolStripMenuItem"
+        Me.ViewDrawingToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
+        Me.ViewDrawingToolStripMenuItem.Text = "View Drawing"
         '
         'OpenToolStripMenuItem
         '
@@ -173,7 +181,7 @@ Partial Class frmMain
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NextStripMenuItem, Me.RunAllStripMenuItem, Me.ToolStripSeparator2, Me.FormatToolStripMenuItem, Me.LogToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NextStripMenuItem, Me.RunAllStripMenuItem, Me.ToolStripSeparator2, Me.ViewScoresToolStripMenuItem, Me.ToolStripSeparator3, Me.FormatToolStripMenuItem, Me.LogToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
@@ -194,6 +202,17 @@ Partial Class frmMain
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(150, 6)
+        '
+        'ViewScoresToolStripMenuItem
+        '
+        Me.ViewScoresToolStripMenuItem.Name = "ViewScoresToolStripMenuItem"
+        Me.ViewScoresToolStripMenuItem.Size = New System.Drawing.Size(153, 22)
+        Me.ViewScoresToolStripMenuItem.Text = "View Scores"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(150, 6)
         '
         'FormatToolStripMenuItem
         '
@@ -226,12 +245,6 @@ Partial Class frmMain
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.AboutToolStripMenuItem.Text = "&About..."
         '
-        'ViewDrawingToolStripMenuItem
-        '
-        Me.ViewDrawingToolStripMenuItem.Name = "ViewDrawingToolStripMenuItem"
-        Me.ViewDrawingToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
-        Me.ViewDrawingToolStripMenuItem.Text = "View Drawing"
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -245,8 +258,8 @@ Partial Class frmMain
         Me.Text = " "
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
+        CType(Me.pbxFeatures, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbxCrop, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pbxImg, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -255,8 +268,8 @@ Partial Class frmMain
     End Sub
 
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents pbxImg As PictureBox
     Friend WithEvents pbxCrop As PictureBox
+    Friend WithEvents pbxFeatures As PictureBox
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DrawingToolStripMenuItem As ToolStripMenuItem
@@ -280,4 +293,6 @@ Partial Class frmMain
     Friend WithEvents LogToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HowToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewDrawingToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ViewScoresToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
 End Class
