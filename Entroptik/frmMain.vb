@@ -7,7 +7,7 @@ Public Class frmMain
     Dim drawing As Bitmap
     Dim drawingLoaded As Boolean = False
     Dim crop As Rectangle
-    Dim features As New List(Of Rectangle)
+    Dim features As New List(Of cFeature)
     Dim displayScores As Form
     Dim scoresDisplayed As Boolean = False
     Dim scoreStr As String = "Filename" & vbTab & "Crop" & vbTab
@@ -91,11 +91,11 @@ Public Class frmMain
         Next y
 
         For i = 0 To featureNWCorners.Count - 1 ' Make rectangles from corners
-            features.Add(New Rectangle(featureNWCorners(i).X, featureNWCorners(i).Y, featureSECorners(i).X - featureNWCorners(i).X, featureSECorners(i).Y - featureNWCorners(i).Y))
+            features.Add(New cFeature(featureNWCorners(i), featureSECorners(i)))
         Next
 
-        For Each feature As Rectangle In features ' Make header for output string
-            scoreStr += "(" & feature.X.ToString & "," & feature.Y.ToString & ")" & vbTab
+        For Each feature As cFeature In features ' Make header for output string
+            scoreStr += feature.Name & vbTab
         Next
 
         crop = New Rectangle(cropX.Min, cropY.Min, cropX.Max - cropX.Min, cropY.Max - cropY.Min) ' The white pixels are the crop region
@@ -122,17 +122,17 @@ Public Class frmMain
 
         Dim srcFeatures = New Bitmap(src.Width, src.Height)
         Dim targetFeatures = New Bitmap(crop.Width, crop.Height)
-        For Each feature As Rectangle In features
-            Dim featureBuffer As New Bitmap(feature.Width, feature.Height)
+        For Each feature As cFeature In features
+            Dim featureBuffer As New Bitmap(feature.Rect.Width, feature.Rect.Height)
             Using g As Graphics = Graphics.FromImage(featureBuffer)
-                g.DrawImage(src, New Rectangle(0, 0, feature.Width, feature.Height), feature, GraphicsUnit.Pixel)
+                g.DrawImage(src, New Rectangle(0, 0, feature.Rect.Width, feature.Rect.Height), feature.Rect, GraphicsUnit.Pixel)
             End Using
 
             Dim featureScore = CalcEntropy(featureBuffer) ' Entropy of feature
             scoreStr += featureScore.ToString() & vbTab
 
             Using g As Graphics = Graphics.FromImage(srcFeatures)
-                g.DrawImage(src, feature, feature, GraphicsUnit.Pixel)
+                g.DrawImage(src, feature.Rect, feature.Rect, GraphicsUnit.Pixel)
             End Using
         Next
         BitmapCrop(srcFeatures, targetFeatures)
@@ -193,5 +193,15 @@ Public Class frmMain
         Dim scores As New RichTextBox With {.Dock = DockStyle.Fill, .Text = scoreStr}
         displayScores.Controls.Add(scores)
         displayScores.Show()
+    End Sub
+
+    Private Sub pbxFeatures_Click(sender As Object, e As MouseEventArgs) Handles pbxFeatures.Click
+        ' Scale click to proportions of background image
+        Dim click As New PointF((e.X / pbxCrop.Width * pbxCrop.Image.Width) + crop.X, (e.Y / pbxCrop.Height * pbxCrop.Image.Height) + crop.Y)
+        For Each feature As cFeature In features ' Check if click overlaps with paths
+            If feature.Path.IsVisible(click) Then
+                MsgBox(feature.Name)
+            End If
+        Next
     End Sub
 End Class
