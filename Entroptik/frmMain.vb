@@ -78,15 +78,19 @@ Public Class frmMain
 
     Private Sub LoadTrainingScores(ByVal ScoresFile)
         Dim reader = My.Computer.FileSystem.ReadAllText(ScoresFile)
+        If reader = "" Then Exit Sub
+
         Dim data = reader.Split(vbCrLf)
         For Each d In data
             Dim values = d.Split(vbTab)
+            If values(0) = "" Then Exit For
             Dim name = values(0)
             Dim score = values(1)
             For Each feature As cFeature In features
                 If feature.Name = name Then feature.Score = score
             Next
         Next
+
         scoresLoaded = True
     End Sub
 
