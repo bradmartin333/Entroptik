@@ -32,6 +32,7 @@ Partial Class frmMain
         Me.DrawingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewDrawingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenImagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenScoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenProjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NextStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -39,7 +40,6 @@ Partial Class frmMain
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ViewScoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveTrainingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpenScoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.pbxFeatures, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbxCrop, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -141,6 +141,12 @@ Partial Class frmMain
         Me.OpenImagesToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
         Me.OpenImagesToolStripMenuItem.Text = "&Open Images Folder"
         '
+        'OpenScoresToolStripMenuItem
+        '
+        Me.OpenScoresToolStripMenuItem.Name = "OpenScoresToolStripMenuItem"
+        Me.OpenScoresToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
+        Me.OpenScoresToolStripMenuItem.Text = "Open Training Scores File"
+        '
         'OpenProjectToolStripMenuItem
         '
         Me.OpenProjectToolStripMenuItem.Name = "OpenProjectToolStripMenuItem"
@@ -187,12 +193,6 @@ Partial Class frmMain
         Me.SaveTrainingToolStripMenuItem.ShowShortcutKeys = False
         Me.SaveTrainingToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
         Me.SaveTrainingToolStripMenuItem.Text = "Save Training Scores"
-        '
-        'OpenScoresToolStripMenuItem
-        '
-        Me.OpenScoresToolStripMenuItem.Name = "OpenScoresToolStripMenuItem"
-        Me.OpenScoresToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
-        Me.OpenScoresToolStripMenuItem.Text = "Open Training Scores File"
         '
         'frmMain
         '

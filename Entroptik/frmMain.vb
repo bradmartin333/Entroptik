@@ -1,6 +1,9 @@
 ﻿Imports MathNet.Numerics.Statistics
 
 Public Class frmMain
+    '''<summary>Size of border rectangle offset</summary>
+    Public Property BorderRectSize As Integer = 5
+
     Dim files As New List(Of String)
     Dim fileIdx As Integer = -1
     Dim drawing As Bitmap
@@ -203,6 +206,12 @@ Public Class frmMain
             scoreStr += featureScore.ToString() & vbTab
 
             Using g As Graphics = Graphics.FromImage(srcFeatures)
+                If Math.Abs(featureScore - feature.Score) > 1 Then
+                    g.FillRectangle(New SolidBrush(Color.Red), feature.BorderRect)
+                Else
+                    g.FillRectangle(New SolidBrush(Color.Green), feature.BorderRect)
+                End If
+
                 g.DrawImage(src, feature.Rect, feature.Rect, GraphicsUnit.Pixel)
             End Using
         Next
@@ -267,11 +276,16 @@ Public Class frmMain
     End Sub
 
     Private Sub pbxFeatures_Click(sender As Object, e As MouseEventArgs) Handles pbxFeatures.Click
+        If Application.OpenForms().OfType(Of frmEditScore).Any Then
+            Application.OpenForms().OfType(Of frmEditScore).First.Dispose()
+        End If
+
         ' Scale click to proportions of background image
         Dim click As New PointF((e.X / pbxCrop.Width * pbxCrop.Image.Width) + crop.X, (e.Y / pbxCrop.Height * pbxCrop.Image.Height) + crop.Y)
         For Each feature As cFeature In features ' Check if click overlaps with paths
             If feature.Path.IsVisible(click) Then
-                MsgBox(feature.Name)
+                Dim editScore As New frmEditScore(feature, MousePosition())
+                editScore.Show()
             End If
         Next
     End Sub
