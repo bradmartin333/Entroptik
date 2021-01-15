@@ -1,16 +1,16 @@
 ﻿Imports MathNet.Numerics.Statistics
 
 Public Class frmMain
-    Dim ImagesFolder = "C:\"
+    Dim ImagesFolder As String = "C:\"
     Dim files As New List(Of String)
-    Dim fileIdx As Integer
+    Dim fileIdx As Integer = -1
     Dim drawing As Bitmap
-    Dim drawingLoaded = False
+    Dim drawingLoaded As Boolean = False
     Dim crop As Rectangle
     Dim features As New List(Of Rectangle)
     Dim displayScores As Form
-    Dim scoresDisplayed = False
-    Dim scoreStr = "Crop" & vbTab
+    Dim scoresDisplayed As Boolean = False
+    Dim scoreStr As String = "Filename" & vbTab & "Crop" & vbTab
 
     Private Sub OpenFolder(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
         If Not drawingLoaded Then
@@ -118,7 +118,7 @@ Public Class frmMain
         pbxCrop.Image = target
 
         Dim nullScore = CalcEntropy(target) ' Entropy of cropped image
-        scoreStr += vbCrLf & nullScore.ToString() & vbTab
+        scoreStr += vbCrLf & Text & vbTab & nullScore.ToString() & vbTab
 
         Dim srcFeatures = New Bitmap(src.Width, src.Height)
         Dim targetFeatures = New Bitmap(crop.Width, crop.Height)
