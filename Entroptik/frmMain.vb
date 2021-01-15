@@ -1,18 +1,46 @@
 ﻿Imports MathNet.Numerics.Statistics
 
 Public Class frmMain
-    Dim ImagesFolder As String = "C:\"
     Dim files As New List(Of String)
     Dim fileIdx As Integer = -1
     Dim drawing As Bitmap
-    Dim drawingLoaded As Boolean = False
     Dim crop As Rectangle
     Dim features As New List(Of cFeature)
     Dim displayScores As Form
-    Dim scoresDisplayed As Boolean = False
     Dim scoreStr As String = "Filename" & vbTab & "Crop" & vbTab
+    Dim drawingLoaded, scoresDisplayed, scoresLoaded As Boolean
 
-    Private Sub OpenFolder(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
+    Private Sub OpenProjectFolder(sender As Object, e As EventArgs) Handles OpenProjectToolStripMenuItem.Click
+        Dim dialog = New FolderBrowserDialog With {.Description = "Choose folder containing images, a drawing, and training score file"}
+        If dialog.ShowDialog() = DialogResult.OK Then
+            LoadImages(dialog.SelectedPath)
+            Dim di As New IO.DirectoryInfo(dialog.SelectedPath)
+            Dim aryFi As IO.FileInfo() = di.GetFiles
+            Dim fi As IO.FileInfo
+            For Each fi In aryFi
+                If fi.Name.Contains(".bmp") Then
+                    LoadDrawing(fi.FullName)
+                End If
+                If fi.Name.Contains(".txt") Then
+                    LoadTrainingScores(fi.FullName)
+                End If
+            Next
+        Else
+            Exit Sub
+        End If
+
+        If Not drawingLoaded OrElse Not scoresLoaded OrElse files.Count = 0 Then
+            lblStatus.BackColor = Color.Yellow
+            lblStatus.Text = "Invalid Directory"
+            Exit Sub
+        End If
+
+        lblStatus.BackColor = Color.LimeGreen
+        lblStatus.Text = "Project Loaded"
+
+        Proceed()
+    End Sub
+    Private Sub OpenImagesFolder(sender As Object, e As EventArgs) Handles OpenImagesToolStripMenuItem.Click
         If Not drawingLoaded Then
             MsgBox("A drawing must be loaded first.",, "Entroptik")
             Exit Sub
@@ -20,10 +48,19 @@ Public Class frmMain
 
         Dim dialog = New FolderBrowserDialog With {.Description = "Choose folder containing images"}
         If dialog.ShowDialog() = DialogResult.OK Then
-            ImagesFolder = dialog.SelectedPath
+            LoadImages(dialog.SelectedPath)
         Else
             Exit Sub
         End If
+
+        lblStatus.BackColor = Color.LimeGreen
+        lblStatus.Text = files.Count.ToString() & " Photos Loaded"
+
+        Proceed()
+    End Sub
+
+    Private Sub LoadImages(ByVal ImagesFolder)
+        files.Clear()
 
         Dim di As New IO.DirectoryInfo(ImagesFolder)
         Dim aryFi As IO.FileInfo() = di.GetFiles
@@ -37,25 +74,55 @@ Public Class frmMain
             lblStatus.Text = "Invalid Directory"
             Exit Sub
         End If
+    End Sub
+
+    Private Sub LoadTrainingScores(ByVal ScoresFile)
+        Dim reader = My.Computer.FileSystem.ReadAllText(ScoresFile)
+        Dim data = reader.Split(vbCrLf)
+        For Each d In data
+            Dim values = d.Split(vbTab)
+            Dim name = values(0)
+            Dim score = values(1)
+            For Each feature As cFeature In features
+                If feature.Name = name Then feature.Score = score
+            Next
+        Next
+        scoresLoaded = True
+    End Sub
+
+    Private Sub OpenScoresFile(sender As Object, e As EventArgs) Handles OpenScoresToolStripMenuItem.Click
+        If Not drawingLoaded Then
+            MsgBox("A drawing must be loaded first.",, "Entroptik")
+            Exit Sub
+        End If
+
+        Dim dialog = New OpenFileDialog With {.Filter = "Text File|*.txt"}
+        If dialog.ShowDialog() = DialogResult.OK Then
+            LoadTrainingScores(dialog.FileName)
+        Else
+            Exit Sub
+        End If
 
         lblStatus.BackColor = Color.LimeGreen
-        lblStatus.Text = files.Count.ToString() & "Photos Loaded"
-
-        Proceed()
+        lblStatus.Text = "Scores Loaded"
     End Sub
 
     Private Sub OpenDrawing(sender As Object, e As EventArgs) Handles DrawingToolStripMenuItem.Click
         Dim dialog = New OpenFileDialog With {.Filter = "Bitmap|*.bmp"}
         If dialog.ShowDialog() = DialogResult.OK Then
-            drawing = New Bitmap(dialog.FileName)
-            drawingLoaded = True
-            MakeRects()
+            LoadDrawing(dialog.FileName)
         Else
             Exit Sub
         End If
 
         lblStatus.BackColor = Color.LimeGreen
         lblStatus.Text = "Drawing Loaded"
+    End Sub
+
+    Private Sub LoadDrawing(ByVal DrawingPath As String)
+        drawing = New Bitmap(DrawingPath)
+        drawingLoaded = True
+        MakeRects()
     End Sub
 
     Private Sub ViewDrawing(sender As Object, e As EventArgs) Handles ViewDrawingToolStripMenuItem.Click
@@ -203,5 +270,21 @@ Public Class frmMain
                 MsgBox(feature.Name)
             End If
         Next
+    End Sub
+
+    Private Sub SaveTrainingScores(sender As Object, e As EventArgs) Handles SaveTrainingToolStripMenuItem.Click
+        Dim dialog = New SaveFileDialog With {.Filter = "Text File|*.txt"}
+        If dialog.ShowDialog() = DialogResult.OK Then
+            Dim outputStr = ""
+            For Each feature As cFeature In features
+                outputStr += feature.Name & vbTab & feature.Score & vbCrLf
+            Next
+            My.Computer.FileSystem.WriteAllText(dialog.FileName, outputStr, False)
+        Else
+            Exit Sub
+        End If
+
+        lblStatus.BackColor = Color.LimeGreen
+        lblStatus.Text = "Scores Saved"
     End Sub
 End Class

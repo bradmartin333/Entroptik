@@ -15,6 +15,8 @@ Public Class cFeature
     Public Property Path As GraphicsPath
     '''<summary>Name as seen in output log</summary>
     Public Property Name As String
+    '''<summary>Training score determined by user</summary>
+    Public Property Score As String = 0
     Public Sub New(ByVal NWcorner As Point, ByVal SEcorner As Point)
         myRect = New Rectangle(NWcorner.X, NWcorner.Y, SEcorner.X - NWcorner.X, SEcorner.Y - NWcorner.Y)
         Path = New GraphicsPath()
