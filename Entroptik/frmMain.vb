@@ -1,7 +1,4 @@
 ﻿Public Class frmMain
-    '''<summary>Size of border rectangle offset</summary>
-    Public Property BorderRectSize As Integer = 5
-
     Dim files As New List(Of String)
     Dim fileIdx As Integer = -1
     Dim drawing As Bitmap
@@ -9,10 +6,10 @@
     Dim features As New List(Of cFeature)
     Dim displayScores As Form
     Dim scoreStr As String = "Filename" & vbTab & "Crop" & vbTab
-    Dim drawingLoaded, scoresDisplayed, featuresLoaded As Boolean
+    Dim drawingLoaded, scoresDisplayed, featuresLoaded, parametersLoaded As Boolean
 
     Private Sub OpenProjectFolder(sender As Object, e As EventArgs) Handles OpenProjectToolStripMenuItem.Click
-        Dim dialog = New FolderBrowserDialog With {.Description = "Choose folder containing images, a drawing, and training score file"}
+        Dim dialog = New FolderBrowserDialog With {.Description = "Choose a project folder"}
         If dialog.ShowDialog() = DialogResult.OK Then
             LoadImages(dialog.SelectedPath)
             Dim di As New IO.DirectoryInfo(dialog.SelectedPath)
@@ -22,8 +19,11 @@
                 If fi.Name.Contains(".bmp") Then
                     LoadDrawing(fi.FullName)
                 End If
-                If fi.Name.Contains(".txt") Then
+                If fi.Name.Contains(".efs") Then
                     LoadFeatureSheet(fi.FullName)
+                End If
+                If fi.Name.Contains(".eprm") Then
+                    LoadParameters(fi.FullName)
                 End If
             Next
         Else
@@ -67,7 +67,7 @@
             Exit Sub
         End If
 
-        Dim dialog = New OpenFileDialog With {.Filter = "Text File|*.txt"}
+        Dim dialog = New OpenFileDialog With {.Filter = "Feature Sheet|*.efs"}
         If dialog.ShowDialog() = DialogResult.OK Then
             LoadFeatureSheet(dialog.FileName)
         Else
@@ -78,7 +78,19 @@
         lblStatus.Text = "Scores Loaded"
     End Sub
 
-    Private Sub OpenDrawing(sender As Object, e As EventArgs) Handles DrawingToolStripMenuItem.Click
+    Private Sub OpenParameters(sender As Object, e As EventArgs) Handles OpenParametersToolStripMenuItem.Click
+        Dim dialog = New OpenFileDialog With {.Filter = "Parameters|*.eprm"}
+        If dialog.ShowDialog() = DialogResult.OK Then
+            LoadParameters(dialog.FileName)
+        Else
+            Exit Sub
+        End If
+
+        lblStatus.BackColor = Color.LimeGreen
+        lblStatus.Text = "Parameters Loaded"
+    End Sub
+
+    Private Sub OpenDrawing(sender As Object, e As EventArgs) Handles OpenDrawingToolStripMenuItem.Click
         Dim dialog = New OpenFileDialog With {.Filter = "Bitmap|*.bmp"}
         If dialog.ShowDialog() = DialogResult.OK Then
             LoadDrawing(dialog.FileName)
@@ -107,8 +119,8 @@
         End If
     End Sub
 
-    Private Sub LoadFeatureSheet(ByVal ScoresFile)
-        Dim reader = My.Computer.FileSystem.ReadAllText(ScoresFile)
+    Private Sub LoadFeatureSheet(ByVal FeatureSheet)
+        Dim reader = My.Computer.FileSystem.ReadAllText(FeatureSheet)
         If reader = "" Then Exit Sub
 
         Dim data = reader.Split(vbCrLf)
@@ -131,6 +143,18 @@
         featuresLoaded = True
     End Sub
 
+    Private Sub LoadParameters(ByVal Parameters)
+        Dim reader = My.Computer.FileSystem.ReadAllText(Parameters)
+        If reader = "" Then Exit Sub
+
+        Dim values = reader.Split(vbTab)
+        BorderRectSize = CInt(values(0))
+        NullCap = CDbl(values(1))
+        NullCapThreshold = CDbl(values(2))
+
+        parametersLoaded = True
+    End Sub
+
     Private Sub LoadDrawing(ByVal DrawingPath As String)
         drawing = New Bitmap(DrawingPath)
         drawingLoaded = True
@@ -147,6 +171,43 @@
         }
         displayDrawing.Controls.Add(picture)
         displayDrawing.Show()
+    End Sub
+
+    Private Sub ViewScores(sender As Object, e As EventArgs) Handles ViewScoresToolStripMenuItem.Click
+        scoresDisplayed = True
+        displayScores = New Form With {.FormBorderStyle = FormBorderStyle.SizableToolWindow, .Text = "Current Scores"}
+        Dim scores As New RichTextBox With {.Dock = DockStyle.Fill, .Text = scoreStr}
+        displayScores.Controls.Add(scores)
+        displayScores.Show()
+    End Sub
+
+    Private Sub SaveFeatureSheet(sender As Object, e As EventArgs) Handles SaveFeatureSheetToolStripMenuItem.Click
+        Dim dialog = New SaveFileDialog With {.Filter = "Feature Sheet|*.efs"}
+        If dialog.ShowDialog() = DialogResult.OK Then
+            Dim outputStr = ""
+            For Each feature As cFeature In features
+                outputStr += feature.Coordinates & vbTab & feature.Name & vbTab & feature.Score & vbTab & feature.Tolerance & vbCrLf
+            Next
+            My.Computer.FileSystem.WriteAllText(dialog.FileName, outputStr, False)
+        Else
+            Exit Sub
+        End If
+
+        lblStatus.BackColor = Color.LimeGreen
+        lblStatus.Text = "Feature Sheet Saved"
+    End Sub
+
+    Private Sub SaveParameters(sender As Object, e As EventArgs) Handles SaveParametersToolStripMenuItem.Click
+        Dim dialog = New SaveFileDialog With {.Filter = "Parameters|*.eprm"}
+        If dialog.ShowDialog() = DialogResult.OK Then
+            Dim outputStr = BorderRectSize.ToString() & vbTab & NullCap.ToString() & vbTab & NullCapThreshold
+            My.Computer.FileSystem.WriteAllText(dialog.FileName, outputStr, False)
+        Else
+            Exit Sub
+        End If
+
+        lblStatus.BackColor = Color.LimeGreen
+        lblStatus.Text = "Parameters Saved"
     End Sub
 
     Private Sub MakeRects()
@@ -189,7 +250,14 @@
         pbxCrop.Image = target
 
         Dim nullScore = CalcEntropy(target) ' Entropy of cropped image
+        LastCropScore = nullScore
         scoreStr += vbCrLf & Text & vbTab & nullScore.ToString() & vbTab
+
+        If parametersLoaded AndAlso nullScore + NullCapThreshold < NullCap Then
+            pbxFeatures.BackColor = Color.Yellow
+        Else
+            pbxFeatures.BackColor = SystemColors.Control
+        End If
 
         Dim srcFeatures = New Bitmap(src.Width, src.Height)
         Dim targetFeatures = New Bitmap(crop.Width, crop.Height)
@@ -247,17 +315,18 @@
         lblStatus.Text = "All Photos Scored"
     End Sub
 
-    Private Sub ViewScores(sender As Object, e As EventArgs) Handles ViewScoresToolStripMenuItem.Click
-        scoresDisplayed = True
-        displayScores = New Form With {.FormBorderStyle = FormBorderStyle.SizableToolWindow, .Text = "Current Scores"}
-        Dim scores As New RichTextBox With {.Dock = DockStyle.Fill, .Text = scoreStr}
-        displayScores.Controls.Add(scores)
-        displayScores.Show()
-    End Sub
-
     Private Sub lblStatus_Click(sender As Object, e As EventArgs) Handles lblStatus.Click
         lblStatus.Text = ""
         lblStatus.BackColor = Color.White
+    End Sub
+
+    Private Sub pbxCrop_Click(sender As Object, e As EventArgs) Handles pbxCrop.Click
+        If Application.OpenForms().OfType(Of frmEditParams).Any Then
+            Application.OpenForms().OfType(Of frmEditFeature).First.BringToFront()
+        Else
+            Dim editParams As New frmEditParams()
+            editParams.Show()
+        End If
     End Sub
 
     Private Sub pbxFeatures_Click(sender As Object, e As MouseEventArgs) Handles pbxFeatures.Click
@@ -273,21 +342,5 @@
                 editScore.Show()
             End If
         Next
-    End Sub
-
-    Private Sub SaveFeatureSheet(sender As Object, e As EventArgs) Handles SaveFeatureSheetToolStripMenuItem.Click
-        Dim dialog = New SaveFileDialog With {.Filter = "Text File|*.txt"}
-        If dialog.ShowDialog() = DialogResult.OK Then
-            Dim outputStr = ""
-            For Each feature As cFeature In features
-                outputStr += feature.Coordinates & vbTab & feature.Name & vbTab & feature.Score & vbTab & feature.Tolerance & vbCrLf
-            Next
-            My.Computer.FileSystem.WriteAllText(dialog.FileName, outputStr, False)
-        Else
-            Exit Sub
-        End If
-
-        lblStatus.BackColor = Color.LimeGreen
-        lblStatus.Text = "Feature Sheet Saved"
     End Sub
 End Class

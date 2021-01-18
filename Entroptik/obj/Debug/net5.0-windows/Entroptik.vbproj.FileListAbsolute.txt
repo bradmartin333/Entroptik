@@ -78,3 +78,4 @@ X:\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entroptik.frmEditScore.resources
 C:\Repos\EntroptikRepo\Entroptik\bin\Debug\net5.0-windows\MathNet.Numerics.dll
 C:\Repos\EntroptikRepo\Entroptik\obj\Debug\net5.0-windows\Entroptik.frmEditFeature.resources
 C:\Repos\EntroptikRepo\Entroptik\obj\Debug\net5.0-windows\Entroptik.vbproj.CopyComplete
+C:\Repos\EntroptikRepo\Entroptik\obj\Debug\net5.0-windows\Entroptik.frmEditParams.resources

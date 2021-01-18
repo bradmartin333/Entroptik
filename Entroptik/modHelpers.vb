@@ -1,6 +1,15 @@
 ﻿Imports MathNet.Numerics.Statistics
 
 Module modHelpers
+    '''<summary>Size of border rectangle offset</summary>
+    Public Property BorderRectSize As Integer = 5
+    '''<summary>Training value for cropped image</summary>
+    Public Property NullCap As Double = 0
+    '''<summary>Acceptable difference from trained score</summary>
+    Public Property NullCapThreshold As Double = 1
+    '''<summary>Last score value for quick reference</summary>
+    Public Property LastCropScore As Double
+
     Public Function CompareColors(ByVal pixel As Color, ByVal test As Color)
         If pixel.R = test.R And pixel.G = test.G And pixel.B = test.B Then
             Return True

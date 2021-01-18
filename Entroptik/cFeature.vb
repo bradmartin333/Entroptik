@@ -12,7 +12,14 @@ Public Class cFeature
         End Set
     End Property
     '''<summary>Larger rectangle for color coding features</summary>
-    Public Property BorderRect As Rectangle
+    Public ReadOnly Property BorderRect As Rectangle
+        Get
+            Return New Rectangle(myRect.X - BorderRectSize,
+                                 myRect.Y - BorderRectSize,
+                                 myRect.Width + BorderRectSize * 2,
+                                 myRect.Height + BorderRectSize * 2)
+        End Get
+    End Property
     '''<summary>Path of region determined from area</summary>
     Public Property Path As GraphicsPath
     '''<summary>Origin of feature in drawing</summary>
@@ -27,10 +34,6 @@ Public Class cFeature
     Public Property Tolerance As Double = 1
     Public Sub New(ByVal NWcorner As Point, ByVal SEcorner As Point)
         myRect = New Rectangle(NWcorner.X, NWcorner.Y, SEcorner.X - NWcorner.X, SEcorner.Y - NWcorner.Y)
-        BorderRect = New Rectangle(myRect.X - frmMain.BorderRectSize,
-                                   myRect.Y - frmMain.BorderRectSize,
-                                   myRect.Width + frmMain.BorderRectSize * 2,
-                                   myRect.Height + frmMain.BorderRectSize * 2)
         Path = New GraphicsPath()
         Path.AddEllipse(myRect)
         Coordinates = "(" & myRect.X.ToString() & "," & myRect.Y.ToString() & ")"

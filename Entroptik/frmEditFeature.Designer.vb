@@ -54,14 +54,14 @@ Partial Class frmEditFeature
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 6
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(200, 148)
+        Me.TableLayoutPanel1.RowCount = 5
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(205, 149)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'numScore
@@ -70,8 +70,7 @@ Partial Class frmEditFeature
         Me.numScore.DecimalPlaces = 3
         Me.numScore.Dock = System.Windows.Forms.DockStyle.Fill
         Me.numScore.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
-        Me.numScore.Location = New System.Drawing.Point(97, 32)
-        Me.numScore.Minimum = New Decimal(New Integer() {100, 0, 0, -2147483648})
+        Me.numScore.Location = New System.Drawing.Point(102, 32)
         Me.numScore.Name = "numScore"
         Me.numScore.Size = New System.Drawing.Size(100, 23)
         Me.numScore.TabIndex = 2
@@ -81,9 +80,10 @@ Partial Class frmEditFeature
         '
         Me.btnDone.AutoSize = True
         Me.TableLayoutPanel1.SetColumnSpan(Me.btnDone, 2)
-        Me.btnDone.Location = New System.Drawing.Point(3, 105)
+        Me.btnDone.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.btnDone.Location = New System.Drawing.Point(3, 119)
         Me.btnDone.Name = "btnDone"
-        Me.btnDone.Size = New System.Drawing.Size(194, 25)
+        Me.btnDone.Size = New System.Drawing.Size(199, 27)
         Me.btnDone.TabIndex = 4
         Me.btnDone.Text = "Done"
         Me.btnDone.UseVisualStyleBackColor = True
@@ -94,7 +94,7 @@ Partial Class frmEditFeature
         Me.lblTrainedScore.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTrainedScore.Location = New System.Drawing.Point(3, 29)
         Me.lblTrainedScore.Name = "lblTrainedScore"
-        Me.lblTrainedScore.Size = New System.Drawing.Size(88, 29)
+        Me.lblTrainedScore.Size = New System.Drawing.Size(93, 29)
         Me.lblTrainedScore.TabIndex = 5
         Me.lblTrainedScore.Text = "Trained Score"
         Me.lblTrainedScore.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -105,7 +105,7 @@ Partial Class frmEditFeature
         Me.lblLastScore.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblLastScore.Location = New System.Drawing.Point(3, 58)
         Me.lblLastScore.Name = "lblLastScore"
-        Me.lblLastScore.Size = New System.Drawing.Size(88, 15)
+        Me.lblLastScore.Size = New System.Drawing.Size(93, 29)
         Me.lblLastScore.TabIndex = 6
         Me.lblLastScore.Text = "Last Score"
         Me.lblLastScore.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -116,14 +116,14 @@ Partial Class frmEditFeature
         Me.lblName.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblName.Location = New System.Drawing.Point(3, 0)
         Me.lblName.Name = "lblName"
-        Me.lblName.Size = New System.Drawing.Size(88, 29)
+        Me.lblName.Size = New System.Drawing.Size(93, 29)
         Me.lblName.TabIndex = 7
         Me.lblName.Text = "Name"
         Me.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'txtName
         '
-        Me.txtName.Location = New System.Drawing.Point(97, 3)
+        Me.txtName.Location = New System.Drawing.Point(102, 3)
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(100, 23)
         Me.txtName.TabIndex = 8
@@ -133,9 +133,9 @@ Partial Class frmEditFeature
         '
         Me.lblLastScoreValue.AutoSize = True
         Me.lblLastScoreValue.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lblLastScoreValue.Location = New System.Drawing.Point(97, 58)
+        Me.lblLastScoreValue.Location = New System.Drawing.Point(102, 58)
         Me.lblLastScoreValue.Name = "lblLastScoreValue"
-        Me.lblLastScoreValue.Size = New System.Drawing.Size(100, 15)
+        Me.lblLastScoreValue.Size = New System.Drawing.Size(100, 29)
         Me.lblLastScoreValue.TabIndex = 9
         Me.lblLastScoreValue.Text = "Label1"
         Me.lblLastScoreValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -144,9 +144,9 @@ Partial Class frmEditFeature
         '
         Me.lblTolerance.AutoSize = True
         Me.lblTolerance.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lblTolerance.Location = New System.Drawing.Point(3, 73)
+        Me.lblTolerance.Location = New System.Drawing.Point(3, 87)
         Me.lblTolerance.Name = "lblTolerance"
-        Me.lblTolerance.Size = New System.Drawing.Size(88, 29)
+        Me.lblTolerance.Size = New System.Drawing.Size(93, 29)
         Me.lblTolerance.TabIndex = 10
         Me.lblTolerance.Text = "Tolerance"
         Me.lblTolerance.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -157,7 +157,7 @@ Partial Class frmEditFeature
         Me.numTolerance.DecimalPlaces = 3
         Me.numTolerance.Dock = System.Windows.Forms.DockStyle.Fill
         Me.numTolerance.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
-        Me.numTolerance.Location = New System.Drawing.Point(97, 76)
+        Me.numTolerance.Location = New System.Drawing.Point(102, 90)
         Me.numTolerance.Name = "numTolerance"
         Me.numTolerance.Size = New System.Drawing.Size(100, 23)
         Me.numTolerance.TabIndex = 11
@@ -167,7 +167,7 @@ Partial Class frmEditFeature
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(200, 148)
+        Me.ClientSize = New System.Drawing.Size(205, 149)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmEditFeature"
