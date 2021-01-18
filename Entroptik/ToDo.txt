@@ -1,22 +1,8 @@
-﻿add name field to frmEditScore
-
-make frmEditScore -> frmEditFeature
-
-load feature name from saved scoreSheet
-
-change trainedScores -> scoreSheet
-
-change featureScore, feature.Score -> thisScore, feature.Score
-
-make log file with 1's and 0's for pass/fail
+﻿make log file with 1's and 0's for pass/fail
 
 make log file with scores
 
 allow user edit boundary box size
-
-add score tolerance to cFeature
-
-add score tolerance edit to frmEditFeature
 
 add hotkeys for vital functions
 

@@ -32,14 +32,17 @@ Partial Class frmMain
         Me.DrawingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewDrawingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenImagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpenScoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenFeatureSheetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenProjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NextStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RunAllStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.SaveFeatureSheetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ViewScoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SaveTrainingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.pbxFeatures, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbxCrop, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -111,7 +114,7 @@ Partial Class frmMain
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DrawingToolStripMenuItem, Me.ViewDrawingToolStripMenuItem, Me.OpenImagesToolStripMenuItem, Me.OpenScoresToolStripMenuItem, Me.OpenProjectToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DrawingToolStripMenuItem, Me.ViewDrawingToolStripMenuItem, Me.OpenImagesToolStripMenuItem, Me.OpenFeatureSheetToolStripMenuItem, Me.OpenProjectToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
@@ -122,14 +125,14 @@ Partial Class frmMain
         Me.DrawingToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.DrawingToolStripMenuItem.Name = "DrawingToolStripMenuItem"
         Me.DrawingToolStripMenuItem.ShowShortcutKeys = False
-        Me.DrawingToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
+        Me.DrawingToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.DrawingToolStripMenuItem.Text = "&Open Drawing"
         '
         'ViewDrawingToolStripMenuItem
         '
         Me.ViewDrawingToolStripMenuItem.Name = "ViewDrawingToolStripMenuItem"
         Me.ViewDrawingToolStripMenuItem.ShowShortcutKeys = False
-        Me.ViewDrawingToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
+        Me.ViewDrawingToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.ViewDrawingToolStripMenuItem.Text = "View Drawing"
         '
         'OpenImagesToolStripMenuItem
@@ -138,25 +141,25 @@ Partial Class frmMain
         Me.OpenImagesToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.OpenImagesToolStripMenuItem.Name = "OpenImagesToolStripMenuItem"
         Me.OpenImagesToolStripMenuItem.ShowShortcutKeys = False
-        Me.OpenImagesToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
+        Me.OpenImagesToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.OpenImagesToolStripMenuItem.Text = "&Open Images Folder"
         '
-        'OpenScoresToolStripMenuItem
+        'OpenFeatureSheetToolStripMenuItem
         '
-        Me.OpenScoresToolStripMenuItem.Name = "OpenScoresToolStripMenuItem"
-        Me.OpenScoresToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
-        Me.OpenScoresToolStripMenuItem.Text = "Open Training Scores File"
+        Me.OpenFeatureSheetToolStripMenuItem.Name = "OpenFeatureSheetToolStripMenuItem"
+        Me.OpenFeatureSheetToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.OpenFeatureSheetToolStripMenuItem.Text = "Open Feature Sheet"
         '
         'OpenProjectToolStripMenuItem
         '
         Me.OpenProjectToolStripMenuItem.Name = "OpenProjectToolStripMenuItem"
         Me.OpenProjectToolStripMenuItem.ShowShortcutKeys = False
-        Me.OpenProjectToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
+        Me.OpenProjectToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.OpenProjectToolStripMenuItem.Text = "Open Project Folder"
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NextStripMenuItem, Me.RunAllStripMenuItem, Me.ToolStripSeparator2, Me.ViewScoresToolStripMenuItem, Me.SaveTrainingToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NextStripMenuItem, Me.RunAllStripMenuItem, Me.ToolStripSeparator1, Me.SaveFeatureSheetToolStripMenuItem, Me.SaveLogToolStripMenuItem, Me.ToolStripSeparator2, Me.ViewScoresToolStripMenuItem, Me.ViewLogToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
@@ -165,34 +168,51 @@ Partial Class frmMain
         '
         Me.NextStripMenuItem.Name = "NextStripMenuItem"
         Me.NextStripMenuItem.ShowShortcutKeys = False
-        Me.NextStripMenuItem.Size = New System.Drawing.Size(173, 22)
+        Me.NextStripMenuItem.Size = New System.Drawing.Size(165, 22)
         Me.NextStripMenuItem.Text = "Next Image"
         '
         'RunAllStripMenuItem
         '
         Me.RunAllStripMenuItem.Name = "RunAllStripMenuItem"
         Me.RunAllStripMenuItem.ShowShortcutKeys = False
-        Me.RunAllStripMenuItem.Size = New System.Drawing.Size(173, 22)
+        Me.RunAllStripMenuItem.Size = New System.Drawing.Size(165, 22)
         Me.RunAllStripMenuItem.Text = "Run All Images"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(162, 6)
+        '
+        'SaveFeatureSheetToolStripMenuItem
+        '
+        Me.SaveFeatureSheetToolStripMenuItem.Name = "SaveFeatureSheetToolStripMenuItem"
+        Me.SaveFeatureSheetToolStripMenuItem.ShowShortcutKeys = False
+        Me.SaveFeatureSheetToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.SaveFeatureSheetToolStripMenuItem.Text = "Save Feature Sheet"
+        '
+        'SaveLogToolStripMenuItem
+        '
+        Me.SaveLogToolStripMenuItem.Name = "SaveLogToolStripMenuItem"
+        Me.SaveLogToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.SaveLogToolStripMenuItem.Text = "Save Log"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(170, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(162, 6)
         '
         'ViewScoresToolStripMenuItem
         '
         Me.ViewScoresToolStripMenuItem.Name = "ViewScoresToolStripMenuItem"
         Me.ViewScoresToolStripMenuItem.ShowShortcutKeys = False
-        Me.ViewScoresToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
+        Me.ViewScoresToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
         Me.ViewScoresToolStripMenuItem.Text = "View Scores"
         '
-        'SaveTrainingToolStripMenuItem
+        'ViewLogToolStripMenuItem
         '
-        Me.SaveTrainingToolStripMenuItem.Name = "SaveTrainingToolStripMenuItem"
-        Me.SaveTrainingToolStripMenuItem.ShowShortcutKeys = False
-        Me.SaveTrainingToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
-        Me.SaveTrainingToolStripMenuItem.Text = "Save Training Scores"
+        Me.ViewLogToolStripMenuItem.Name = "ViewLogToolStripMenuItem"
+        Me.ViewLogToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.ViewLogToolStripMenuItem.Text = "View Log"
         '
         'frmMain
         '
@@ -234,6 +254,9 @@ Partial Class frmMain
     Friend WithEvents ViewDrawingToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewScoresToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenProjectToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SaveTrainingToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents OpenScoresToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SaveFeatureSheetToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OpenFeatureSheetToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents SaveLogToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ViewLogToolStripMenuItem As ToolStripMenuItem
 End Class

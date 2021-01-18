@@ -75,3 +75,6 @@ X:\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entroptik.genruntimeconfig.cache
 X:\Entroptik\Entroptik\bin\Debug\net5.0-windows\MathNet.Numerics.dll
 X:\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entroptik.vbproj.CopyComplete
 X:\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entroptik.frmEditScore.resources
+C:\Repos\EntroptikRepo\Entroptik\bin\Debug\net5.0-windows\MathNet.Numerics.dll
+C:\Repos\EntroptikRepo\Entroptik\obj\Debug\net5.0-windows\Entroptik.frmEditFeature.resources
+C:\Repos\EntroptikRepo\Entroptik\obj\Debug\net5.0-windows\Entroptik.vbproj.CopyComplete
