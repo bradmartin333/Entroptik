@@ -45,6 +45,9 @@
         If Not drawingLoaded Then
             MsgBox("A drawing must be loaded first.",, "Entroptik")
             Exit Sub
+        ElseIf Not featuresLoaded Then
+            MsgBox("A Feature Sheet must be loaded first.",, "Entroptik")
+            Exit Sub
         End If
 
         Dim dialog = New FolderBrowserDialog With {.Description = "Choose folder containing images"}
