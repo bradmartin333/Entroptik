@@ -1,0 +1,2 @@
+FileName,Crop,leftie,middy,righie
+1.png,2.008,2.456,2.441,2.456

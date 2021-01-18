@@ -1,5 +1,0 @@
-﻿make log file with 1's and 0's for pass/fail
-
-make log file with scores
-
-convert outputStr to datatables for more readable output

@@ -29,15 +29,14 @@ Partial Class frmMain
         Me.lblStatus = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpenDrawingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenProjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenDrawingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenImagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFeatureSheetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenParametersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveFeatureSheetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveParametersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SaveLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewScoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -120,6 +119,13 @@ Partial Class frmMain
         Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
         Me.OpenToolStripMenuItem.Text = "&Open"
         '
+        'OpenProjectToolStripMenuItem
+        '
+        Me.OpenProjectToolStripMenuItem.Name = "OpenProjectToolStripMenuItem"
+        Me.OpenProjectToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
+        Me.OpenProjectToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
+        Me.OpenProjectToolStripMenuItem.Text = "Project Folder"
+        '
         'OpenDrawingToolStripMenuItem
         '
         Me.OpenDrawingToolStripMenuItem.Image = CType(resources.GetObject("OpenDrawingToolStripMenuItem.Image"), System.Drawing.Image)
@@ -128,13 +134,6 @@ Partial Class frmMain
         Me.OpenDrawingToolStripMenuItem.ShowShortcutKeys = False
         Me.OpenDrawingToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
         Me.OpenDrawingToolStripMenuItem.Text = "&Drawing"
-        '
-        'OpenProjectToolStripMenuItem
-        '
-        Me.OpenProjectToolStripMenuItem.Name = "OpenProjectToolStripMenuItem"
-        Me.OpenProjectToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.OpenProjectToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.OpenProjectToolStripMenuItem.Text = "Project Folder"
         '
         'OpenImagesToolStripMenuItem
         '
@@ -159,7 +158,7 @@ Partial Class frmMain
         '
         'SaveToolStripMenuItem
         '
-        Me.SaveToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveFeatureSheetToolStripMenuItem, Me.SaveParametersToolStripMenuItem, Me.SaveLogToolStripMenuItem})
+        Me.SaveToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveFeatureSheetToolStripMenuItem, Me.SaveParametersToolStripMenuItem})
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
         Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(43, 20)
         Me.SaveToolStripMenuItem.Text = "&Save"
@@ -175,12 +174,6 @@ Partial Class frmMain
         Me.SaveParametersToolStripMenuItem.Name = "SaveParametersToolStripMenuItem"
         Me.SaveParametersToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
         Me.SaveParametersToolStripMenuItem.Text = "Parameters"
-        '
-        'SaveLogToolStripMenuItem
-        '
-        Me.SaveLogToolStripMenuItem.Name = "SaveLogToolStripMenuItem"
-        Me.SaveLogToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
-        Me.SaveLogToolStripMenuItem.Text = "Log"
         '
         'ViewToolStripMenuItem
         '
@@ -275,7 +268,6 @@ Partial Class frmMain
     Friend WithEvents SaveToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SaveFeatureSheetToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SaveParametersToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SaveLogToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewScoresToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewLogToolStripMenuItem As ToolStripMenuItem

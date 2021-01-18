@@ -4,9 +4,8 @@
     Dim drawing As Bitmap
     Dim crop As Rectangle
     Dim features As New List(Of cFeature)
-    Dim displayScores As Form
-    Dim scoreStr As String = "Filename" & vbTab & "Crop" & vbTab
-    Dim drawingLoaded, scoresDisplayed, featuresLoaded, parametersLoaded As Boolean
+    Dim Scores, Log As frmData
+    Dim drawingLoaded, featuresLoaded, parametersLoaded As Boolean
 
     Private Sub OpenProjectFolder(sender As Object, e As EventArgs) Handles OpenProjectToolStripMenuItem.Click
         Dim dialog = New FolderBrowserDialog With {.Description = "Choose a project folder"}
@@ -140,6 +139,9 @@
             Next
         Next
 
+        MakeDataColumns(Scores)
+        MakeDataColumns(Log)
+
         featuresLoaded = True
     End Sub
 
@@ -174,11 +176,11 @@
     End Sub
 
     Private Sub ViewScores(sender As Object, e As EventArgs) Handles ViewScoresToolStripMenuItem.Click
-        scoresDisplayed = True
-        displayScores = New Form With {.FormBorderStyle = FormBorderStyle.SizableToolWindow, .Text = "Current Scores"}
-        Dim scores As New RichTextBox With {.Dock = DockStyle.Fill, .Text = scoreStr}
-        displayScores.Controls.Add(scores)
-        displayScores.Show()
+        Scores.Show()
+    End Sub
+
+    Private Sub ViewLog(sender As Object, e As EventArgs) Handles ViewLogToolStripMenuItem.Click
+        Log.Show()
     End Sub
 
     Private Sub SaveFeatureSheet(sender As Object, e As EventArgs) Handles SaveFeatureSheetToolStripMenuItem.Click
@@ -234,15 +236,16 @@
             features.Add(New cFeature(featureNWCorners(i), featureSECorners(i)))
         Next
 
-        For Each feature As cFeature In features ' Make header for output string
-            scoreStr += feature.Name & vbTab
-        Next
-
         crop = New Rectangle(cropX.Min, cropY.Min, cropX.Max - cropX.Min, cropY.Max - cropY.Min) ' The white pixels are the crop region
     End Sub
 
-    Private Sub IterateImages()
+    Private Sub ScoreImage()
         Text = files(fileIdx).Split("\").Last() ' Get short name of file
+
+        Dim scoreData(features.Count() + 2) As String
+        scoreData(0) = Text
+        Dim logData(features.Count() + 2) As String
+        logData(0) = Text
 
         Dim src = Image.FromFile(files(fileIdx))
         Dim target = New Bitmap(crop.Width, crop.Height)
@@ -251,12 +254,14 @@
 
         Dim nullScore = CalcEntropy(target) ' Entropy of cropped image
         LastCropScore = nullScore
-        scoreStr += vbCrLf & Text & vbTab & nullScore.ToString() & vbTab
+        scoreData(1) = nullScore
 
         If parametersLoaded AndAlso nullScore + NullCapThreshold < NullCap Then
             pbxFeatures.BackColor = Color.Yellow
+            logData(1) = 0
         Else
             pbxFeatures.BackColor = SystemColors.Control
+            logData(1) = 1
         End If
 
         Dim srcFeatures = New Bitmap(src.Width, src.Height)
@@ -269,13 +274,15 @@
 
             Dim thisScore = CalcEntropy(featureBuffer) ' Entropy of feature
             feature.LastScore = thisScore.ToString()
-            scoreStr += thisScore.ToString() & vbTab
+            scoreData(features.IndexOf(feature) + 2) = thisScore
 
             Using g As Graphics = Graphics.FromImage(srcFeatures)
                 If Math.Abs(thisScore - feature.Score) > feature.Tolerance Then
                     g.FillRectangle(New SolidBrush(Color.Red), feature.BorderRect)
+                    logData(features.IndexOf(feature) + 2) = 0
                 Else
                     g.FillRectangle(New SolidBrush(Color.Green), feature.BorderRect)
+                    logData(features.IndexOf(feature) + 2) = 1
                 End If
 
                 g.DrawImage(src, feature.Rect, feature.Rect, GraphicsUnit.Pixel)
@@ -284,9 +291,9 @@
         BitmapCrop(crop, srcFeatures, targetFeatures)
         pbxFeatures.Image = targetFeatures
 
-        If scoresDisplayed Then
-            displayScores.Controls.Item(0).Text = scoreStr
-        End If
+
+        Scores.DataGridView.Rows.Add(scoreData)
+        Log.DataGridView.Rows.Add(logData)
     End Sub
 
     Private Sub NextImage(sender As Object, e As EventArgs) Handles NextStripMenuItem.Click
@@ -305,7 +312,7 @@
             Finish()
             Return 1
         End If
-        IterateImages()
+        ScoreImage()
         Return 0
     End Function
 
@@ -342,5 +349,25 @@
                 editScore.Show()
             End If
         Next
+    End Sub
+
+    Private Sub MakeDataColumns(frm As frmData)
+        With frm.DataGridView
+            .ColumnCount = features.Count() + 2
+            .Columns(0).Name = "FileName"
+            .Columns(1).Name = "Crop"
+            For i As Integer = 0 To features.Count - 1
+                If features(i).Name = "" Then
+                    .Columns(i + 2).Name = features(i).Coordinates
+                Else
+                    .Columns(i + 2).Name = features(i).Name
+                End If
+            Next
+        End With
+    End Sub
+
+    Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Scores = New frmData("Scores")
+        Log = New frmData("Log")
     End Sub
 End Class
