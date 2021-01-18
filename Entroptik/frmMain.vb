@@ -255,6 +255,11 @@
         displayScores.Show()
     End Sub
 
+    Private Sub lblStatus_Click(sender As Object, e As EventArgs) Handles lblStatus.Click
+        lblStatus.Text = ""
+        lblStatus.BackColor = Color.White
+    End Sub
+
     Private Sub pbxFeatures_Click(sender As Object, e As MouseEventArgs) Handles pbxFeatures.Click
         If Application.OpenForms().OfType(Of frmEditFeature).Any Then
             Application.OpenForms().OfType(Of frmEditFeature).First.Dispose()

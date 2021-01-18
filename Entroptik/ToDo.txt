@@ -2,12 +2,4 @@
 
 make log file with scores
 
-allow user edit boundary box size
-
-add hotkeys for vital functions
-
-add icons to menu bar items
-
-add more status messages
-
 convert outputStr to datatables for more readable output

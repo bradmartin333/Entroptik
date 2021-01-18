@@ -64,7 +64,7 @@ Partial Class frmMain
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(343, 506)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(343, 511)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'pbxFeatures
@@ -72,7 +72,7 @@ Partial Class frmMain
         Me.pbxFeatures.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pbxFeatures.Location = New System.Drawing.Point(3, 3)
         Me.pbxFeatures.Name = "pbxFeatures"
-        Me.pbxFeatures.Size = New System.Drawing.Size(337, 233)
+        Me.pbxFeatures.Size = New System.Drawing.Size(337, 235)
         Me.pbxFeatures.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pbxFeatures.TabIndex = 17
         Me.pbxFeatures.TabStop = False
@@ -80,25 +80,24 @@ Partial Class frmMain
         'pbxCrop
         '
         Me.pbxCrop.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pbxCrop.Location = New System.Drawing.Point(3, 242)
+        Me.pbxCrop.Location = New System.Drawing.Point(3, 244)
         Me.pbxCrop.Name = "pbxCrop"
-        Me.pbxCrop.Size = New System.Drawing.Size(337, 233)
+        Me.pbxCrop.Size = New System.Drawing.Size(337, 235)
         Me.pbxCrop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pbxCrop.TabIndex = 14
         Me.pbxCrop.TabStop = False
         '
         'lblStatus
         '
-        Me.lblStatus.AutoSize = True
         Me.lblStatus.BackColor = System.Drawing.Color.White
         Me.lblStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblStatus.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.lblStatus.Location = New System.Drawing.Point(3, 478)
+        Me.lblStatus.Location = New System.Drawing.Point(3, 482)
         Me.lblStatus.Margin = New System.Windows.Forms.Padding(3, 0, 3, 5)
         Me.lblStatus.Name = "lblStatus"
         Me.lblStatus.Padding = New System.Windows.Forms.Padding(0, 3, 0, 3)
-        Me.lblStatus.Size = New System.Drawing.Size(337, 23)
+        Me.lblStatus.Size = New System.Drawing.Size(337, 24)
         Me.lblStatus.TabIndex = 18
         Me.lblStatus.Text = "ENTROPTIK V0.1"
         Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -166,59 +165,66 @@ Partial Class frmMain
         '
         'NextStripMenuItem
         '
+        Me.NextStripMenuItem.Image = CType(resources.GetObject("NextStripMenuItem.Image"), System.Drawing.Image)
         Me.NextStripMenuItem.Name = "NextStripMenuItem"
-        Me.NextStripMenuItem.ShowShortcutKeys = False
-        Me.NextStripMenuItem.Size = New System.Drawing.Size(165, 22)
-        Me.NextStripMenuItem.Text = "Next Image"
+        Me.NextStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
+        Me.NextStripMenuItem.Size = New System.Drawing.Size(226, 22)
+        Me.NextStripMenuItem.Text = "&Next Image"
         '
         'RunAllStripMenuItem
         '
+        Me.RunAllStripMenuItem.Image = CType(resources.GetObject("RunAllStripMenuItem.Image"), System.Drawing.Image)
         Me.RunAllStripMenuItem.Name = "RunAllStripMenuItem"
-        Me.RunAllStripMenuItem.ShowShortcutKeys = False
-        Me.RunAllStripMenuItem.Size = New System.Drawing.Size(165, 22)
-        Me.RunAllStripMenuItem.Text = "Run All Images"
+        Me.RunAllStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+            Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
+        Me.RunAllStripMenuItem.Size = New System.Drawing.Size(226, 22)
+        Me.RunAllStripMenuItem.Text = "&Run All Images"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(162, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(223, 6)
         '
         'SaveFeatureSheetToolStripMenuItem
         '
         Me.SaveFeatureSheetToolStripMenuItem.Name = "SaveFeatureSheetToolStripMenuItem"
-        Me.SaveFeatureSheetToolStripMenuItem.ShowShortcutKeys = False
-        Me.SaveFeatureSheetToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.SaveFeatureSheetToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.SaveFeatureSheetToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.SaveFeatureSheetToolStripMenuItem.Text = "Save Feature Sheet"
         '
         'SaveLogToolStripMenuItem
         '
         Me.SaveLogToolStripMenuItem.Name = "SaveLogToolStripMenuItem"
-        Me.SaveLogToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.SaveLogToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+            Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.SaveLogToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.SaveLogToolStripMenuItem.Text = "Save Log"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(162, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(223, 6)
         '
         'ViewScoresToolStripMenuItem
         '
         Me.ViewScoresToolStripMenuItem.Name = "ViewScoresToolStripMenuItem"
-        Me.ViewScoresToolStripMenuItem.ShowShortcutKeys = False
-        Me.ViewScoresToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.ViewScoresToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
+        Me.ViewScoresToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.ViewScoresToolStripMenuItem.Text = "View Scores"
         '
         'ViewLogToolStripMenuItem
         '
         Me.ViewLogToolStripMenuItem.Name = "ViewLogToolStripMenuItem"
-        Me.ViewLogToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.ViewLogToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+            Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
+        Me.ViewLogToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.ViewLogToolStripMenuItem.Text = "View Log"
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(343, 530)
+        Me.ClientSize = New System.Drawing.Size(343, 535)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -226,7 +232,6 @@ Partial Class frmMain
         Me.Name = "frmMain"
         Me.Text = " "
         Me.TableLayoutPanel1.ResumeLayout(False)
-        Me.TableLayoutPanel1.PerformLayout()
         CType(Me.pbxFeatures, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbxCrop, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
