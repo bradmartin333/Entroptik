@@ -1,5 +1,5 @@
 ﻿Public Class frmMain
-    Dim files As New List(Of String)
+    Dim files As IEnumerable(Of String)
     Dim fileIdx As Integer = -1
     Dim drawing As Bitmap
     Dim crop As Rectangle
@@ -105,19 +105,21 @@
     End Sub
 
     Private Sub LoadImages(ByVal ImagesFolder)
-        files.Clear()
-
         Dim di As New IO.DirectoryInfo(ImagesFolder)
         Dim aryFi As IO.FileInfo() = di.GetFiles
         Dim fi As IO.FileInfo
+        Dim fileBuffer As New List(Of IO.FileInfo)
         For Each fi In aryFi
-            If fi.Name.Contains(".png") Or fi.Name.Contains(".jpg") Then files.Add(fi.FullName)
+            If fi.Name.Contains(".png") Or fi.Name.Contains(".jpg") Then fileBuffer.Add(fi)
         Next
 
-        If files.Count = 0 Then
+        If fileBuffer.Count = 0 Then
             lblStatus.BackColor = Color.Yellow
             lblStatus.Text = "Invalid Directory"
             Exit Sub
+        Else
+            ' Not really necessary, but might be useful to tinker with later on
+            files = From file In fileBuffer Order By file.Name Select file.FullName
         End If
     End Sub
 
@@ -309,6 +311,15 @@
         End While
     End Sub
 
+    Private Sub StartOver(sender As Object, e As EventArgs) Handles StartOverToolStripMenuItem.Click
+        fileIdx = -1
+        Scores.DataGridView.Rows.Clear()
+        Log.DataGridView.Rows.Clear()
+        NextStripMenuItem.Enabled = True
+        RunAllStripMenuItem.Enabled = True
+        Proceed()
+    End Sub
+
     Private Function Proceed()
         fileIdx += 1
         If fileIdx > files.Count - 1 Then
@@ -323,6 +334,8 @@
         fileIdx = -1
         lblStatus.BackColor = Color.LawnGreen
         lblStatus.Text = "All Photos Scored"
+        NextStripMenuItem.Enabled = False
+        RunAllStripMenuItem.Enabled = False
     End Sub
 
     Private Sub lblStatus_Click(sender As Object, e As EventArgs) Handles lblStatus.Click
@@ -331,6 +344,8 @@
     End Sub
 
     Private Sub pbxCrop_Click(sender As Object, e As EventArgs) Handles pbxCrop.Click
+        If fileIdx = -1 Then Exit Sub
+
         If Application.OpenForms().OfType(Of frmEditParams).Any Then
             Application.OpenForms().OfType(Of frmEditFeature).First.BringToFront()
         Else
@@ -340,6 +355,8 @@
     End Sub
 
     Private Sub pbxFeatures_Click(sender As Object, e As MouseEventArgs) Handles pbxFeatures.Click
+        If fileIdx = -1 Then Exit Sub
+
         If Application.OpenForms().OfType(Of frmEditFeature).Any Then
             Application.OpenForms().OfType(Of frmEditFeature).First.Dispose()
         End If

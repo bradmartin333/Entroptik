@@ -44,6 +44,7 @@ Partial Class frmMain
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NextStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RunAllStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StartOverToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.pbxFeatures, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbxCrop, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -202,7 +203,7 @@ Partial Class frmMain
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NextStripMenuItem, Me.RunAllStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NextStripMenuItem, Me.RunAllStripMenuItem, Me.StartOverToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
@@ -223,6 +224,14 @@ Partial Class frmMain
             Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
         Me.RunAllStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.RunAllStripMenuItem.Text = "&Run All Images"
+        '
+        'StartOverToolStripMenuItem
+        '
+        Me.StartOverToolStripMenuItem.Image = CType(resources.GetObject("StartOverToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.StartOverToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent
+        Me.StartOverToolStripMenuItem.Name = "StartOverToolStripMenuItem"
+        Me.StartOverToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
+        Me.StartOverToolStripMenuItem.Text = "Start Over"
         '
         'frmMain
         '
@@ -272,4 +281,5 @@ Partial Class frmMain
     Friend WithEvents ViewScoresToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewLogToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewDrawingToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents StartOverToolStripMenuItem As ToolStripMenuItem
 End Class
