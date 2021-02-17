@@ -11,7 +11,7 @@ Module modHelpers
     Public Property LastCropScore As Double
 
     Public Function CompareColors(ByVal pixel As Color, ByVal test As Color)
-        If pixel.R = test.R And pixel.G = test.G And pixel.B = test.B Then
+        If pixel.R = test.R And pixel.G = test.G And pixel.B = test.B And pixel.A = test.A Then
             Return True
         Else
             Return False

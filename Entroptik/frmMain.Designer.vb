@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmMain
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmMain
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
@@ -31,9 +31,9 @@ Partial Class frmMain
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenProjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenDrawingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpenImagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFeatureSheetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenParametersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ImagesStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveFeatureSheetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveParametersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -101,12 +101,12 @@ Partial Class frmMain
         Me.lblStatus.Padding = New System.Windows.Forms.Padding(0, 3, 0, 3)
         Me.lblStatus.Size = New System.Drawing.Size(337, 24)
         Me.lblStatus.TabIndex = 18
-        Me.lblStatus.Text = "ENTROPTIK V1.0"
+        Me.lblStatus.Text = "ENTROPTIK V1.1"
         Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.SaveToolStripMenuItem, Me.ViewToolStripMenuItem, Me.ToolsToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.ImagesStripMenuItem, Me.SaveToolStripMenuItem, Me.ViewToolStripMenuItem, Me.ToolsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(343, 24)
@@ -115,13 +115,14 @@ Partial Class frmMain
         '
         'OpenToolStripMenuItem
         '
-        Me.OpenToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenProjectToolStripMenuItem, Me.OpenDrawingToolStripMenuItem, Me.OpenImagesToolStripMenuItem, Me.OpenFeatureSheetToolStripMenuItem, Me.OpenParametersToolStripMenuItem})
+        Me.OpenToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenProjectToolStripMenuItem, Me.OpenDrawingToolStripMenuItem, Me.OpenFeatureSheetToolStripMenuItem, Me.OpenParametersToolStripMenuItem})
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
         Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
         Me.OpenToolStripMenuItem.Text = "&Open"
         '
         'OpenProjectToolStripMenuItem
         '
+        Me.OpenProjectToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.OpenProjectToolStripMenuItem.Name = "OpenProjectToolStripMenuItem"
         Me.OpenProjectToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
         Me.OpenProjectToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
@@ -136,15 +137,6 @@ Partial Class frmMain
         Me.OpenDrawingToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
         Me.OpenDrawingToolStripMenuItem.Text = "&Drawing"
         '
-        'OpenImagesToolStripMenuItem
-        '
-        Me.OpenImagesToolStripMenuItem.Image = CType(resources.GetObject("OpenImagesToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.OpenImagesToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.OpenImagesToolStripMenuItem.Name = "OpenImagesToolStripMenuItem"
-        Me.OpenImagesToolStripMenuItem.ShowShortcutKeys = False
-        Me.OpenImagesToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.OpenImagesToolStripMenuItem.Text = "&Images Folder"
-        '
         'OpenFeatureSheetToolStripMenuItem
         '
         Me.OpenFeatureSheetToolStripMenuItem.Name = "OpenFeatureSheetToolStripMenuItem"
@@ -156,6 +148,12 @@ Partial Class frmMain
         Me.OpenParametersToolStripMenuItem.Name = "OpenParametersToolStripMenuItem"
         Me.OpenParametersToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
         Me.OpenParametersToolStripMenuItem.Text = "Parameters"
+        '
+        'ImagesStripMenuItem
+        '
+        Me.ImagesStripMenuItem.Name = "ImagesStripMenuItem"
+        Me.ImagesStripMenuItem.Size = New System.Drawing.Size(57, 20)
+        Me.ImagesStripMenuItem.Text = "Images"
         '
         'SaveToolStripMenuItem
         '
@@ -260,7 +258,6 @@ Partial Class frmMain
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DrawingToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents OpenImagesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CustomizeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OptionsToolStripMenuItem As ToolStripMenuItem
@@ -282,4 +279,5 @@ Partial Class frmMain
     Friend WithEvents ViewLogToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewDrawingToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StartOverToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ImagesStripMenuItem As ToolStripMenuItem
 End Class

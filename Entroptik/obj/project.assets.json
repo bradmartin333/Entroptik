@@ -41,19 +41,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dingo\\.nuget\\packages\\": {}
+    "C:\\Users\\brad.martin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Repos\\EntroptikRepo\\Entroptik\\Entroptik.vbproj",
+      "projectUniqueName": "C:\\Entroptik\\Entroptik\\Entroptik.vbproj",
       "projectName": "Entroptik",
-      "projectPath": "C:\\Repos\\EntroptikRepo\\Entroptik\\Entroptik.vbproj",
-      "packagesPath": "C:\\Users\\dingo\\.nuget\\packages\\",
-      "outputPath": "C:\\Repos\\EntroptikRepo\\Entroptik\\obj\\",
+      "projectPath": "C:\\Entroptik\\Entroptik\\Entroptik.vbproj",
+      "packagesPath": "C:\\Users\\brad.martin\\.nuget\\packages\\",
+      "outputPath": "C:\\Entroptik\\Entroptik\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\dingo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\brad.martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

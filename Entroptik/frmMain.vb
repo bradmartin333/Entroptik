@@ -3,25 +3,26 @@
     Dim fileIdx As Integer = -1
     Dim drawing As Bitmap
     Dim crop As Rectangle
+    Dim drawingSize As Size
     Dim features As New List(Of cFeature)
     Dim Scores, Log As frmData
     Dim drawingLoaded, featuresLoaded, parametersLoaded As Boolean
+    Dim ImageExtensions() As String = {".JPG", ".JPE", ".GIF", ".PNG"}
 
     Private Sub OpenProjectFolder(sender As Object, e As EventArgs) Handles OpenProjectToolStripMenuItem.Click
         Dim dialog = New FolderBrowserDialog With {.Description = "Choose a project folder"}
         If dialog.ShowDialog() = DialogResult.OK Then
-            LoadImages(dialog.SelectedPath)
             Dim di As New IO.DirectoryInfo(dialog.SelectedPath)
             Dim aryFi As IO.FileInfo() = di.GetFiles
             Dim fi As IO.FileInfo
             For Each fi In aryFi
-                If fi.Name.Contains(".bmp") Then
+                If fi.Extension.ToUpperInvariant() = ".BMP" Then
                     LoadDrawing(fi.FullName)
                 End If
-                If fi.Name.Contains(".efs") Then
+                If fi.Extension.ToUpperInvariant() = ".EFS" Then
                     LoadFeatureSheet(fi.FullName)
                 End If
-                If fi.Name.Contains(".eprm") Then
+                If fi.Extension.ToUpperInvariant() = ".EPRM" Then
                     LoadParameters(fi.FullName)
                 End If
             Next
@@ -29,7 +30,7 @@
             Exit Sub
         End If
 
-        If Not drawingLoaded OrElse Not featuresLoaded OrElse files.Count = 0 Then
+        If Not drawingLoaded OrElse Not featuresLoaded Then
             lblStatus.BackColor = Color.Yellow
             lblStatus.Text = "Invalid Directory"
             Exit Sub
@@ -37,11 +38,9 @@
 
         lblStatus.BackColor = Color.LimeGreen
         lblStatus.Text = "Project Loaded"
-
-        Proceed()
     End Sub
 
-    Private Sub OpenImagesFolder(sender As Object, e As EventArgs) Handles OpenImagesToolStripMenuItem.Click
+    Private Sub OpenImagesFolder(sender As Object, e As EventArgs) Handles ImagesStripMenuItem.Click
         If Not drawingLoaded Then
             MsgBox("A drawing must be loaded first.",, "Entroptik")
             Exit Sub
@@ -110,7 +109,7 @@
         Dim fi As IO.FileInfo
         Dim fileBuffer As New List(Of IO.FileInfo)
         For Each fi In aryFi
-            If fi.Name.Contains(".png") Or fi.Name.Contains(".jpg") Then fileBuffer.Add(fi)
+            If ImageExtensions.Contains(fi.Extension.ToUpperInvariant()) Then fileBuffer.Add(fi)
         Next
 
         If fileBuffer.Count = 0 Then
@@ -164,6 +163,7 @@
 
     Private Sub LoadDrawing(ByVal DrawingPath As String)
         drawing = New Bitmap(DrawingPath)
+        drawingSize = drawing.Size()
         drawingLoaded = True
         MakeRects()
     End Sub
@@ -200,8 +200,10 @@
             Exit Sub
         End If
 
+        LoadFeatureSheet(dialog.FileName)
+
         lblStatus.BackColor = Color.LimeGreen
-        lblStatus.Text = "Feature Sheet Saved"
+        lblStatus.Text = "Feature Sheet Saved and Loaded"
     End Sub
 
     Private Sub SaveParameters(sender As Object, e As EventArgs) Handles SaveParametersToolStripMenuItem.Click
@@ -231,8 +233,8 @@
                     If Not cropY.Contains(y) Then cropY.Add(y)
                 ElseIf CompareColors(thisColor, Color.Black) AndAlso x <> 0 AndAlso y <> 0 AndAlso x <> xMax AndAlso y <> yMax Then
                     ' Add pixel coordinates for NW and SE corners
-                    If CompareColors(drawing.GetPixel(x - 1, y), Color.White) AndAlso CompareColors(drawing.GetPixel(x, y - 1), Color.White) Then featureNWCorners.Add(New Point(x, y))
-                    If CompareColors(drawing.GetPixel(x + 1, y), Color.White) AndAlso CompareColors(drawing.GetPixel(x, y + 1), Color.White) Then featureSECorners.Add(New Point(x, y))
+                    If CompareColors(drawing.GetPixel(x - 3, y), Color.White) AndAlso CompareColors(drawing.GetPixel(x, y - 3), Color.White) Then featureNWCorners.Add(New Point(x, y))
+                    If CompareColors(drawing.GetPixel(x + 3, y), Color.White) AndAlso CompareColors(drawing.GetPixel(x, y + 3), Color.White) Then featureSECorners.Add(New Point(x, y))
                 End If
             Next x
         Next y
@@ -252,7 +254,8 @@
         Dim logData(features.Count() + 2) As String
         logData(0) = Text
 
-        Dim src = Image.FromFile(files(fileIdx))
+        Dim srcRaw = Image.FromFile(files(fileIdx))
+        Dim src = New Bitmap(srcRaw, drawingSize)
         Dim target = New Bitmap(crop.Width, crop.Height)
         BitmapCrop(crop, src, target)
         pbxCrop.Image = target
