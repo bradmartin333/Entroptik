@@ -76,17 +76,16 @@ Module modHelpers
 
             If Not IO.Directory.Exists(imagesDir) Then
                 frmMain.lblStatus.BackColor = Color.Yellow
-                frmMain.lblStatus.Text = "Invalid Entroptik Workspace (0)"
+                frmMain.lblStatus.Text = "Images Directory Not Found"
                 Exit Sub
             End If
         Catch ex As Exception
             frmMain.lblStatus.BackColor = Color.Yellow
-            frmMain.lblStatus.Text = "Invalid Entroptik Workspace (1)"
+            frmMain.lblStatus.Text = "Invalid Entroptik Workspace E000"
             Exit Sub
         End Try
 
-        If files.Count = 0 Then LoadImages()
-
+        LoadImages()
         EnableTools()
         frmMain.Proceed()
     End Sub
@@ -103,7 +102,7 @@ Module modHelpers
             Next
         Catch ex As Exception
             frmMain.lblStatus.BackColor = Color.Yellow
-            frmMain.lblStatus.Text = "Invalid Entroptik Workspace (2)"
+            frmMain.lblStatus.Text = "Invalid Entroptik Workspace E001"
             Exit Sub
         End Try
 

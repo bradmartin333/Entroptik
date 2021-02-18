@@ -1,6 +1,6 @@
 ﻿If running a new batch of images with the same setup,
-copy the matching *.ew file into the new image directory
-to be able to load a workspace instead of using the wizard again.
+copy the matching *.ew file and open the new directory
+of images to save it to the *.ew file path.
 
 
 For faster runtimes, use ImageMagick to crop and resize batches of images.

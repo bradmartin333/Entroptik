@@ -81,7 +81,7 @@ Partial Class frmMain
         Me.lblStatus.Padding = New System.Windows.Forms.Padding(0, 3, 0, 3)
         Me.lblStatus.Size = New System.Drawing.Size(395, 24)
         Me.lblStatus.TabIndex = 18
-        Me.lblStatus.Text = "ENTROPTIK V1.1"
+        Me.lblStatus.Text = "ENTROPTIK V2.0"
         Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'MenuStrip1

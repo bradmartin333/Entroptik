@@ -1,4 +1,6 @@
 ﻿Public Class frmMain
+    Private RunAll As Boolean = False
+
     Private Sub OpenWorkspace(sender As Object, e As EventArgs) Handles OpenWorkspaceToolStripMenuItem.Click
         Dim dialog = New OpenFileDialog With {.Filter = "Entroptik Workspace|*.ew"}
         If dialog.ShowDialog() = DialogResult.OK Then
@@ -22,6 +24,12 @@
         If workspacePath = "" Then
             Wizard = New frmData("Entroptik Workspace Wizard")
             Wizard.Show()
+        Else
+            Dim data = IO.File.ReadAllLines(workspacePath)
+            data(data.Length - 1) = dialog.SelectedPath
+            IO.File.WriteAllLines(workspacePath, data)
+            EnableTools()
+            Proceed()
         End If
     End Sub
 
@@ -48,7 +56,8 @@
         scoreData(1) = nullScore
 
         If nullScore + NullCapThreshold < NullCap Then
-            BackColor = Color.Yellow
+            BackColor = Color.Red
+            lblStatus.Text = "Null Photo"
             logData(1) = 0
         Else
             BackColor = SystemColors.Control
@@ -65,32 +74,39 @@
             feature.LastScore = thisScore.ToString()
             scoreData(features.IndexOf(feature) + 2) = thisScore
 
+
             Using g As Graphics = Graphics.FromImage(src)
                 If Math.Abs(thisScore - feature.Score) > feature.Tolerance Then
-                    g.DrawRectangle(New Pen(Color.Red, BorderRectSize), feature.Rect)
+                    If Not RunAll Then g.DrawRectangle(New Pen(Color.Red, BorderRectSize), feature.Rect)
                     logData(features.IndexOf(feature) + 2) = 0
-                Else
-                    g.DrawRectangle(New Pen(Color.Green, BorderRectSize), feature.Rect)
+                    Else
+                    If Not RunAll Then g.DrawRectangle(New Pen(Color.Green, BorderRectSize), feature.Rect)
                     logData(features.IndexOf(feature) + 2) = 1
-                End If
+                    End If
             End Using
         Next
 
         Scores.DataGridView.Rows.Add(scoreData)
         Log.DataGridView.Rows.Add(logData)
+
+        Refresh()
     End Sub
 
     Private Sub NextImage(sender As Object, e As EventArgs) Handles NextStripMenuItem.Click
+        ClearStatus()
         Proceed()
     End Sub
 
     Private Sub AllImages(sender As Object, e As EventArgs) Handles RunAllStripMenuItem.Click
+        ClearStatus()
+        RunAll = True
         While True
             If Proceed() = 1 Then Exit Sub
         End While
     End Sub
 
     Private Sub StartOver(sender As Object, e As EventArgs) Handles StartOverToolStripMenuItem.Click
+        ClearStatus()
         fileIdx = -1
         Scores.DataGridView.Rows.Clear()
         Log.DataGridView.Rows.Clear()
@@ -115,9 +131,14 @@
         lblStatus.Text = "All Photos Scored"
         NextStripMenuItem.Enabled = False
         RunAllStripMenuItem.Enabled = False
+        RunAll = False
     End Sub
 
     Private Sub lblStatus_Click(sender As Object, e As EventArgs) Handles lblStatus.Click
+        ClearStatus()
+    End Sub
+
+    Private Sub ClearStatus()
         lblStatus.Text = ""
         lblStatus.BackColor = Color.White
     End Sub
@@ -158,5 +179,12 @@
         rtb.Text = IO.File.ReadAllText("Tips.txt")
 
         tips.Show()
+    End Sub
+
+    Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
+        If My.Application.CommandLineArgs.Count > 0 Then
+            workspacePath = My.Application.CommandLineArgs.First.ToString()
+            LoadWorkspace()
+        End If
     End Sub
 End Class
