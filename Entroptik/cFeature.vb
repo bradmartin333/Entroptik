@@ -18,7 +18,7 @@ Public Class cFeature
     Public Sub New(NWcorner As Point, SEcorner As Point, score As String, tolerance As String, Optional name As String = "")
         Rect = New Rectangle(NWcorner.X, NWcorner.Y, SEcorner.X - NWcorner.X, SEcorner.Y - NWcorner.Y)
         Path = New GraphicsPath()
-        Path.AddEllipse(Rect)
+        Path.AddRectangle(Rect)
         Coordinates = "(" & Rect.X.ToString() & "," & Rect.Y.ToString() & ")"
         Me.Score = score
         Me.Tolerance = tolerance

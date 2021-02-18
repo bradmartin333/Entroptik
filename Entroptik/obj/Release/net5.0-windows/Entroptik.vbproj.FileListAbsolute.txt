@@ -22,3 +22,4 @@ C:\Repos\Entroptik\Entroptik\obj\Release\net5.0-windows\Entroptik.dll
 C:\Repos\Entroptik\Entroptik\obj\Release\net5.0-windows\ref\Entroptik.dll
 C:\Repos\Entroptik\Entroptik\obj\Release\net5.0-windows\Entroptik.pdb
 C:\Repos\Entroptik\Entroptik\obj\Release\net5.0-windows\Entroptik.genruntimeconfig.cache
+C:\Repos\Entroptik\Entroptik\obj\Release\net5.0-windows\Entroptik.vbprojAssemblyReference.cache

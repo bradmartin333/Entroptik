@@ -3,6 +3,11 @@ copy the matching *.ew file and open the new directory
 of images to save it to the *.ew file path.
 
 
+If having trouble clicking on features, try resizing
+the window so there is less of an unused border.
+(Bug that will be fixed)
+
+
 For faster runtimes, use ImageMagick to crop and resize batches of images.
 Download and install the appropriate version from the software's website.
 Also, downloading and installing the appropriate version of IrfanView will be helpful.
@@ -38,7 +43,7 @@ For resizing:
 
 Very similar to cropping, but use this template instead:
 
-	magick mogrify -resize 960x528 *.png
+	magick mogrify -resize 40% *.png
 
 
 
