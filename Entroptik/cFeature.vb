@@ -1,25 +1,8 @@
 ﻿Imports System.Drawing.Drawing2D
 
 Public Class cFeature
-    Private myRect As Rectangle ' Area of region determined from NW and SE corners
-    '''<summary>Rectangle for drawing zone</summary>
-    Public Property Rect As Rectangle
-        Get
-            Return myRect
-        End Get
-        Set(ByVal value As Rectangle)
-            myRect = value
-        End Set
-    End Property
     '''<summary>Larger rectangle for color coding features</summary>
-    Public ReadOnly Property BorderRect As Rectangle
-        Get
-            Return New Rectangle(myRect.X - BorderRectSize,
-                                 myRect.Y - BorderRectSize,
-                                 myRect.Width + BorderRectSize * 2,
-                                 myRect.Height + BorderRectSize * 2)
-        End Get
-    End Property
+    Public Property Rect As Rectangle
     '''<summary>Path of region determined from area</summary>
     Public Property Path As GraphicsPath
     '''<summary>Origin of feature in drawing</summary>
@@ -32,10 +15,13 @@ Public Class cFeature
     Public Property LastScore As String = 0
     '''<summary>Acceptable difference from trained score</summary>
     Public Property Tolerance As Double = 1
-    Public Sub New(ByVal NWcorner As Point, ByVal SEcorner As Point)
-        myRect = New Rectangle(NWcorner.X, NWcorner.Y, SEcorner.X - NWcorner.X, SEcorner.Y - NWcorner.Y)
+    Public Sub New(NWcorner As Point, SEcorner As Point, score As String, tolerance As String, Optional name As String = "")
+        Rect = New Rectangle(NWcorner.X, NWcorner.Y, SEcorner.X - NWcorner.X, SEcorner.Y - NWcorner.Y)
         Path = New GraphicsPath()
-        Path.AddEllipse(myRect)
-        Coordinates = "(" & myRect.X.ToString() & "," & myRect.Y.ToString() & ")"
+        Path.AddEllipse(Rect)
+        Coordinates = "(" & Rect.X.ToString() & "," & Rect.Y.ToString() & ")"
+        Me.Score = score
+        Me.Tolerance = tolerance
+        Me.Name = name
     End Sub
 End Class

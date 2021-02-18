@@ -1,0 +1,46 @@
+﻿If running a new batch of images with the same setup,
+copy the matching *.ew file into the new image directory
+to be able to load a workspace instead of using the wizard again.
+
+
+For faster runtimes, use ImageMagick to crop and resize batches of images.
+Download and install the appropriate version from the software's website.
+Also, downloading and installing the appropriate version of IrfanView will be helpful.
+
+
+
+In IrfanView, holding down the left mouse button shows the XY coordinated of the cursor.
+Also, clicking and dragging show width and height values.
+All that information is displayed in the window heading.
+
+
+
+For cropping:
+
+1) Open the command line in the directory of the source images.
+
+		This can be done easily by opening the directory in file explorer
+		then de-selecting from the present files and Shift + Right clicking in
+		empty space in the file explorer and clicking "Open PowerShell window here"
+
+2) Copy and paste this template into the PowerShell window and modify as needed
+
+		magick mogrify -crop 300x300+150+150 *.png
+
+		where 300x300 is the width and height of the output images
+		and +150+150 is how far in from the top left corner to offset
+
+		*.png is the image file extension to look for
+
+
+
+For resizing:
+
+Very similar to cropping, but use this template instead:
+
+	magick mogrify -resize 960x528 *.png
+
+
+
+It is also possible to output to a different directory by specifying a -path in the command.
+ImageMagick is a great tool and there is a lot of documentation online.

@@ -41,19 +41,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\brad.martin\\.nuget\\packages\\": {}
+    "C:\\Users\\dingo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Entroptik\\Entroptik\\Entroptik.vbproj",
+      "projectUniqueName": "C:\\Repos\\Entroptik\\Entroptik\\Entroptik.vbproj",
       "projectName": "Entroptik",
-      "projectPath": "C:\\Entroptik\\Entroptik\\Entroptik.vbproj",
-      "packagesPath": "C:\\Users\\brad.martin\\.nuget\\packages\\",
-      "outputPath": "C:\\Entroptik\\Entroptik\\obj\\",
+      "projectPath": "C:\\Repos\\Entroptik\\Entroptik\\Entroptik.vbproj",
+      "packagesPath": "C:\\Users\\dingo\\.nuget\\packages\\",
+      "outputPath": "C:\\Repos\\Entroptik\\Entroptik\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\brad.martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dingo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -102,7 +102,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

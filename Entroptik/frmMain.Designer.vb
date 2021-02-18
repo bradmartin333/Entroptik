@@ -24,30 +24,22 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.pbxFeatures = New System.Windows.Forms.PictureBox()
-        Me.pbxCrop = New System.Windows.Forms.PictureBox()
+        Me.pbx = New System.Windows.Forms.PictureBox()
         Me.lblStatus = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpenProjectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpenDrawingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpenFeatureSheetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpenParametersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ImagesStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SaveFeatureSheetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SaveParametersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenWorkspaceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenImagesDirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewScoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ViewDrawingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NextStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RunAllStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StartOverToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TipsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1.SuspendLayout()
-        CType(Me.pbxFeatures, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pbxCrop, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbx, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -55,39 +47,27 @@ Partial Class frmMain
         '
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.pbxFeatures, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.pbxCrop, 0, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.lblStatus, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.pbx, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblStatus, 0, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 24)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 3
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel1.RowCount = 2
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(343, 511)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(401, 342)
         Me.TableLayoutPanel1.TabIndex = 0
         '
-        'pbxFeatures
+        'pbx
         '
-        Me.pbxFeatures.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pbxFeatures.Location = New System.Drawing.Point(3, 3)
-        Me.pbxFeatures.Name = "pbxFeatures"
-        Me.pbxFeatures.Size = New System.Drawing.Size(337, 235)
-        Me.pbxFeatures.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.pbxFeatures.TabIndex = 17
-        Me.pbxFeatures.TabStop = False
-        '
-        'pbxCrop
-        '
-        Me.pbxCrop.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pbxCrop.Location = New System.Drawing.Point(3, 244)
-        Me.pbxCrop.Name = "pbxCrop"
-        Me.pbxCrop.Size = New System.Drawing.Size(337, 235)
-        Me.pbxCrop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.pbxCrop.TabIndex = 14
-        Me.pbxCrop.TabStop = False
+        Me.pbx.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pbx.Location = New System.Drawing.Point(3, 3)
+        Me.pbx.Name = "pbx"
+        Me.pbx.Size = New System.Drawing.Size(395, 307)
+        Me.pbx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pbx.TabIndex = 17
+        Me.pbx.TabStop = False
         '
         'lblStatus
         '
@@ -95,88 +75,49 @@ Partial Class frmMain
         Me.lblStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblStatus.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.lblStatus.Location = New System.Drawing.Point(3, 482)
+        Me.lblStatus.Location = New System.Drawing.Point(3, 313)
         Me.lblStatus.Margin = New System.Windows.Forms.Padding(3, 0, 3, 5)
         Me.lblStatus.Name = "lblStatus"
         Me.lblStatus.Padding = New System.Windows.Forms.Padding(0, 3, 0, 3)
-        Me.lblStatus.Size = New System.Drawing.Size(337, 24)
+        Me.lblStatus.Size = New System.Drawing.Size(395, 24)
         Me.lblStatus.TabIndex = 18
         Me.lblStatus.Text = "ENTROPTIK V1.1"
         Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.ImagesStripMenuItem, Me.SaveToolStripMenuItem, Me.ViewToolStripMenuItem, Me.ToolsToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.ViewToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.TipsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(343, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(401, 24)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'OpenToolStripMenuItem
         '
-        Me.OpenToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenProjectToolStripMenuItem, Me.OpenDrawingToolStripMenuItem, Me.OpenFeatureSheetToolStripMenuItem, Me.OpenParametersToolStripMenuItem})
+        Me.OpenToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenWorkspaceToolStripMenuItem, Me.OpenImagesDirToolStripMenuItem})
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
         Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
         Me.OpenToolStripMenuItem.Text = "&Open"
         '
-        'OpenProjectToolStripMenuItem
+        'OpenWorkspaceToolStripMenuItem
         '
-        Me.OpenProjectToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.OpenProjectToolStripMenuItem.Name = "OpenProjectToolStripMenuItem"
-        Me.OpenProjectToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.OpenProjectToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.OpenProjectToolStripMenuItem.Text = "Project Folder"
+        Me.OpenWorkspaceToolStripMenuItem.Image = CType(resources.GetObject("OpenWorkspaceToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.OpenWorkspaceToolStripMenuItem.Name = "OpenWorkspaceToolStripMenuItem"
+        Me.OpenWorkspaceToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.OpenWorkspaceToolStripMenuItem.Text = "&Workspace"
         '
-        'OpenDrawingToolStripMenuItem
+        'OpenImagesDirToolStripMenuItem
         '
-        Me.OpenDrawingToolStripMenuItem.Image = CType(resources.GetObject("OpenDrawingToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.OpenDrawingToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.OpenDrawingToolStripMenuItem.Name = "OpenDrawingToolStripMenuItem"
-        Me.OpenDrawingToolStripMenuItem.ShowShortcutKeys = False
-        Me.OpenDrawingToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.OpenDrawingToolStripMenuItem.Text = "&Drawing"
-        '
-        'OpenFeatureSheetToolStripMenuItem
-        '
-        Me.OpenFeatureSheetToolStripMenuItem.Name = "OpenFeatureSheetToolStripMenuItem"
-        Me.OpenFeatureSheetToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.OpenFeatureSheetToolStripMenuItem.Text = "Feature Sheet"
-        '
-        'OpenParametersToolStripMenuItem
-        '
-        Me.OpenParametersToolStripMenuItem.Name = "OpenParametersToolStripMenuItem"
-        Me.OpenParametersToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.OpenParametersToolStripMenuItem.Text = "Parameters"
-        '
-        'ImagesStripMenuItem
-        '
-        Me.ImagesStripMenuItem.Name = "ImagesStripMenuItem"
-        Me.ImagesStripMenuItem.Size = New System.Drawing.Size(57, 20)
-        Me.ImagesStripMenuItem.Text = "Images"
-        '
-        'SaveToolStripMenuItem
-        '
-        Me.SaveToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveFeatureSheetToolStripMenuItem, Me.SaveParametersToolStripMenuItem})
-        Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(43, 20)
-        Me.SaveToolStripMenuItem.Text = "&Save"
-        '
-        'SaveFeatureSheetToolStripMenuItem
-        '
-        Me.SaveFeatureSheetToolStripMenuItem.Name = "SaveFeatureSheetToolStripMenuItem"
-        Me.SaveFeatureSheetToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
-        Me.SaveFeatureSheetToolStripMenuItem.Text = "Feature Sheet"
-        '
-        'SaveParametersToolStripMenuItem
-        '
-        Me.SaveParametersToolStripMenuItem.Name = "SaveParametersToolStripMenuItem"
-        Me.SaveParametersToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
-        Me.SaveParametersToolStripMenuItem.Text = "Parameters"
+        Me.OpenImagesDirToolStripMenuItem.Image = CType(resources.GetObject("OpenImagesDirToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.OpenImagesDirToolStripMenuItem.Name = "OpenImagesDirToolStripMenuItem"
+        Me.OpenImagesDirToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.OpenImagesDirToolStripMenuItem.Text = "&Images Directory"
         '
         'ViewToolStripMenuItem
         '
-        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewScoresToolStripMenuItem, Me.ViewLogToolStripMenuItem, Me.ViewDrawingToolStripMenuItem})
+        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewScoresToolStripMenuItem, Me.ViewLogToolStripMenuItem})
+        Me.ViewToolStripMenuItem.Enabled = False
         Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
         Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.ViewToolStripMenuItem.Text = "&View"
@@ -184,24 +125,19 @@ Partial Class frmMain
         'ViewScoresToolStripMenuItem
         '
         Me.ViewScoresToolStripMenuItem.Name = "ViewScoresToolStripMenuItem"
-        Me.ViewScoresToolStripMenuItem.Size = New System.Drawing.Size(118, 22)
+        Me.ViewScoresToolStripMenuItem.Size = New System.Drawing.Size(108, 22)
         Me.ViewScoresToolStripMenuItem.Text = "Scores"
         '
         'ViewLogToolStripMenuItem
         '
         Me.ViewLogToolStripMenuItem.Name = "ViewLogToolStripMenuItem"
-        Me.ViewLogToolStripMenuItem.Size = New System.Drawing.Size(118, 22)
+        Me.ViewLogToolStripMenuItem.Size = New System.Drawing.Size(108, 22)
         Me.ViewLogToolStripMenuItem.Text = "Log"
-        '
-        'ViewDrawingToolStripMenuItem
-        '
-        Me.ViewDrawingToolStripMenuItem.Name = "ViewDrawingToolStripMenuItem"
-        Me.ViewDrawingToolStripMenuItem.Size = New System.Drawing.Size(118, 22)
-        Me.ViewDrawingToolStripMenuItem.Text = "Drawing"
         '
         'ToolsToolStripMenuItem
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NextStripMenuItem, Me.RunAllStripMenuItem, Me.StartOverToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.Enabled = False
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
@@ -231,20 +167,26 @@ Partial Class frmMain
         Me.StartOverToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.StartOverToolStripMenuItem.Text = "Start Over"
         '
+        'TipsToolStripMenuItem
+        '
+        Me.TipsToolStripMenuItem.Name = "TipsToolStripMenuItem"
+        Me.TipsToolStripMenuItem.Size = New System.Drawing.Size(40, 20)
+        Me.TipsToolStripMenuItem.Text = "Tips"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(343, 535)
+        Me.ClientSize = New System.Drawing.Size(401, 366)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.KeyPreview = True
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmMain"
         Me.Text = " "
         Me.TableLayoutPanel1.ResumeLayout(False)
-        CType(Me.pbxFeatures, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pbxCrop, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbx, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -253,8 +195,7 @@ Partial Class frmMain
     End Sub
 
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents pbxCrop As PictureBox
-    Friend WithEvents pbxFeatures As PictureBox
+    Friend WithEvents pbx As PictureBox
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DrawingToolStripMenuItem As ToolStripMenuItem
@@ -265,19 +206,13 @@ Partial Class frmMain
     Friend WithEvents NextStripMenuItem As ToolStripMenuItem
     Friend WithEvents RunAllStripMenuItem As ToolStripMenuItem
     Friend WithEvents lblStatus As Label
-    Friend WithEvents OpenProjectToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents OpenFeatureSheetToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LoadParametersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents OpenDrawingToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents OpenParametersToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SaveToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SaveFeatureSheetToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SaveParametersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewScoresToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewLogToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ViewDrawingToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StartOverToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ImagesStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OpenWorkspaceToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OpenImagesDirToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TipsToolStripMenuItem As ToolStripMenuItem
 End Class

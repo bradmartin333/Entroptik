@@ -16,6 +16,23 @@
         thisFeature.Score = numScore.Value
         thisFeature.Name = txtName.Text
         thisFeature.Tolerance = numTolerance.Value
+        Save()
         Dispose()
+    End Sub
+
+    Private Sub Save()
+        Dim data = IO.File.ReadAllLines(workspacePath)
+        For i = 0 To features.Count - 1
+            With features(i)
+                data(i + 3) = .Rect.Left & "," &
+                              .Rect.Top & "," &
+                              .Rect.Right & "," &
+                              .Rect.Bottom & "," &
+                              .Name & "," &
+                              .Score & "," &
+                              .Tolerance
+            End With
+        Next
+        IO.File.WriteAllLines(workspacePath, data)
     End Sub
 End Class
