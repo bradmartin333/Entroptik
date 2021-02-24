@@ -24,7 +24,7 @@
         Dim data = IO.File.ReadAllLines(workspacePath)
         For i = 0 To features.Count - 1
             With features(i)
-                data(i + 3) = .Rect.Left & "," &
+                data(i + 4) = .Rect.Left & "," &
                               .Rect.Top & "," &
                               .Rect.Right & "," &
                               .Rect.Bottom & "," &

@@ -1,5 +1,6 @@
 ﻿Public Class frmData
     Dim filter = ""
+
     Public Sub New(str As String)
         InitializeComponent()
         Text = str
@@ -29,6 +30,7 @@
         Dim dialog = New SaveFileDialog With {.Filter = filter}
         If dialog.ShowDialog() = DialogResult.OK Then
             Using sw As New IO.StreamWriter(dialog.FileName)
+                sw.WriteLine(workspaceType)
                 If Text.Contains("Wizard") Then
                     sw.WriteLine(BorderRectSize & vbCrLf & NullCap & vbCrLf & NullCapThreshold)
                 Else

@@ -111,3 +111,4 @@ C:\Repos\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entroptik.Resources.resour
 C:\Repos\Entroptik\Entroptik\bin\Debug\net5.0-windows\MathNet.Numerics.dll
 C:\Repos\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entroptik.vbproj.CopyComplete
 C:\Repos\Entroptik\Entroptik\bin\Debug\net5.0-windows\Tips.txt
+C:\Entroptik\Entroptik\bin\Debug\net5.0-windows\Tips.txt

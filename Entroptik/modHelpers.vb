@@ -9,7 +9,13 @@ Module modHelpers
     Public Property NullCapThreshold As Double = 1
     '''<summary>Last score value for quick reference</summary>
     Public Property LastSourceScore As Double
-    '''<summary>User determined crop rect</summary>
+    '''<summary>Grid or Not</summary>
+    Public Property WorkspaceType As Double
+
+    Public Enum WorkspaceTypes
+        Standard
+        Grid
+    End Enum
 
     Public files As New List(Of IO.FileInfo)
     Public fileIdx As Integer = -1
@@ -18,6 +24,8 @@ Module modHelpers
     Public ImageExtensions() As String = {".JPG", ".JPE", ".BMP", ".GIF", ".PNG"}
     Public workspacePath = ""
     Public imagesDir = ""
+    Public GridData
+    Public GridRows, GridCols As Integer
 
     Public Function CalcEntropy(ByVal img As Bitmap)
         Dim pixels As New List(Of Double)
@@ -41,7 +49,7 @@ Module modHelpers
                 .Columns(3).Name = "SE Corner Y"
                 .Columns(4).Name = "Name (Optional)"
             End With
-        Else
+        ElseIf WorkspaceType = WorkspaceTypes.Standard Then
             With frm.DataGridView
                 .ColumnCount = features.Count() + 2
                 .Columns(0).Name = "FileName"
@@ -54,6 +62,8 @@ Module modHelpers
                     End If
                 Next
             End With
+        ElseIf WorkspaceType = WorkspaceTypes.Grid Then
+            frm.DataGridView.ColumnCount = GridCols
         End If
     End Sub
 
@@ -63,11 +73,13 @@ Module modHelpers
 
         Try
             Dim data = IO.File.ReadAllLines(workspacePath)
-            BorderRectSize = data(0)
-            NullCap = data(1)
-            NullCapThreshold = data(2)
 
-            For i = 3 To data.Length - 2
+            WorkspaceType = data(0)
+            BorderRectSize = data(1)
+            NullCap = data(2)
+            NullCapThreshold = data(3)
+
+            For i = 4 To data.Length - 2
                 Dim featureData = data(i).Split(",")
                 features.Add(New cFeature(New Point(featureData(0), featureData(1)), New Point(featureData(2), featureData(3)), featureData(5), featureData(6), featureData(4)))
             Next
@@ -114,6 +126,22 @@ Module modHelpers
 
         frmMain.lblStatus.BackColor = Color.LimeGreen
         frmMain.lblStatus.Text = files.Count.ToString() & " Photos Loaded"
+
+        If WorkspaceType = WorkspaceTypes.Grid Then CreateGrid()
+    End Sub
+
+    Public Sub CreateGrid()
+        Dim rows, cols As Integer
+        For Each fi As IO.FileInfo In files
+            Dim row As Integer = CInt(fi.Name.ToArray(fi.Name.IndexOf("R") + 1).ToString())
+            Dim col As Integer = CInt(fi.Name.ToArray(fi.Name.IndexOf("C") + 1).ToString())
+            If row > rows Then rows = row
+            If col > cols Then cols = col
+        Next
+        GridRows = rows * 5
+        GridCols = cols * 5
+        Dim data(GridRows - 1, GridCols - 1) As Integer
+        GridData = data
     End Sub
 
     Public Sub EnableTools()
@@ -122,5 +150,6 @@ Module modHelpers
         MakeGridColumns(Log)
         frmMain.ViewToolStripMenuItem.Enabled = True
         frmMain.ToolsToolStripMenuItem.Enabled = True
+        frmMain.ViewScoresToolStripMenuItem.Enabled = Not CBool(WorkspaceType)
     End Sub
 End Module

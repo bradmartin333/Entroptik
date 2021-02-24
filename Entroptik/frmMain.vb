@@ -1,5 +1,5 @@
 ﻿Public Class frmMain
-    Private RunAll As Boolean = False
+    Private RunAll As Boolean
 
     Private Sub OpenWorkspace(sender As Object, e As EventArgs) Handles OpenWorkspaceToolStripMenuItem.Click
         Dim dialog = New OpenFileDialog With {.Filter = "Entroptik Workspace|*.ew"}
@@ -22,6 +22,13 @@
         End If
 
         If workspacePath = "" Then
+            Dim result As DialogResult = MessageBox.Show("Is this a 5x5 Grid-Type Workspace?", "Entroptik", MessageBoxButtons.YesNo)
+            If result.Equals(result.Yes) Then
+                WorkspaceType = WorkspaceTypes.Grid
+            Else
+                WorkspaceType = WorkspaceTypes.Standard
+            End If
+
             Wizard = New frmData("Entroptik Workspace Wizard")
             Wizard.Show()
         Else
@@ -79,15 +86,62 @@
                 If Math.Abs(thisScore - feature.Score) > feature.Tolerance Then
                     If Not RunAll Then g.DrawRectangle(New Pen(Color.Red, BorderRectSize), feature.Rect)
                     logData(features.IndexOf(feature) + 2) = 0
-                    Else
+                Else
                     If Not RunAll Then g.DrawRectangle(New Pen(Color.Green, BorderRectSize), feature.Rect)
                     logData(features.IndexOf(feature) + 2) = 1
-                    End If
+                End If
             End Using
         Next
 
         Scores.DataGridView.Rows.Add(scoreData)
         Log.DataGridView.Rows.Add(logData)
+
+        Refresh()
+    End Sub
+
+    Private Sub ScoreGridImage()
+        Text = files(fileIdx).Name
+        Dim row As Integer = CInt(Text.ToArray(Text.IndexOf("R") + 1).ToString()) - 1
+        Dim col As Integer = CInt(Text.ToArray(Text.IndexOf("C") + 1).ToString()) - 1
+
+        Dim src = Image.FromFile(files(fileIdx).FullName)
+        pbx.Image = src
+
+        Dim i, j As Integer
+        For Each feature As cFeature In features
+            Dim featureBuffer As New Bitmap(feature.Rect.Width, feature.Rect.Height)
+            Using g As Graphics = Graphics.FromImage(featureBuffer)
+                g.DrawImage(src, New Rectangle(0, 0, feature.Rect.Width, feature.Rect.Height), feature.Rect, GraphicsUnit.Pixel)
+            End Using
+
+            Dim thisScore = CalcEntropy(featureBuffer) ' Entropy of feature
+            feature.LastScore = thisScore.ToString()
+
+            Using g As Graphics = Graphics.FromImage(src)
+                If Math.Abs(thisScore - feature.Score) > feature.Tolerance Then
+                    If Not RunAll Then g.DrawRectangle(New Pen(Color.Red, BorderRectSize), feature.Rect)
+                    GridData(row * 5 + j, col * 5 + i) = 0
+                Else
+                    If Not RunAll Then g.DrawRectangle(New Pen(Color.Green, BorderRectSize), feature.Rect)
+                    GridData(row * 5 + j, col * 5 + i) = 1
+                End If
+            End Using
+
+            i += 1
+            If i = 5 Then
+                i = 0
+                j += 1
+            End If
+        Next
+
+        Log.DataGridView.Rows.Clear()
+        For i = 0 To GridRows - 1
+            Dim logData(GridCols - 1) As String
+            For j = 0 To GridCols - 1
+                logData(j) = GridData(i, j)
+            Next
+            Log.DataGridView.Rows.Add(logData)
+        Next
 
         Refresh()
     End Sub
@@ -121,7 +175,14 @@
             Finish()
             Return 1
         End If
-        ScoreImage()
+
+        Select Case WorkspaceType
+            Case WorkspaceTypes.Standard
+                ScoreImage()
+            Case WorkspaceTypes.Grid
+                ScoreGridImage()
+        End Select
+
         Return 0
     End Function
 
@@ -165,7 +226,7 @@
             End If
         Next
 
-        If Not featureClicked Then
+        If Not featureClicked And WorkspaceType = WorkspaceTypes.Standard Then
             Dim editParams As New frmEditParams()
             editParams.Show()
         End If
