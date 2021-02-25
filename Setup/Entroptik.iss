@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Entroptik"
-#define MyAppVersion "2.0"
+#define MyAppVersion "2.1"
 #define MyAppPublisher "bradmartin333"
 #define MyAppURL "https://github.com/bradmartin333"
 #define MyAppExeName "Entroptik.exe"
