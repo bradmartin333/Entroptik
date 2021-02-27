@@ -49,7 +49,7 @@
                 End If
             End Using
 
-            frmMain.lblStatus.BackColor = Color.LimeGreen
+            frmMain.lblStatus.BackColor = Color.LawnGreen
             frmMain.lblStatus.Text = Text & " Saved"
 
             If Text.Contains("Wizard") Then

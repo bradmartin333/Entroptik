@@ -256,27 +256,36 @@ Public Class frmMain
     End Sub
 
     Private Sub AutoTrain(sender As Object, e As EventArgs) Handles AutoTrainToolStripMenuItem.Click
+        lblStatus.BackColor = Color.LawnGreen
+
         For Each feature As cFeature In Features
-            Dim scoreLists As New List(Of List(Of Double))
-            For Each scoreType In ScoreTypes
-                scoreLists.Add(New List(Of Double))
+            Dim percentComplete As Integer = Math.Round(((Features.IndexOf(feature) + 1) / Features.Count() + 1) * 100)
+            lblStatus.Text = "Auto Train In Progress: " & percentComplete & "%"
+            Refresh()
+
+            Dim scoreArr()() As Double = New Double(ScoreTypes.Length - 1)() {}
+            For i As Integer = 0 To ScoreTypes.Length - 1
+                scoreArr(i) = New Double(Files.Count - 1) {}
             Next
 
-            Dim featureBuffer As New Bitmap(feature.Rect.Width, feature.Rect.Height)
             For i As Integer = 0 To Files.Count - 1
                 Dim src As Bitmap = New Bitmap(Files(i).FullName)
+                Dim featureBuffer As New Bitmap(feature.Rect.Width, feature.Rect.Height)
                 Using g As Graphics = Graphics.FromImage(featureBuffer)
                     g.DrawImage(src, New Rectangle(0, 0, feature.Rect.Width, feature.Rect.Height), feature.Rect, GraphicsUnit.Pixel)
                 End Using
+                src.Dispose()
                 For j As Integer = 0 To ScoreTypes.Length - 1
                     Dim thisScore = CalcScore(featureBuffer, j)
-                    scoreLists(j).Add(thisScore)
+                    scoreArr(j)(i) = thisScore
                 Next
+                featureBuffer.Dispose()
             Next
 
-            Dim autoList As New List(Of Double)
-            Dim autoListData As New List(Of Double())
-            For Each scoreList In scoreLists
+            Dim autoArr = New Double(ScoreTypes.Length - 1) {}
+            Dim autoArrData(ScoreTypes.Length - 1, 1) As Double
+            Dim idx = 0
+            For Each scoreList In scoreArr
                 Dim median = Statistics.Median(scoreList.AsEnumerable)
                 Dim low, high As New List(Of Double)
                 For Each score In scoreList
@@ -290,23 +299,24 @@ Public Class frmMain
                 Dim lowStdDev = Statistics.StandardDeviation(low.AsEnumerable)
                 Dim highStdDev = Statistics.StandardDeviation(high.AsEnumerable)
                 Dim autoStdDev = lowStdDev ^ 2 + highStdDev ^ 2
-                autoList.Add(autoStdDev)
+                autoArr(idx) = autoStdDev
+                autoArrData(idx, 0) = Statistics.Median(high.AsEnumerable)
+                autoArrData(idx, 1) = (high.Max - high.Min) / 2
 
-                Dim highMedian = Statistics.Median(high.AsEnumerable)
-                Dim highRange = (high.Max - high.Min) / 2
-                Dim autoData() As Double = {highMedian, highRange}
-                autoListData.Add(autoData)
+                idx += 1
             Next
 
-            Dim autoChoice As Integer = autoList.IndexOf(autoList.Min)
+            Dim autoChoice As Integer = autoArr.ToList.IndexOf(autoArr.Min)
             feature.ScoreType = autoChoice
-            feature.Score = autoListData(autoChoice)(0)
-            feature.Tolerance = autoListData(autoChoice)(1)
+            feature.Score = autoArrData(autoChoice, 0)
+            feature.Tolerance = autoArrData(autoChoice, 1)
         Next
 
         Dim data = IO.File.ReadAllLines(WorkspacePath)
         ExportFeatures(data)
         IO.File.WriteAllLines(WorkspacePath, data)
+
+        StartOver(sender, e)
 
         lblStatus.BackColor = Color.LawnGreen
         lblStatus.Text = "Auto Train Complete"

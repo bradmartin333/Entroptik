@@ -73,7 +73,7 @@
                 Next
                 sw.WriteLine(ImagesDir)
             End Using
-            frmMain.lblStatus.BackColor = Color.LimeGreen
+            frmMain.lblStatus.BackColor = Color.LawnGreen
             frmMain.lblStatus.Text = Text & " Saved"
             WorkspacePath = dialog.FileName
             LoadWorkspace()

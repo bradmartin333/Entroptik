@@ -304,7 +304,7 @@ Module modHelpers
             Exit Sub
         End If
 
-        frmMain.lblStatus.BackColor = Color.LimeGreen
+        frmMain.lblStatus.BackColor = Color.LawnGreen
         frmMain.lblStatus.Text = Files.Count.ToString() & " Photos Loaded"
 
         If WorkspaceType = WorkspaceTypes.Grid Then CreateGrid()
