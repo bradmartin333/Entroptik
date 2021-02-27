@@ -33,14 +33,14 @@ Partial Class frmMain
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewScoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolsStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BatchEditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AutoTrainToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NextStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RunAllStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StartOverToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolsStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BatchEditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AutoTrainToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.pbx, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -86,7 +86,7 @@ Partial Class frmMain
         Me.lblStatus.Padding = New System.Windows.Forms.Padding(0, 4, 0, 4)
         Me.lblStatus.Size = New System.Drawing.Size(452, 31)
         Me.lblStatus.TabIndex = 18
-        Me.lblStatus.Text = "ENTROPTIK V2.2"
+        Me.lblStatus.Text = "ENTROPTIK V2.3"
         Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'MenuStrip1
@@ -141,6 +141,26 @@ Partial Class frmMain
         Me.ViewLogToolStripMenuItem.Size = New System.Drawing.Size(135, 26)
         Me.ViewLogToolStripMenuItem.Text = "Log"
         '
+        'ToolsStripMenuItem
+        '
+        Me.ToolsStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BatchEditToolStripMenuItem, Me.AutoTrainToolStripMenuItem})
+        Me.ToolsStripMenuItem.Enabled = False
+        Me.ToolsStripMenuItem.Name = "ToolsStripMenuItem"
+        Me.ToolsStripMenuItem.Size = New System.Drawing.Size(58, 24)
+        Me.ToolsStripMenuItem.Text = "&Tools"
+        '
+        'BatchEditToolStripMenuItem
+        '
+        Me.BatchEditToolStripMenuItem.Name = "BatchEditToolStripMenuItem"
+        Me.BatchEditToolStripMenuItem.Size = New System.Drawing.Size(160, 26)
+        Me.BatchEditToolStripMenuItem.Text = "Batch Edit"
+        '
+        'AutoTrainToolStripMenuItem
+        '
+        Me.AutoTrainToolStripMenuItem.Name = "AutoTrainToolStripMenuItem"
+        Me.AutoTrainToolStripMenuItem.Size = New System.Drawing.Size(160, 26)
+        Me.AutoTrainToolStripMenuItem.Text = "Auto Train"
+        '
         'ImageToolStripMenuItem
         '
         Me.ImageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NextStripMenuItem, Me.RunAllStripMenuItem, Me.StartOverToolStripMenuItem})
@@ -179,26 +199,6 @@ Partial Class frmMain
         Me.TipsToolStripMenuItem.Name = "TipsToolStripMenuItem"
         Me.TipsToolStripMenuItem.Size = New System.Drawing.Size(50, 24)
         Me.TipsToolStripMenuItem.Text = "Tips"
-        '
-        'ToolsStripMenuItem
-        '
-        Me.ToolsStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BatchEditToolStripMenuItem, Me.AutoTrainToolStripMenuItem})
-        Me.ToolsStripMenuItem.Enabled = False
-        Me.ToolsStripMenuItem.Name = "ToolsStripMenuItem"
-        Me.ToolsStripMenuItem.Size = New System.Drawing.Size(58, 24)
-        Me.ToolsStripMenuItem.Text = "&Tools"
-        '
-        'BatchEditToolStripMenuItem
-        '
-        Me.BatchEditToolStripMenuItem.Name = "BatchEditToolStripMenuItem"
-        Me.BatchEditToolStripMenuItem.Size = New System.Drawing.Size(160, 26)
-        Me.BatchEditToolStripMenuItem.Text = "Batch Edit"
-        '
-        'AutoTrainToolStripMenuItem
-        '
-        Me.AutoTrainToolStripMenuItem.Name = "AutoTrainToolStripMenuItem"
-        Me.AutoTrainToolStripMenuItem.Size = New System.Drawing.Size(160, 26)
-        Me.AutoTrainToolStripMenuItem.Text = "Auto Train"
         '
         'frmMain
         '
