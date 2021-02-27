@@ -113,7 +113,7 @@
                 g.DrawImage(src, New Rectangle(0, 0, feature.Rect.Width, feature.Rect.Height), feature.Rect, GraphicsUnit.Pixel)
             End Using
 
-            Dim thisScore = CalcScore(featureBuffer, feature.ScoreType) ' Entropy of feature
+            Dim thisScore = CalcScore(featureBuffer, feature.ScoreType)
             feature.LastScore = thisScore.ToString()
 
             Using g As Graphics = Graphics.FromImage(src)
@@ -254,6 +254,22 @@
     End Sub
 
     Private Sub AutoTrain(sender As Object, e As EventArgs) Handles AutoTrainToolStripMenuItem.Click
-
+        For Each feature As cFeature In Features
+            Dim scoreLists As New List(Of List(Of Double))
+            For Each scoreType In ScoreTypes
+                scoreLists.Add(New List(Of Double))
+            Next
+            Dim featureBuffer As New Bitmap(feature.Rect.Width, feature.Rect.Height)
+            For i As Integer = 0 To Files.Count - 1
+                Dim src As Bitmap = New Bitmap(Files(i).FullName)
+                Using g As Graphics = Graphics.FromImage(featureBuffer)
+                    g.DrawImage(src, New Rectangle(0, 0, feature.Rect.Width, feature.Rect.Height), feature.Rect, GraphicsUnit.Pixel)
+                End Using
+                For j As Integer = 0 To ScoreTypes.Length - 1
+                    Dim thisScore = CalcScore(featureBuffer, j)
+                    scoreLists(j).Add(thisScore)
+                Next
+            Next
+        Next
     End Sub
 End Class
