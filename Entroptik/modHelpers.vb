@@ -31,43 +31,33 @@ Module modHelpers
     Public SubGridRows, SubGridCols As Integer
     Public DoBatchTrain As Boolean
 
-    Public ScoreTypes As String() = {"ARGB Entropy", "Lux Entropy", "Hue Entropy",
-                                     "Red Entropy", "Red Average", "Red Median", "Red Std Dev",
-                                     "Green Entropy", "Green Average", "Green Median", "Green Std Dev",
-                                     "Blue Entropy", "Blue Average", "Blue Median", "Blue Std Dev"}
+    Public ScoreTypes As String() = {"ARGB Entropy",
+                                     "Red Average", "Red Median", "Red Range",
+                                     "Green Average", "Green Median", "Green Range",
+                                     "Blue Average", "Blue Median", "Blue Range"}
 
     Public Function CalcScore(ByVal img As Bitmap, Optional scoreType As Integer = 0)
         Select Case scoreType
             Case 0
                 Return CalcARGBEntropy(img)
             Case 1
-                Return LuxEntropy(img)
-            Case 2
-                Return HueEntropy(img)
-            Case 3
-                Return RedEntropy(img)
-            Case 4
                 Return RedAverage(img)
-            Case 5
+            Case 2
                 Return RedMedian(img)
-            Case 6
-                Return RedStdDev(img)
-            Case 7
-                Return GreenEntropy(img)
-            Case 8
+            Case 3
+                Return RedRange(img)
+            Case 4
                 Return GreenAverage(img)
-            Case 9
+            Case 5
                 Return GreenMedian(img)
-            Case 10
-                Return GreenStdDev(img)
-            Case 11
-                Return BlueEntropy(img)
-            Case 12
+            Case 6
+                Return GreenRange(img)
+            Case 7
                 Return BlueAverage(img)
-            Case 13
+            Case 8
                 Return BlueMedian(img)
-            Case 14
-                Return BlueStdDev(img)
+            Case 9
+                Return BlueRange(img)
         End Select
         Return 0
     End Function
@@ -102,26 +92,6 @@ Module modHelpers
         Return pixels.AsEnumerable
     End Function
 
-    Private Function GetLuxPixels(img As Bitmap) As List(Of Double)
-        Dim pixels As New List(Of Double)
-        For i = 0 To img.Width - 1
-            For j = 0 To img.Height - 1
-                pixels.Add(img.GetPixel(i, j).GetBrightness)
-            Next
-        Next
-        Return pixels.AsEnumerable
-    End Function
-
-    Private Function GetHuePixels(img As Bitmap) As List(Of Double)
-        Dim pixels As New List(Of Double)
-        For i = 0 To img.Width - 1
-            For j = 0 To img.Height - 1
-                pixels.Add(img.GetPixel(i, j).GetHue)
-            Next
-        Next
-        Return pixels.AsEnumerable
-    End Function
-
     Private Function GetARGBPixels(img As Bitmap) As List(Of Double)
         Dim pixels As New List(Of Double)
         For i = 0 To img.Width - 1
@@ -130,11 +100,6 @@ Module modHelpers
             Next
         Next
         Return pixels.AsEnumerable
-    End Function
-
-    Private Function BlueStdDev(img As Bitmap) As Double
-        Dim score = Statistics.StandardDeviation(GetBluePixels(img))
-        Return Math.Round(score, 3)
     End Function
 
     Private Function BlueMedian(img As Bitmap) As Double
@@ -147,14 +112,9 @@ Module modHelpers
         Return Math.Round(score, 3)
     End Function
 
-    Private Function BlueEntropy(img As Bitmap) As Double
-        Dim score = Statistics.Entropy(GetBluePixels(img))
-        Return Math.Round(score, 3)
-    End Function
-
-    Private Function GreenStdDev(img As Bitmap) As Double
-        Dim score = Statistics.StandardDeviation(GetGreenPixels(img))
-        Return Math.Round(score, 3)
+    Private Function BlueRange(img As Bitmap) As Double
+        Dim score = GetBluePixels(img)
+        Return Math.Round(score.Max - score.Min, 3)
     End Function
 
     Private Function GreenMedian(img As Bitmap) As Double
@@ -167,14 +127,9 @@ Module modHelpers
         Return Math.Round(score, 3)
     End Function
 
-    Private Function GreenEntropy(img As Bitmap) As Double
-        Dim score = Statistics.Entropy(GetGreenPixels(img))
-        Return Math.Round(score, 3)
-    End Function
-
-    Private Function RedStdDev(img As Bitmap) As Double
-        Dim score = Statistics.StandardDeviation(GetRedPixels(img))
-        Return Math.Round(score, 3)
+    Private Function GreenRange(img As Bitmap) As Double
+        Dim score = GetGreenPixels(img)
+        Return Math.Round(score.Max - score.Min, 3)
     End Function
 
     Private Function RedMedian(img As Bitmap) As Double
@@ -187,19 +142,9 @@ Module modHelpers
         Return Math.Round(score, 3)
     End Function
 
-    Private Function RedEntropy(img As Bitmap) As Double
-        Dim score = Statistics.Entropy(GetRedPixels(img))
-        Return Math.Round(score, 3)
-    End Function
-
-    Private Function HueEntropy(img As Bitmap) As Double
-        Dim score = Statistics.Entropy(GetHuePixels(img))
-        Return Math.Round(score, 3)
-    End Function
-
-    Private Function LuxEntropy(img As Bitmap) As Double
-        Dim score = Statistics.Entropy(GetLuxPixels(img))
-        Return Math.Round(score, 3)
+    Private Function RedRange(img As Bitmap) As Double
+        Dim score = GetRedPixels(img)
+        Return Math.Round(score.Max - score.Min, 3)
     End Function
 
     Public Function CalcARGBEntropy(ByVal img As Bitmap) As Double

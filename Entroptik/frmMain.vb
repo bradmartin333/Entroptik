@@ -259,7 +259,13 @@ Public Class frmMain
         lblStatus.BackColor = Color.LawnGreen
 
         For Each feature As cFeature In Features
-            Dim percentComplete As Integer = Math.Round((Features.IndexOf(feature) + 1) / (Features.Count() + 1) * 100)
+            Dim percentComplete As Integer
+            Dim featureNum As Integer = Features.IndexOf(feature)
+            If featureNum > 0 Then
+                percentComplete = (featureNum / Features.Count()) * 100
+            Else
+                percentComplete = 0
+            End If
             lblStatus.Text = "Auto Train In Progress: " & percentComplete & "%"
             Refresh()
 
@@ -298,10 +304,14 @@ Public Class frmMain
 
                 Dim lowStdDev = Statistics.StandardDeviation(low.AsEnumerable)
                 Dim highStdDev = Statistics.StandardDeviation(high.AsEnumerable)
-                Dim autoStdDev = lowStdDev ^ 2 + highStdDev ^ 2
-                autoArr(idx) = autoStdDev
-                autoArrData(idx, 0) = Statistics.Median(high.AsEnumerable)
+                Dim lowMedian = Statistics.Median(low.AsEnumerable)
+                Dim highMedian = Statistics.Median(high.AsEnumerable)
+                Dim autoScore = lowStdDev + highStdDev + (1 / (highMedian - lowMedian)) ^ 2
+                autoArr(idx) = autoScore
+                autoArrData(idx, 0) = highMedian
                 autoArrData(idx, 1) = (high.Max - high.Min) / 2
+
+                Debug.WriteLine(autoScore)
 
                 idx += 1
             Next
