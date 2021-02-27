@@ -256,7 +256,7 @@ Public Class frmMain
     End Sub
 
     Private Sub AutoTrain(sender As Object, e As EventArgs) Handles AutoTrainToolStripMenuItem.Click
-        lblStatus.BackColor = Color.LawnGreen
+        lblStatus.BackColor = Color.Yellow
 
         For Each feature As cFeature In Features
             Dim percentComplete As Integer
