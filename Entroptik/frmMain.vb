@@ -259,7 +259,7 @@ Public Class frmMain
         lblStatus.BackColor = Color.LawnGreen
 
         For Each feature As cFeature In Features
-            Dim percentComplete As Integer = Math.Round(((Features.IndexOf(feature) + 1) / Features.Count() + 1) * 100)
+            Dim percentComplete As Integer = Math.Round((Features.IndexOf(feature) + 1) / (Features.Count() + 1) * 100)
             lblStatus.Text = "Auto Train In Progress: " & percentComplete & "%"
             Refresh()
 
@@ -308,8 +308,10 @@ Public Class frmMain
 
             Dim autoChoice As Integer = autoArr.ToList.IndexOf(autoArr.Min)
             feature.ScoreType = autoChoice
-            feature.Score = autoArrData(autoChoice, 0)
-            feature.Tolerance = autoArrData(autoChoice, 1)
+            feature.Score = Math.Round(autoArrData(autoChoice, 0), 3)
+            feature.Tolerance = Math.Round(autoArrData(autoChoice, 1), 3)
+
+            Debug.WriteLine(ScoreTypes(autoChoice))
         Next
 
         Dim data = IO.File.ReadAllLines(WorkspacePath)
