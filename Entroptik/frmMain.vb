@@ -1,10 +1,8 @@
 ﻿Public Class frmMain
-    Private RunAll As Boolean
-
     Private Sub OpenWorkspace(sender As Object, e As EventArgs) Handles OpenWorkspaceToolStripMenuItem.Click
         Dim dialog = New OpenFileDialog With {.Filter = "Entroptik Workspace|*.ew"}
         If dialog.ShowDialog() = DialogResult.OK Then
-            workspacePath = dialog.FileName
+            WorkspacePath = dialog.FileName
         Else
             Exit Sub
         End If
@@ -15,13 +13,13 @@
     Private Sub OpenImagesFolder(sender As Object, e As EventArgs) Handles OpenImagesDirToolStripMenuItem.Click
         Dim dialog = New FolderBrowserDialog With {.Description = "Choose folder containing images"}
         If dialog.ShowDialog() = DialogResult.OK Then
-            imagesDir = dialog.SelectedPath
+            ImagesDir = dialog.SelectedPath
             LoadImages()
         Else
             Exit Sub
         End If
 
-        If workspacePath = "" Then
+        If WorkspacePath = "" Then
             Dim result = MsgBox("Is this a Grid Workspace?", MsgBoxStyle.YesNo, "Entroptik")
             If result = vbYes Then
                 WorkspaceType = WorkspaceTypes.Grid
@@ -33,9 +31,9 @@
                 Wizard.Show()
             End If
         Else
-            Dim data = IO.File.ReadAllLines(workspacePath)
+            Dim data = IO.File.ReadAllLines(WorkspacePath)
             data(data.Length - 1) = dialog.SelectedPath
-            IO.File.WriteAllLines(workspacePath, data)
+            IO.File.WriteAllLines(WorkspacePath, data)
             EnableTools()
             Proceed()
         End If
@@ -50,14 +48,14 @@
     End Sub
 
     Private Sub ScoreImage()
-        Text = files(fileIdx).Name
+        Text = Files(FileIdx).Name
 
-        Dim scoreData(features.Count() + 2) As String
+        Dim scoreData(Features.Count() + 2) As String
         scoreData(0) = Text
-        Dim logData(features.Count() + 2) As String
+        Dim logData(Features.Count() + 2) As String
         logData(0) = Text
 
-        Dim src = Image.FromFile(files(fileIdx).FullName)
+        Dim src = Image.FromFile(Files(FileIdx).FullName)
         pbx.Image = src
         Dim nullScore = CalcEntropy(src) ' Entropy of source image
         LastSourceScore = nullScore
@@ -72,7 +70,7 @@
             logData(1) = 1
         End If
 
-        For Each feature As cFeature In features
+        For Each feature As cFeature In Features
             Dim featureBuffer As New Bitmap(feature.Rect.Width, feature.Rect.Height)
             Using g As Graphics = Graphics.FromImage(featureBuffer)
                 g.DrawImage(src, New Rectangle(0, 0, feature.Rect.Width, feature.Rect.Height), feature.Rect, GraphicsUnit.Pixel)
@@ -80,16 +78,16 @@
 
             Dim thisScore = CalcEntropy(featureBuffer) ' Entropy of feature
             feature.LastScore = thisScore.ToString()
-            scoreData(features.IndexOf(feature) + 2) = thisScore
+            scoreData(Features.IndexOf(feature) + 2) = thisScore
 
 
             Using g As Graphics = Graphics.FromImage(src)
                 If Math.Abs(thisScore - feature.Score) > feature.Tolerance Then
-                    If Not RunAll Then g.DrawRectangle(New Pen(Color.Red, BorderRectSize), feature.Rect)
-                    logData(features.IndexOf(feature) + 2) = 0
+                    g.DrawRectangle(New Pen(Color.Red, BorderRectSize), feature.Rect)
+                    logData(Features.IndexOf(feature) + 2) = 0
                 Else
-                    If Not RunAll Then g.DrawRectangle(New Pen(Color.Green, BorderRectSize), feature.Rect)
-                    logData(features.IndexOf(feature) + 2) = 1
+                    g.DrawRectangle(New Pen(Color.Green, BorderRectSize), feature.Rect)
+                    logData(Features.IndexOf(feature) + 2) = 1
                 End If
             End Using
         Next
@@ -101,15 +99,15 @@
     End Sub
 
     Private Sub ScoreGridImage()
-        Text = files(fileIdx).Name
+        Text = Files(FileIdx).Name
         Dim row As Integer = CInt(Text.ToArray(Text.IndexOf("R") + 1).ToString()) - 1
         Dim col As Integer = CInt(Text.ToArray(Text.IndexOf("C") + 1).ToString()) - 1
 
-        Dim src = Image.FromFile(files(fileIdx).FullName)
+        Dim src = Image.FromFile(Files(FileIdx).FullName)
         pbx.Image = src
 
         Dim i, j As Integer
-        For Each feature As cFeature In features
+        For Each feature As cFeature In Features
             Dim featureBuffer As New Bitmap(feature.Rect.Width, feature.Rect.Height)
             Using g As Graphics = Graphics.FromImage(featureBuffer)
                 g.DrawImage(src, New Rectangle(0, 0, feature.Rect.Width, feature.Rect.Height), feature.Rect, GraphicsUnit.Pixel)
@@ -120,26 +118,26 @@
 
             Using g As Graphics = Graphics.FromImage(src)
                 If Math.Abs(thisScore - feature.Score) > feature.Tolerance Then
-                    If Not RunAll Then g.DrawRectangle(New Pen(Color.Red, BorderRectSize), feature.Rect)
-                    GridData(row * 5 + j, col * 5 + i) = 0
+                    g.DrawRectangle(New Pen(Color.Red, BorderRectSize), feature.Rect)
+                    GridData(row * SubGridRows + j, col * SubGridCols + i) = 0
                 Else
-                    If Not RunAll Then g.DrawRectangle(New Pen(Color.Green, BorderRectSize), feature.Rect)
-                    GridData(row * 5 + j, col * 5 + i) = 1
+                    g.DrawRectangle(New Pen(Color.Green, BorderRectSize), feature.Rect)
+                    GridData(row * SubGridRows + j, col * SubGridCols + i) = 1
                 End If
             End Using
 
             i += 1
-            If i = 5 Then
+            If i = SubGridCols Then
                 i = 0
                 j += 1
             End If
         Next
 
         Log.DataGridView.Rows.Clear()
-        For i = 0 To GridRows - 1
-            Dim logData(GridCols - 1) As String
-            For j = 0 To GridCols - 1
-                logData(j) = GridData(i, j)
+        For i = 0 To GridCols - 1
+            Dim logData(GridRows - 1) As String
+            For j = 0 To GridRows - 1
+                logData(j) = GridData(j, i)
             Next
             Log.DataGridView.Rows.Add(logData)
         Next
@@ -162,7 +160,7 @@
 
     Private Sub StartOver(sender As Object, e As EventArgs) Handles StartOverToolStripMenuItem.Click
         ClearStatus()
-        fileIdx = -1
+        FileIdx = -1
         Scores.DataGridView.Rows.Clear()
         Log.DataGridView.Rows.Clear()
         NextStripMenuItem.Enabled = True
@@ -171,8 +169,8 @@
     End Sub
 
     Public Function Proceed()
-        fileIdx += 1
-        If fileIdx > files.Count - 1 Then
+        FileIdx += 1
+        If FileIdx > Files.Count - 1 Then
             Finish()
             Return 1
         End If
@@ -188,7 +186,7 @@
     End Function
 
     Private Sub Finish()
-        fileIdx = -1
+        FileIdx = -1
         lblStatus.BackColor = Color.LawnGreen
         lblStatus.Text = "All Photos Scored"
         NextStripMenuItem.Enabled = False
@@ -206,7 +204,7 @@
     End Sub
 
     Private Sub pbx_Click(sender As Object, e As MouseEventArgs) Handles pbx.Click
-        If fileIdx = -1 Then Exit Sub
+        If FileIdx = -1 Then Exit Sub
 
         If Application.OpenForms().OfType(Of frmEditFeature).Any Then
             Application.OpenForms().OfType(Of frmEditFeature).First.Dispose()
@@ -218,7 +216,7 @@
 
         Dim click As Point = ZoomMousePos(New Point(e.X, e.Y), sender)
         Dim featureClicked As Boolean
-        For Each feature As cFeature In features ' Check if click overlaps with paths
+        For Each feature As cFeature In Features ' Check if click overlaps with paths
             If feature.Path.IsVisible(click) Then
                 featureClicked = True
                 Dim editScore As New frmEditFeature(feature, MousePosition())
@@ -244,7 +242,7 @@
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         If My.Application.CommandLineArgs.Count > 0 Then
-            workspacePath = My.Application.CommandLineArgs.First.ToString()
+            WorkspacePath = My.Application.CommandLineArgs.First.ToString()
             LoadWorkspace()
         End If
     End Sub

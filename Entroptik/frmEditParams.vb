@@ -16,10 +16,10 @@
     End Sub
 
     Private Sub Save()
-        Dim data = IO.File.ReadAllLines(workspacePath)
+        Dim data = IO.File.ReadAllLines(WorkspacePath)
         data(1) = BorderRectSize
         data(2) = NullCap
         data(3) = NullCapThreshold
-        IO.File.WriteAllLines(workspacePath, data)
+        IO.File.WriteAllLines(WorkspacePath, data)
     End Sub
 End Class

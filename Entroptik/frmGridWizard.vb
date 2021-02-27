@@ -20,7 +20,7 @@
 
     Private Sub DrawGrid()
         rects.Clear()
-        Dim img As Bitmap = New Bitmap(files(imageIdx).FullName)
+        Dim img As Bitmap = New Bitmap(Files(imageIdx).FullName)
         pen.Width = img.Width / 250
         For i As Integer = 0 To numX.Value - 1
             Using g As Graphics = Graphics.FromImage(img)
@@ -71,11 +71,11 @@
                 For Each rect In rects
                     sw.WriteLine(String.Format("{0},{1},{2},{3},{4},0,1", rect.Left, rect.Top, rect.Right, rect.Bottom, rects.IndexOf(rect) + 1))
                 Next
-                sw.WriteLine(imagesDir)
+                sw.WriteLine(ImagesDir)
             End Using
             frmMain.lblStatus.BackColor = Color.LimeGreen
             frmMain.lblStatus.Text = Text & " Saved"
-            workspacePath = dialog.FileName
+            WorkspacePath = dialog.FileName
             LoadWorkspace()
             frmMain.Proceed()
             Hide()

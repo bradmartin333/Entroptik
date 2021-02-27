@@ -45,7 +45,7 @@
                     End If
                 Next
                 If Text.Contains("Wizard") Then
-                    sw.WriteLine(imagesDir)
+                    sw.WriteLine(ImagesDir)
                 End If
             End Using
 
@@ -53,7 +53,7 @@
             frmMain.lblStatus.Text = Text & " Saved"
 
             If Text.Contains("Wizard") Then
-                workspacePath = dialog.FileName
+                WorkspacePath = dialog.FileName
                 LoadWorkspace()
                 frmMain.Proceed()
                 Hide()

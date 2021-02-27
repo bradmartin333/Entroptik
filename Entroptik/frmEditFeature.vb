@@ -21,9 +21,9 @@
     End Sub
 
     Private Sub Save()
-        Dim data = IO.File.ReadAllLines(workspacePath)
-        For i = 0 To features.Count - 1
-            With features(i)
+        Dim data = IO.File.ReadAllLines(WorkspacePath)
+        For i = 0 To Features.Count - 1
+            With Features(i)
                 data(i + 4) = .Rect.Left & "," &
                               .Rect.Top & "," &
                               .Rect.Right & "," &
@@ -33,6 +33,6 @@
                               .Tolerance
             End With
         Next
-        IO.File.WriteAllLines(workspacePath, data)
+        IO.File.WriteAllLines(WorkspacePath, data)
     End Sub
 End Class
