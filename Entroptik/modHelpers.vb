@@ -29,16 +29,181 @@ Module modHelpers
     Public GridData
     Public GridRows, GridCols As Integer
     Public SubGridRows, SubGridCols As Integer
+    Public DoBatchTrain As Boolean
 
-    Public Function CalcEntropy(ByVal img As Bitmap)
+    Public ScoreTypes As String() = {"ARGB Entropy", "Lux Entropy", "Hue Entropy",
+                                     "Red Entropy", "Red Average", "Red Median", "Red Std Dev",
+                                     "Green Entropy", "Green Average", "Green Median", "Green Std Dev",
+                                     "Blue Entropy", "Blue Average", "Blue Median", "Blue Std Dev"}
+
+    Public Function CalcScore(ByVal img As Bitmap, Optional scoreType As Integer = 0)
+        Select Case scoreType
+            Case 0
+                Return CalcARGBEntropy(img)
+            Case 1
+                Return LuxEntropy(img)
+            Case 2
+                Return HueEntropy(img)
+            Case 3
+                Return RedEntropy(img)
+            Case 4
+                Return RedAverage(img)
+            Case 5
+                Return RedMedian(img)
+            Case 6
+                Return RedStdDev(img)
+            Case 7
+                Return GreenEntropy(img)
+            Case 8
+                Return GreenAverage(img)
+            Case 9
+                Return GreenMedian(img)
+            Case 10
+                Return GreenStdDev(img)
+            Case 11
+                Return BlueEntropy(img)
+            Case 12
+                Return BlueAverage(img)
+            Case 13
+                Return BlueMedian(img)
+            Case 14
+                Return BlueStdDev(img)
+        End Select
+        Return 0
+    End Function
+
+    Private Function GetRedPixels(img As Bitmap) As List(Of Double)
+        Dim pixels As New List(Of Double)
+        For i = 0 To img.Width - 1
+            For j = 0 To img.Height - 1
+                pixels.Add(img.GetPixel(i, j).R)
+            Next
+        Next
+        Return pixels.AsEnumerable
+    End Function
+
+    Private Function GetGreenPixels(img As Bitmap) As List(Of Double)
+        Dim pixels As New List(Of Double)
+        For i = 0 To img.Width - 1
+            For j = 0 To img.Height - 1
+                pixels.Add(img.GetPixel(i, j).G)
+            Next
+        Next
+        Return pixels.AsEnumerable
+    End Function
+
+    Private Function GetBluePixels(img As Bitmap) As List(Of Double)
+        Dim pixels As New List(Of Double)
+        For i = 0 To img.Width - 1
+            For j = 0 To img.Height - 1
+                pixels.Add(img.GetPixel(i, j).B)
+            Next
+        Next
+        Return pixels.AsEnumerable
+    End Function
+
+    Private Function GetLuxPixels(img As Bitmap) As List(Of Double)
+        Dim pixels As New List(Of Double)
+        For i = 0 To img.Width - 1
+            For j = 0 To img.Height - 1
+                pixels.Add(img.GetPixel(i, j).GetBrightness)
+            Next
+        Next
+        Return pixels.AsEnumerable
+    End Function
+
+    Private Function GetHuePixels(img As Bitmap) As List(Of Double)
+        Dim pixels As New List(Of Double)
+        For i = 0 To img.Width - 1
+            For j = 0 To img.Height - 1
+                pixels.Add(img.GetPixel(i, j).GetHue)
+            Next
+        Next
+        Return pixels.AsEnumerable
+    End Function
+
+    Private Function GetARGBPixels(img As Bitmap) As List(Of Double)
         Dim pixels As New List(Of Double)
         For i = 0 To img.Width - 1
             For j = 0 To img.Height - 1
                 pixels.Add(img.GetPixel(i, j).ToArgb)
             Next
         Next
-        Dim pixelsEnum = pixels.AsEnumerable
-        Dim score = Statistics.Entropy(pixelsEnum)
+        Return pixels.AsEnumerable
+    End Function
+
+    Private Function BlueStdDev(img As Bitmap) As Double
+        Dim score = Statistics.StandardDeviation(GetBluePixels(img))
+        Return Math.Round(score, 3)
+    End Function
+
+    Private Function BlueMedian(img As Bitmap) As Double
+        Dim score = Statistics.Median(GetBluePixels(img))
+        Return Math.Round(score, 3)
+    End Function
+
+    Private Function BlueAverage(img As Bitmap) As Double
+        Dim score = Statistics.Mean(GetBluePixels(img))
+        Return Math.Round(score, 3)
+    End Function
+
+    Private Function BlueEntropy(img As Bitmap) As Double
+        Dim score = Statistics.Entropy(GetBluePixels(img))
+        Return Math.Round(score, 3)
+    End Function
+
+    Private Function GreenStdDev(img As Bitmap) As Double
+        Dim score = Statistics.StandardDeviation(GetGreenPixels(img))
+        Return Math.Round(score, 3)
+    End Function
+
+    Private Function GreenMedian(img As Bitmap) As Double
+        Dim score = Statistics.Median(GetGreenPixels(img))
+        Return Math.Round(score, 3)
+    End Function
+
+    Private Function GreenAverage(img As Bitmap) As Double
+        Dim score = Statistics.Mean(GetGreenPixels(img))
+        Return Math.Round(score, 3)
+    End Function
+
+    Private Function GreenEntropy(img As Bitmap) As Double
+        Dim score = Statistics.Entropy(GetGreenPixels(img))
+        Return Math.Round(score, 3)
+    End Function
+
+    Private Function RedStdDev(img As Bitmap) As Double
+        Dim score = Statistics.StandardDeviation(GetRedPixels(img))
+        Return Math.Round(score, 3)
+    End Function
+
+    Private Function RedMedian(img As Bitmap) As Double
+        Dim score = Statistics.Median(GetRedPixels(img))
+        Return Math.Round(score, 3)
+    End Function
+
+    Private Function RedAverage(img As Bitmap) As Double
+        Dim score = Statistics.Mean(GetRedPixels(img))
+        Return Math.Round(score, 3)
+    End Function
+
+    Private Function RedEntropy(img As Bitmap) As Double
+        Dim score = Statistics.Entropy(GetRedPixels(img))
+        Return Math.Round(score, 3)
+    End Function
+
+    Private Function HueEntropy(img As Bitmap) As Double
+        Dim score = Statistics.Entropy(GetHuePixels(img))
+        Return Math.Round(score, 3)
+    End Function
+
+    Private Function LuxEntropy(img As Bitmap) As Double
+        Dim score = Statistics.Entropy(GetLuxPixels(img))
+        Return Math.Round(score, 3)
+    End Function
+
+    Public Function CalcARGBEntropy(ByVal img As Bitmap) As Double
+        Dim score = Statistics.Entropy(GetARGBPixels(img))
         Return Math.Round(score, 3)
     End Function
 
@@ -83,7 +248,7 @@ Module modHelpers
 
             For i = 4 To data.Length - 2
                 Dim featureData = data(i).Split(",")
-                Features.Add(New cFeature(New Point(featureData(0), featureData(1)), New Point(featureData(2), featureData(3)), featureData(5), featureData(6), featureData(4)))
+                Features.Add(New cFeature(New Point(featureData(0), featureData(1)), New Point(featureData(2), featureData(3)), featureData(5), featureData(6), featureData(7), featureData(4)))
             Next
 
             ImagesDir = data(data.Length - 1)
@@ -171,7 +336,8 @@ Module modHelpers
         MakeGridColumns(Scores)
         MakeGridColumns(Log)
         frmMain.ViewToolStripMenuItem.Enabled = True
-        frmMain.ToolsToolStripMenuItem.Enabled = True
+        frmMain.ImageToolStripMenuItem.Enabled = True
+        frmMain.ToolsStripMenuItem.Enabled = True
         frmMain.ViewScoresToolStripMenuItem.Enabled = Not CBool(WorkspaceType)
         frmMain.NextStripMenuItem.Enabled = True
         frmMain.RunAllStripMenuItem.Enabled = True

@@ -33,11 +33,14 @@ Partial Class frmMain
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewScoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ImageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NextStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RunAllStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StartOverToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TipsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolsStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BatchEditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AutoTrainToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.pbx, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -50,21 +53,23 @@ Partial Class frmMain
         Me.TableLayoutPanel1.Controls.Add(Me.pbx, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.lblStatus, 0, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 24)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 30)
+        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 2
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(401, 342)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(458, 458)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'pbx
         '
         Me.pbx.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pbx.Location = New System.Drawing.Point(3, 3)
+        Me.pbx.Location = New System.Drawing.Point(3, 4)
+        Me.pbx.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.pbx.Name = "pbx"
-        Me.pbx.Size = New System.Drawing.Size(395, 307)
+        Me.pbx.Size = New System.Drawing.Size(452, 412)
         Me.pbx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pbx.TabIndex = 17
         Me.pbx.TabStop = False
@@ -75,21 +80,23 @@ Partial Class frmMain
         Me.lblStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblStatus.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.lblStatus.Location = New System.Drawing.Point(3, 313)
-        Me.lblStatus.Margin = New System.Windows.Forms.Padding(3, 0, 3, 5)
+        Me.lblStatus.Location = New System.Drawing.Point(3, 420)
+        Me.lblStatus.Margin = New System.Windows.Forms.Padding(3, 0, 3, 7)
         Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Padding = New System.Windows.Forms.Padding(0, 3, 0, 3)
-        Me.lblStatus.Size = New System.Drawing.Size(395, 24)
+        Me.lblStatus.Padding = New System.Windows.Forms.Padding(0, 4, 0, 4)
+        Me.lblStatus.Size = New System.Drawing.Size(452, 31)
         Me.lblStatus.TabIndex = 18
         Me.lblStatus.Text = "ENTROPTIK V2.2"
         Me.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.ViewToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.TipsToolStripMenuItem})
+        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.ViewToolStripMenuItem, Me.ToolsStripMenuItem, Me.ImageToolStripMenuItem, Me.TipsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(401, 24)
+        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(7, 3, 0, 3)
+        Me.MenuStrip1.Size = New System.Drawing.Size(458, 30)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -97,21 +104,21 @@ Partial Class frmMain
         '
         Me.OpenToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenWorkspaceToolStripMenuItem, Me.OpenImagesDirToolStripMenuItem})
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(59, 24)
         Me.OpenToolStripMenuItem.Text = "&Open"
         '
         'OpenWorkspaceToolStripMenuItem
         '
         Me.OpenWorkspaceToolStripMenuItem.Image = CType(resources.GetObject("OpenWorkspaceToolStripMenuItem.Image"), System.Drawing.Image)
         Me.OpenWorkspaceToolStripMenuItem.Name = "OpenWorkspaceToolStripMenuItem"
-        Me.OpenWorkspaceToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.OpenWorkspaceToolStripMenuItem.Size = New System.Drawing.Size(205, 26)
         Me.OpenWorkspaceToolStripMenuItem.Text = "&Workspace"
         '
         'OpenImagesDirToolStripMenuItem
         '
         Me.OpenImagesDirToolStripMenuItem.Image = CType(resources.GetObject("OpenImagesDirToolStripMenuItem.Image"), System.Drawing.Image)
         Me.OpenImagesDirToolStripMenuItem.Name = "OpenImagesDirToolStripMenuItem"
-        Me.OpenImagesDirToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.OpenImagesDirToolStripMenuItem.Size = New System.Drawing.Size(205, 26)
         Me.OpenImagesDirToolStripMenuItem.Text = "&Images Directory"
         '
         'ViewToolStripMenuItem
@@ -119,35 +126,35 @@ Partial Class frmMain
         Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewScoresToolStripMenuItem, Me.ViewLogToolStripMenuItem})
         Me.ViewToolStripMenuItem.Enabled = False
         Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
-        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(55, 24)
         Me.ViewToolStripMenuItem.Text = "&View"
         '
         'ViewScoresToolStripMenuItem
         '
         Me.ViewScoresToolStripMenuItem.Name = "ViewScoresToolStripMenuItem"
-        Me.ViewScoresToolStripMenuItem.Size = New System.Drawing.Size(108, 22)
+        Me.ViewScoresToolStripMenuItem.Size = New System.Drawing.Size(135, 26)
         Me.ViewScoresToolStripMenuItem.Text = "Scores"
         '
         'ViewLogToolStripMenuItem
         '
         Me.ViewLogToolStripMenuItem.Name = "ViewLogToolStripMenuItem"
-        Me.ViewLogToolStripMenuItem.Size = New System.Drawing.Size(108, 22)
+        Me.ViewLogToolStripMenuItem.Size = New System.Drawing.Size(135, 26)
         Me.ViewLogToolStripMenuItem.Text = "Log"
         '
-        'ToolsToolStripMenuItem
+        'ImageToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NextStripMenuItem, Me.RunAllStripMenuItem, Me.StartOverToolStripMenuItem})
-        Me.ToolsToolStripMenuItem.Enabled = False
-        Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
-        Me.ToolsToolStripMenuItem.Text = "&Tools"
+        Me.ImageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NextStripMenuItem, Me.RunAllStripMenuItem, Me.StartOverToolStripMenuItem})
+        Me.ImageToolStripMenuItem.Enabled = False
+        Me.ImageToolStripMenuItem.Name = "ImageToolStripMenuItem"
+        Me.ImageToolStripMenuItem.Size = New System.Drawing.Size(65, 24)
+        Me.ImageToolStripMenuItem.Text = "&Image"
         '
         'NextStripMenuItem
         '
         Me.NextStripMenuItem.Image = CType(resources.GetObject("NextStripMenuItem.Image"), System.Drawing.Image)
         Me.NextStripMenuItem.Name = "NextStripMenuItem"
         Me.NextStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
-        Me.NextStripMenuItem.Size = New System.Drawing.Size(226, 22)
+        Me.NextStripMenuItem.Size = New System.Drawing.Size(282, 26)
         Me.NextStripMenuItem.Text = "&Next Image"
         '
         'RunAllStripMenuItem
@@ -156,7 +163,7 @@ Partial Class frmMain
         Me.RunAllStripMenuItem.Name = "RunAllStripMenuItem"
         Me.RunAllStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
             Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
-        Me.RunAllStripMenuItem.Size = New System.Drawing.Size(226, 22)
+        Me.RunAllStripMenuItem.Size = New System.Drawing.Size(282, 26)
         Me.RunAllStripMenuItem.Text = "&Run All Images"
         '
         'StartOverToolStripMenuItem
@@ -164,25 +171,46 @@ Partial Class frmMain
         Me.StartOverToolStripMenuItem.Image = CType(resources.GetObject("StartOverToolStripMenuItem.Image"), System.Drawing.Image)
         Me.StartOverToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent
         Me.StartOverToolStripMenuItem.Name = "StartOverToolStripMenuItem"
-        Me.StartOverToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
+        Me.StartOverToolStripMenuItem.Size = New System.Drawing.Size(282, 26)
         Me.StartOverToolStripMenuItem.Text = "Start Over"
         '
         'TipsToolStripMenuItem
         '
         Me.TipsToolStripMenuItem.Name = "TipsToolStripMenuItem"
-        Me.TipsToolStripMenuItem.Size = New System.Drawing.Size(40, 20)
+        Me.TipsToolStripMenuItem.Size = New System.Drawing.Size(50, 24)
         Me.TipsToolStripMenuItem.Text = "Tips"
+        '
+        'ToolsStripMenuItem
+        '
+        Me.ToolsStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BatchEditToolStripMenuItem, Me.AutoTrainToolStripMenuItem})
+        Me.ToolsStripMenuItem.Enabled = False
+        Me.ToolsStripMenuItem.Name = "ToolsStripMenuItem"
+        Me.ToolsStripMenuItem.Size = New System.Drawing.Size(58, 24)
+        Me.ToolsStripMenuItem.Text = "&Tools"
+        '
+        'BatchEditToolStripMenuItem
+        '
+        Me.BatchEditToolStripMenuItem.Name = "BatchEditToolStripMenuItem"
+        Me.BatchEditToolStripMenuItem.Size = New System.Drawing.Size(160, 26)
+        Me.BatchEditToolStripMenuItem.Text = "Batch Edit"
+        '
+        'AutoTrainToolStripMenuItem
+        '
+        Me.AutoTrainToolStripMenuItem.Name = "AutoTrainToolStripMenuItem"
+        Me.AutoTrainToolStripMenuItem.Size = New System.Drawing.Size(160, 26)
+        Me.AutoTrainToolStripMenuItem.Text = "Auto Train"
         '
         'frmMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(401, 366)
+        Me.ClientSize = New System.Drawing.Size(458, 488)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.MainMenuStrip = Me.MenuStrip1
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "frmMain"
         Me.Text = " "
         Me.TableLayoutPanel1.ResumeLayout(False)
@@ -199,7 +227,7 @@ Partial Class frmMain
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DrawingToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ImageToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CustomizeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OptionsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SearchToolStripMenuItem As ToolStripMenuItem
@@ -215,4 +243,7 @@ Partial Class frmMain
     Friend WithEvents OpenWorkspaceToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenImagesDirToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TipsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolsStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BatchEditToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AutoTrainToolStripMenuItem As ToolStripMenuItem
 End Class

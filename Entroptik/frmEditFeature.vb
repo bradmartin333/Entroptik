@@ -1,5 +1,6 @@
 ﻿Public Class frmEditFeature
-    Dim thisFeature As cFeature
+    Private thisFeature As cFeature
+    Private loaded As Boolean
 
     Public Sub New(ByRef feature As cFeature, ByVal pos As Point)
         InitializeComponent()
@@ -10,6 +11,9 @@
         txtName.Text = feature.Name
         lblLastScoreValue.Text = feature.LastScore
         numTolerance.Value = feature.Tolerance
+        cmbScoreType.DataSource = ScoreTypes
+        cmbScoreType.SelectedIndex = feature.ScoreType
+        loaded = True
     End Sub
 
     Private Sub btnDone_Click(sender As Object, e As EventArgs) Handles btnDone.Click
@@ -23,6 +27,14 @@
     Private Sub Save()
         Dim data = IO.File.ReadAllLines(WorkspacePath)
         For i = 0 To Features.Count - 1
+            If DoBatchTrain Then
+                With Features(i)
+                    .Score = thisFeature.Score
+                    .Tolerance = thisFeature.Tolerance
+                    .ScoreType = thisFeature.ScoreType
+                End With
+            End If
+
             With Features(i)
                 data(i + 4) = .Rect.Left & "," &
                               .Rect.Top & "," &
@@ -30,9 +42,16 @@
                               .Rect.Bottom & "," &
                               .Name & "," &
                               .Score & "," &
-                              .Tolerance
+                              .Tolerance & "," &
+                              .ScoreType
             End With
         Next
         IO.File.WriteAllLines(WorkspacePath, data)
+        DoBatchTrain = False
+    End Sub
+
+    Private Sub cmbScoreType_SelectedIndexChanged(sender As ComboBox, e As EventArgs) Handles cmbScoreType.SelectedIndexChanged
+        If Not loaded Then Exit Sub
+        thisFeature.ScoreType = sender.SelectedIndex
     End Sub
 End Class

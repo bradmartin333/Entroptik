@@ -69,7 +69,7 @@
                 sw.WriteLine(WorkspaceType)
                 sw.WriteLine(BorderRectSize & vbCrLf & NullCap & vbCrLf & NullCapThreshold)
                 For Each rect In rects
-                    sw.WriteLine(String.Format("{0},{1},{2},{3},{4},0,1", rect.Left, rect.Top, rect.Right, rect.Bottom, rects.IndexOf(rect) + 1))
+                    sw.WriteLine(String.Format("{0},{1},{2},{3},{4},0,1,0", rect.Left, rect.Top, rect.Right, rect.Bottom, rects.IndexOf(rect) + 1))
                 Next
                 sw.WriteLine(ImagesDir)
             End Using

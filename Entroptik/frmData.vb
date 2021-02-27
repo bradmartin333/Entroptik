@@ -1,5 +1,5 @@
 ﻿Public Class frmData
-    Dim filter = ""
+    Private filter = ""
 
     Public Sub New(str As String)
         InitializeComponent()
@@ -39,7 +39,7 @@
                 For Each r In rows
                     Dim outputBuffer = (String.Join(",", r))
                     If Text.Contains("Wizard") Then
-                        sw.WriteLine(outputBuffer & ",0,1")
+                        sw.WriteLine(outputBuffer & ",0,1,0")
                     Else
                         sw.WriteLine(outputBuffer)
                     End If

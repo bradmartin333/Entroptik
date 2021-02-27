@@ -57,7 +57,7 @@
 
         Dim src = Image.FromFile(Files(FileIdx).FullName)
         pbx.Image = src
-        Dim nullScore = CalcEntropy(src) ' Entropy of source image
+        Dim nullScore = CalcScore(src) ' Entropy of source image
         LastSourceScore = nullScore
         scoreData(1) = nullScore
 
@@ -76,7 +76,7 @@
                 g.DrawImage(src, New Rectangle(0, 0, feature.Rect.Width, feature.Rect.Height), feature.Rect, GraphicsUnit.Pixel)
             End Using
 
-            Dim thisScore = CalcEntropy(featureBuffer) ' Entropy of feature
+            Dim thisScore = CalcScore(featureBuffer, feature.ScoreType) ' Entropy of feature
             feature.LastScore = thisScore.ToString()
             scoreData(Features.IndexOf(feature) + 2) = thisScore
 
@@ -113,7 +113,7 @@
                 g.DrawImage(src, New Rectangle(0, 0, feature.Rect.Width, feature.Rect.Height), feature.Rect, GraphicsUnit.Pixel)
             End Using
 
-            Dim thisScore = CalcEntropy(featureBuffer) ' Entropy of feature
+            Dim thisScore = CalcScore(featureBuffer, feature.ScoreType) ' Entropy of feature
             feature.LastScore = thisScore.ToString()
 
             Using g As Graphics = Graphics.FromImage(src)
@@ -245,5 +245,15 @@
             WorkspacePath = My.Application.CommandLineArgs.First.ToString()
             LoadWorkspace()
         End If
+    End Sub
+
+    Private Sub BatchEdit(sender As Object, e As EventArgs) Handles BatchEditToolStripMenuItem.Click
+        DoBatchTrain = True
+        Dim editScore As New frmEditFeature(Features(0), PointToScreen(Location))
+        editScore.Show()
+    End Sub
+
+    Private Sub AutoTrain(sender As Object, e As EventArgs) Handles AutoTrainToolStripMenuItem.Click
+
     End Sub
 End Class

@@ -15,13 +15,16 @@ Public Class cFeature
     Public Property LastScore As String = 0
     '''<summary>Acceptable difference from trained score</summary>
     Public Property Tolerance As Double = 1
-    Public Sub New(NWcorner As Point, SEcorner As Point, score As String, tolerance As String, Optional name As String = "")
+    '''<summary>How to score the image</summary>
+    Public Property ScoreType As Integer = 0
+    Public Sub New(NWcorner As Point, SEcorner As Point, score As String, tolerance As String, scoreType As Integer, Optional name As String = "")
         Rect = New Rectangle(NWcorner.X, NWcorner.Y, SEcorner.X - NWcorner.X, SEcorner.Y - NWcorner.Y)
         Path = New GraphicsPath()
         Path.AddRectangle(Rect)
         Coordinates = "(" & Rect.X.ToString() & "," & Rect.Y.ToString() & ")"
         Me.Score = score
         Me.Tolerance = tolerance
+        Me.ScoreType = scoreType
         Me.Name = name
     End Sub
 End Class

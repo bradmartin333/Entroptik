@@ -113,3 +113,4 @@ C:\Repos\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entroptik.vbproj.CopyCompl
 C:\Repos\Entroptik\Entroptik\bin\Debug\net5.0-windows\Tips.txt
 C:\Entroptik\Entroptik\bin\Debug\net5.0-windows\Tips.txt
 C:\Repos\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entroptik.frmGridWizard.resources
+C:\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entroptik.frmGridWizard.resources
