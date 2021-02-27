@@ -45,9 +45,9 @@
     End Sub
 
     Private Sub pbx_Click(sender As Object, e As MouseEventArgs) Handles pbxGridPhoto.Click
-        ' Scale click to proportions of background image
-        Dim click As New Point(e.X / sender.Width * sender.Image.Width, e.Y / sender.Height * sender.Image.Height)
-        guide = click
+        Dim click As New Point(e.X, e.Y)
+        Dim correctedClick As Point = ZoomMousePos(click, sender)
+        guide = correctedClick
         DrawGrid()
     End Sub
 

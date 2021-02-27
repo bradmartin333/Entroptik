@@ -153,4 +153,31 @@ Module modHelpers
         frmMain.ToolsToolStripMenuItem.Enabled = True
         frmMain.ViewScoresToolStripMenuItem.Enabled = Not CBool(WorkspaceType)
     End Sub
+
+    Public Function ZoomMousePos(click As Point, pbx As PictureBox)
+        Dim imageAspect As Double = pbx.Image.Width / pbx.Image.Height
+        Dim controlAspect As Double = pbx.Width / pbx.Height
+        Dim pos As Point = click
+        If imageAspect > controlAspect Then
+            Dim ratioWidth As Double = pbx.Image.Width / pbx.Width
+            pos.X *= ratioWidth
+            Dim scale As Double = pbx.Width / pbx.Image.Width
+            Dim displayHeight As Double = scale * pbx.Image.Height
+            Dim diffHeight As Double = pbx.Height - displayHeight
+            diffHeight /= 2
+            pos.Y -= diffHeight
+            pos.Y /= scale
+        Else
+            Dim ratioHeight As Double = pbx.Image.Height / pbx.Height
+            pos.Y *= ratioHeight
+            Dim scale As Double = pbx.Height / pbx.Image.Height
+            Dim displayWidth As Double = scale * pbx.Image.Width
+            Dim diffWidth As Double = pbx.Width - displayWidth
+            diffWidth /= 2
+            pos.X -= diffWidth
+            pos.X /= scale
+        End If
+        Return pos
+    End Function
 End Module
+

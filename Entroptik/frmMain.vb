@@ -216,8 +216,7 @@
             Application.OpenForms().OfType(Of frmEditParams).First.Dispose()
         End If
 
-        ' Scale click to proportions of background image
-        Dim click As New PointF(e.X / pbx.Width * pbx.Image.Width, e.Y / pbx.Height * pbx.Image.Height)
+        Dim click As Point = ZoomMousePos(New Point(e.X, e.Y), sender)
         Dim featureClicked As Boolean
         For Each feature As cFeature In features ' Check if click overlaps with paths
             If feature.Path.IsVisible(click) Then
