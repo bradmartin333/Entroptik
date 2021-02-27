@@ -4,13 +4,7 @@
     Public Sub New(str As String)
         InitializeComponent()
         Text = str
-
-        If str.Contains("Wizard") Then
-            filter = "Entroptik Workspace|*.ew"
-            MakeGridColumns(Me)
-        Else
-            filter = "Comma Seperated Values|*.csv"
-        End If
+        filter = "Comma Seperated Values|*.csv"
     End Sub
 
     Private Sub frmClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

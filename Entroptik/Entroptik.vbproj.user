@@ -7,6 +7,9 @@
     <Compile Update="frmEditFeature.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmGridWizard.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>

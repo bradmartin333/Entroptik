@@ -25,12 +25,13 @@
             Dim result As DialogResult = MessageBox.Show("Is this a 5x5 Grid-Type Workspace?", "Entroptik", MessageBoxButtons.YesNo)
             If result.Equals(result.Yes) Then
                 WorkspaceType = WorkspaceTypes.Grid
+                GridWizard = New frmGridWizard()
+                GridWizard.Show()
             Else
                 WorkspaceType = WorkspaceTypes.Standard
+                Wizard = New frmData("Entroptik Workspace Wizard")
+                Wizard.Show()
             End If
-
-            Wizard = New frmData("Entroptik Workspace Wizard")
-            Wizard.Show()
         Else
             Dim data = IO.File.ReadAllLines(workspacePath)
             data(data.Length - 1) = dialog.SelectedPath
@@ -226,7 +227,7 @@
             End If
         Next
 
-        If Not featureClicked And WorkspaceType = WorkspaceTypes.Standard Then
+        If Not featureClicked Then
             Dim editParams As New frmEditParams()
             editParams.Show()
         End If

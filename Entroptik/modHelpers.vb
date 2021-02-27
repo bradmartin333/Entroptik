@@ -21,6 +21,7 @@ Module modHelpers
     Public fileIdx As Integer = -1
     Public features As New List(Of cFeature)
     Public Scores, Log, Wizard As frmData
+    Public GridWizard As frmGridWizard
     Public ImageExtensions() As String = {".JPG", ".JPE", ".BMP", ".GIF", ".PNG"}
     Public workspacePath = ""
     Public imagesDir = ""
