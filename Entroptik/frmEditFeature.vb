@@ -34,17 +34,7 @@
                     .ScoreType = thisFeature.ScoreType
                 End With
             End If
-
-            With Features(i)
-                data(i + 4) = .Rect.Left & "," &
-                              .Rect.Top & "," &
-                              .Rect.Right & "," &
-                              .Rect.Bottom & "," &
-                              .Name & "," &
-                              .Score & "," &
-                              .Tolerance & "," &
-                              .ScoreType
-            End With
+            ExportFeatures(data)
         Next
         IO.File.WriteAllLines(WorkspacePath, data)
         DoBatchTrain = False

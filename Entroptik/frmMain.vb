@@ -1,4 +1,6 @@
-﻿Public Class frmMain
+﻿Imports MathNet.Numerics.Statistics
+
+Public Class frmMain
     Private Sub OpenWorkspace(sender As Object, e As EventArgs) Handles OpenWorkspaceToolStripMenuItem.Click
         Dim dialog = New OpenFileDialog With {.Filter = "Entroptik Workspace|*.ew"}
         If dialog.ShowDialog() = DialogResult.OK Then
@@ -259,6 +261,7 @@
             For Each scoreType In ScoreTypes
                 scoreLists.Add(New List(Of Double))
             Next
+
             Dim featureBuffer As New Bitmap(feature.Rect.Width, feature.Rect.Height)
             For i As Integer = 0 To Files.Count - 1
                 Dim src As Bitmap = New Bitmap(Files(i).FullName)
@@ -270,6 +273,42 @@
                     scoreLists(j).Add(thisScore)
                 Next
             Next
+
+            Dim autoList As New List(Of Double)
+            Dim autoListData As New List(Of Double())
+            For Each scoreList In scoreLists
+                Dim median = Statistics.Median(scoreList.AsEnumerable)
+                Dim low, high As New List(Of Double)
+                For Each score In scoreList
+                    If score <= median Then
+                        low.Add(score)
+                    Else
+                        high.Add(score)
+                    End If
+                Next
+
+                Dim lowStdDev = Statistics.StandardDeviation(low.AsEnumerable)
+                Dim highStdDev = Statistics.StandardDeviation(high.AsEnumerable)
+                Dim autoStdDev = lowStdDev ^ 2 + highStdDev ^ 2
+                autoList.Add(autoStdDev)
+
+                Dim highMedian = Statistics.Median(high.AsEnumerable)
+                Dim highRange = (high.Max - high.Min) / 2
+                Dim autoData() As Double = {highMedian, highRange}
+                autoListData.Add(autoData)
+            Next
+
+            Dim autoChoice As Integer = autoList.IndexOf(autoList.Min)
+            feature.ScoreType = autoChoice
+            feature.Score = autoListData(autoChoice)(0)
+            feature.Tolerance = autoListData(autoChoice)(1)
         Next
+
+        Dim data = IO.File.ReadAllLines(WorkspacePath)
+        ExportFeatures(data)
+        IO.File.WriteAllLines(WorkspacePath, data)
+
+        lblStatus.BackColor = Color.LawnGreen
+        lblStatus.Text = "Auto Train Complete"
     End Sub
 End Class

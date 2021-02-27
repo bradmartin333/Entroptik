@@ -368,5 +368,21 @@ Module modHelpers
         End If
         Return pos
     End Function
+
+    Public Function ExportFeatures(data As String())
+        For i = 0 To Features.Count - 1
+            With Features(i)
+                data(i + 4) = .Rect.Left & "," &
+                              .Rect.Top & "," &
+                              .Rect.Right & "," &
+                              .Rect.Bottom & "," &
+                              .Name & "," &
+                              .Score & "," &
+                              .Tolerance & "," &
+                              .ScoreType
+            End With
+        Next
+        Return data
+    End Function
 End Module
 
