@@ -22,8 +22,8 @@
         End If
 
         If workspacePath = "" Then
-            Dim result As DialogResult = MessageBox.Show("Is this a 5x5 Grid-Type Workspace?", "Entroptik", MessageBoxButtons.YesNo)
-            If result.Equals(result.Yes) Then
+            Dim result = MsgBox("Is this a Grid Workspace?", MsgBoxStyle.YesNo, "Entroptik")
+            If result = vbYes Then
                 WorkspaceType = WorkspaceTypes.Grid
                 GridWizard = New frmGridWizard()
                 GridWizard.Show()
