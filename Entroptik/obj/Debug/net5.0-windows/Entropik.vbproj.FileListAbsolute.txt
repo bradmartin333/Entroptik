@@ -1,7 +1,0 @@
-C:\Repos\Entroptik\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entropik.frmMain.resources
-C:\Repos\Entroptik\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entropik.vbproj.GenerateResource.cache
-C:\Repos\Entroptik\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entropik.GeneratedMSBuildEditorConfig.editorconfig
-C:\Repos\Entroptik\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entropik.AssemblyInfoInputs.cache
-C:\Repos\Entroptik\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entropik.AssemblyInfo.vb
-C:\Repos\Entroptik\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entropik.vbproj.CoreCompileInputs.cache
-C:\Repos\Entroptik\Entroptik\Entroptik\obj\Debug\net5.0-windows\Entropik.vbprojAssemblyReference.cache
