@@ -30,10 +30,10 @@
         Dim dialog = New SaveFileDialog With {.Filter = filter}
         If dialog.ShowDialog() = DialogResult.OK Then
             Using sw As New IO.StreamWriter(dialog.FileName)
-                sw.WriteLine(workspaceType)
                 If Text.Contains("Wizard") Then
+                    sw.WriteLine(WorkspaceType)
                     sw.WriteLine(BorderRectSize & vbCrLf & NullCap & vbCrLf & NullCapThreshold)
-                Else
+                ElseIf Not WorkspaceType = WorkspaceTypes.Grid Then
                     sw.WriteLine(String.Join(",", headers))
                 End If
                 For Each r In rows
