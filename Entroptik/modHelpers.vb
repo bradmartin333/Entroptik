@@ -31,6 +31,10 @@ Module modHelpers
     Public SubGridRows, SubGridCols As Integer
     Public DoBatchTrain As Boolean
 
+    Public FollowPattern As Bitmap
+    Public OriginalPatternRect As Rectangle
+    Public CheckFollowPattern = False
+
     Public ScoreTypes As String() = {"ARGB Entropy",
                                      "Red Average", "Red Median", "Red Range",
                                      "Green Average", "Green Median", "Green Range",

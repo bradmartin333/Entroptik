@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AForge.Imaging" Version="2.2.5" />
     <PackageReference Include="MathNet.Numerics" Version="4.15.0" />
   </ItemGroup>
 
