@@ -81,7 +81,9 @@ Public Class frmMain
         If CheckFollowPattern Then
             Dim tm As ExhaustiveTemplateMatching = New ExhaustiveTemplateMatching(0.925F)
             Dim matchings As TemplateMatch() = tm.ProcessImage(src, FollowPattern)
-            FollowOffset = New Point(matchings(0).Rectangle.X - OriginalPatternRect.X, matchings(0).Rectangle.Y - OriginalPatternRect.Y)
+            If matchings.Count > 0 Then
+                FollowOffset = New Point(matchings(0).Rectangle.X - OriginalPatternRect.X, matchings(0).Rectangle.Y - OriginalPatternRect.Y)
+            End If
         End If
 
         For Each feature As cFeature In Features
@@ -309,7 +311,7 @@ Public Class frmMain
                 Dim median = Statistics.Median(scoreList.AsEnumerable)
                 Dim low, high As New List(Of Double)
                 For Each score In scoreList
-                    If score <= median Then
+                    If score < median Then
                         low.Add(score)
                     Else
                         high.Add(score)
@@ -354,7 +356,12 @@ Public Class frmMain
             Try
                 Dim fi As IO.FileInfo = New IO.FileInfo(dialog.FileName)
                 If ImageExtensions.Contains(fi.Extension.ToUpperInvariant()) Then
-                    FollowPattern = Bitmap.FromFile(dialog.FileName)
+                    Dim orig = Image.FromFile(dialog.FileName)
+                    Dim src = New Bitmap(orig.Width, orig.Height, Imaging.PixelFormat.Format24bppRgb)
+                    Using g As Graphics = Graphics.FromImage(src)
+                        g.DrawImage(orig, New Rectangle(0, 0, src.Width, src.Height))
+                    End Using
+                    FollowPattern = src
                 Else
                     lblStatus.BackColor = Color.Yellow
                     lblStatus.Text = "Invalid Pattern E002"
@@ -376,6 +383,8 @@ Public Class frmMain
                 lblStatus.Text = "Invalid Pattern E004"
                 Exit Sub
             End Try
+            lblStatus.BackColor = Color.LawnGreen
+            lblStatus.Text = "Pattern Loaded"
         Else
             Exit Sub
         End If

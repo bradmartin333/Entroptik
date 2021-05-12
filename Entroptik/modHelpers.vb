@@ -1,4 +1,5 @@
-﻿Imports MathNet.Numerics.Statistics
+﻿Imports AForge.Imaging
+Imports MathNet.Numerics.Statistics
 
 Module modHelpers
     '''<summary>Size of border rectangle offset</summary>

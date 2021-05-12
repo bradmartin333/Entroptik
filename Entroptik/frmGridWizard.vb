@@ -20,21 +20,27 @@
 
     Private Sub DrawGrid()
         rects.Clear()
-        Dim img As Bitmap = New Bitmap(Files(imageIdx).FullName)
-        pen.Width = img.Width / 250
+
+        Dim orig = New Bitmap(Files(imageIdx).FullName)
+        Dim src = New Bitmap(orig.Width, orig.Height, Imaging.PixelFormat.Format24bppRgb)
+        Using g As Graphics = Graphics.FromImage(src)
+            g.DrawImage(orig, New Rectangle(0, 0, src.Width, src.Height))
+        End Using
+
+        pen.Width = src.Width / 250
         For i As Integer = 0 To numX.Value - 1
-            Using g As Graphics = Graphics.FromImage(img)
-                g.DrawLine(pen, New Point(guide.X + i * numXPitch.Value, 0), New Point(guide.X + i * numXPitch.Value, img.Height))
+            Using g As Graphics = Graphics.FromImage(src)
+                g.DrawLine(pen, New Point(guide.X + i * numXPitch.Value, 0), New Point(guide.X + i * numXPitch.Value, src.Height))
             End Using
         Next
         For j As Integer = 0 To numY.Value - 1
-            Using g As Graphics = Graphics.FromImage(img)
-                g.DrawLine(pen, New Point(0, guide.Y + j * numYPitch.Value), New Point(img.Width, guide.Y + j * numYPitch.Value))
+            Using g As Graphics = Graphics.FromImage(src)
+                g.DrawLine(pen, New Point(0, guide.Y + j * numYPitch.Value), New Point(src.Width, guide.Y + j * numYPitch.Value))
             End Using
         Next
         For i As Integer = 0 To numX.Value - 1
             For j As Integer = 0 To numY.Value - 1
-                Using g As Graphics = Graphics.FromImage(img)
+                Using g As Graphics = Graphics.FromImage(src)
                     rects.Add(New Rectangle(guide.X + i * numXPitch.Value - Math.Sqrt(numArea.Value) / 2,
                                             guide.Y + j * numYPitch.Value - Math.Sqrt(numArea.Value) / 2,
                                             Math.Sqrt(numArea.Value), Math.Sqrt(numArea.Value)))
@@ -42,11 +48,11 @@
             Next
         Next
         For Each rect In rects
-            Using g As Graphics = Graphics.FromImage(img)
+            Using g As Graphics = Graphics.FromImage(src)
                 g.DrawRectangle(pen, rect)
             End Using
         Next
-        pbxGridPhoto.Image = img
+        pbxGridPhoto.Image = src
         loaded = True
         Refresh()
     End Sub
