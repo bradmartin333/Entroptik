@@ -22,7 +22,7 @@
         rects.Clear()
 
         Dim orig = New Bitmap(Files(imageIdx).FullName)
-        Dim src = New Bitmap(orig.Width, orig.Height, Imaging.PixelFormat.Format24bppRgb)
+        Dim src = New Bitmap(orig.Width, orig.Height)
         Using g As Graphics = Graphics.FromImage(src)
             g.DrawImage(orig, New Rectangle(0, 0, src.Width, src.Height))
         End Using
