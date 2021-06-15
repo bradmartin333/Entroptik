@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Entroptik"
-#define MyAppVersion "2.2"
+#define MyAppVersion "3.0"
 #define MyAppPublisher "bradmartin333"
 #define MyAppURL "https://github.com/bradmartin333"
 #define MyAppExeName "Entroptik.exe"
@@ -13,7 +13,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{C8376C65-2716-4DDA-8687-D26232BEC1BF}
+AppId={{7906C55F-E8F5-42BD-8CD2-B85E09D97C26}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -23,10 +23,12 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\{#MyAppName}
 ChangesAssociations=yes
+DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
-OutputDir=C:\Repos\Entroptik\Setup
+PrivilegesRequiredOverridesAllowed=dialog
+OutputDir=S:\Entroptik\Setup
 OutputBaseFilename=EntroptikSetup
 Compression=lzma
 SolidCompression=yes
@@ -39,14 +41,17 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Repos\Entroptik\Entroptik\bin\Release\net5.0-windows\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Repos\Entroptik\Entroptik\bin\Release\net5.0-windows\Entroptik.deps.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Repos\Entroptik\Entroptik\bin\Release\net5.0-windows\Entroptik.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Repos\Entroptik\Entroptik\bin\Release\net5.0-windows\Entroptik.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Repos\Entroptik\Entroptik\bin\Release\net5.0-windows\Entroptik.runtimeconfig.dev.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Repos\Entroptik\Entroptik\bin\Release\net5.0-windows\Entroptik.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Repos\Entroptik\Entroptik\bin\Release\net5.0-windows\MathNet.Numerics.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Repos\Entroptik\Entroptik\bin\Release\net5.0-windows\Tips.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\AForge.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\AForge.Imaging.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\AForge.Math.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\Entroptik.deps.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\Entroptik.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\Entroptik.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\Entroptik.runtimeconfig.dev.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\Entroptik.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\MathNet.Numerics.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\Tips.txt"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
@@ -57,7 +62,7 @@ Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}\shell\open\command"; Value
 Root: HKA; Subkey: "Software\Classes\Applications\{#MyAppExeName}\SupportedTypes"; ValueType: string; ValueName: ".myp"; ValueData: ""
 
 [Icons]
-Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]

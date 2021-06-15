@@ -1,4 +1,5 @@
-﻿Imports MathNet.Numerics.Statistics
+﻿Imports AForge.Imaging
+Imports MathNet.Numerics.Statistics
 
 Public Class frmMain
     Private Sub OpenWorkspace(sender As Object, e As EventArgs) Handles OpenWorkspaceToolStripMenuItem.Click
@@ -57,7 +58,11 @@ Public Class frmMain
         Dim logData(Features.Count() + 2) As String
         logData(0) = Text
 
-        Dim src = Image.FromFile(Files(FileIdx).FullName)
+        Dim orig = Image.FromFile(Files(FileIdx).FullName)
+        Dim src = New Bitmap(orig.Width, orig.Height, Imaging.PixelFormat.Format24bppRgb)
+        Using g As Graphics = Graphics.FromImage(src)
+            g.DrawImage(orig, New Rectangle(0, 0, src.Width, src.Height))
+        End Using
         pbx.Image = src
         Dim nullScore = CalcScore(src) ' Entropy of source image
         LastSourceScore = nullScore
@@ -72,10 +77,21 @@ Public Class frmMain
             logData(1) = 1
         End If
 
+        Dim FollowOffset As Point = New Point(0, 0)
+        If CheckFollowPattern Then
+            Dim tm As ExhaustiveTemplateMatching = New ExhaustiveTemplateMatching(0.925F)
+            Dim matchings As TemplateMatch() = tm.ProcessImage(src, FollowPattern)
+            If matchings.Count > 0 Then
+                FollowOffset = New Point(matchings(0).Rectangle.X - OriginalPatternRect.X, matchings(0).Rectangle.Y - OriginalPatternRect.Y)
+            End If
+        End If
+
         For Each feature As cFeature In Features
+            Dim thisFeatureRect As Rectangle = New Rectangle(feature.Rect.X + FollowOffset.X, feature.Rect.Y + FollowOffset.Y, feature.Rect.Width, feature.Rect.Height)
+
             Dim featureBuffer As New Bitmap(feature.Rect.Width, feature.Rect.Height)
             Using g As Graphics = Graphics.FromImage(featureBuffer)
-                g.DrawImage(src, New Rectangle(0, 0, feature.Rect.Width, feature.Rect.Height), feature.Rect, GraphicsUnit.Pixel)
+                g.DrawImage(src, New Rectangle(0, 0, feature.Rect.Width, feature.Rect.Height), thisFeatureRect, GraphicsUnit.Pixel)
             End Using
 
             Dim thisScore = CalcScore(featureBuffer, feature.ScoreType) ' Entropy of feature
@@ -85,10 +101,10 @@ Public Class frmMain
 
             Using g As Graphics = Graphics.FromImage(src)
                 If Math.Abs(thisScore - feature.Score) > feature.Tolerance Then
-                    g.DrawRectangle(New Pen(Color.Red, BorderRectSize), feature.Rect)
+                    g.DrawRectangle(New Pen(Color.Red, BorderRectSize), thisFeatureRect)
                     logData(Features.IndexOf(feature) + 2) = 0
                 Else
-                    g.DrawRectangle(New Pen(Color.Green, BorderRectSize), feature.Rect)
+                    g.DrawRectangle(New Pen(Color.Green, BorderRectSize), thisFeatureRect)
                     logData(Features.IndexOf(feature) + 2) = 1
                 End If
             End Using
@@ -256,10 +272,16 @@ Public Class frmMain
     End Sub
 
     Private Sub AutoTrain(sender As Object, e As EventArgs) Handles AutoTrainToolStripMenuItem.Click
-        lblStatus.BackColor = Color.LawnGreen
+        lblStatus.BackColor = Color.Yellow
 
         For Each feature As cFeature In Features
-            Dim percentComplete As Integer = Math.Round((Features.IndexOf(feature) + 1) / (Features.Count() + 1) * 100)
+            Dim percentComplete As Integer
+            Dim featureNum As Integer = Features.IndexOf(feature)
+            If featureNum > 0 Then
+                percentComplete = (featureNum / Features.Count()) * 100
+            Else
+                percentComplete = 0
+            End If
             lblStatus.Text = "Auto Train In Progress: " & percentComplete & "%"
             Refresh()
 
@@ -289,7 +311,7 @@ Public Class frmMain
                 Dim median = Statistics.Median(scoreList.AsEnumerable)
                 Dim low, high As New List(Of Double)
                 For Each score In scoreList
-                    If score <= median Then
+                    If score < median Then
                         low.Add(score)
                     Else
                         high.Add(score)
@@ -298,10 +320,14 @@ Public Class frmMain
 
                 Dim lowStdDev = Statistics.StandardDeviation(low.AsEnumerable)
                 Dim highStdDev = Statistics.StandardDeviation(high.AsEnumerable)
-                Dim autoStdDev = lowStdDev ^ 2 + highStdDev ^ 2
-                autoArr(idx) = autoStdDev
-                autoArrData(idx, 0) = Statistics.Median(high.AsEnumerable)
+                Dim lowMedian = Statistics.Median(low.AsEnumerable)
+                Dim highMedian = Statistics.Median(high.AsEnumerable)
+                Dim autoScore = lowStdDev + highStdDev + (1 / (highMedian - lowMedian)) ^ 2
+                autoArr(idx) = autoScore
+                autoArrData(idx, 0) = highMedian
                 autoArrData(idx, 1) = (high.Max - high.Min) / 2
+
+                Debug.WriteLine(autoScore)
 
                 idx += 1
             Next
@@ -322,5 +348,45 @@ Public Class frmMain
 
         lblStatus.BackColor = Color.LawnGreen
         lblStatus.Text = "Auto Train Complete"
+    End Sub
+
+    Private Sub LoadFollowPattern(sender As Object, e As EventArgs) Handles LoadFollowPatternToolStripMenuItem.Click
+        Dim dialog = New OpenFileDialog
+        If dialog.ShowDialog() = DialogResult.OK Then
+            Try
+                Dim fi As IO.FileInfo = New IO.FileInfo(dialog.FileName)
+                If ImageExtensions.Contains(fi.Extension.ToUpperInvariant()) Then
+                    Dim orig = Image.FromFile(dialog.FileName)
+                    Dim src = New Bitmap(orig.Width, orig.Height, Imaging.PixelFormat.Format24bppRgb)
+                    Using g As Graphics = Graphics.FromImage(src)
+                        g.DrawImage(orig, New Rectangle(0, 0, src.Width, src.Height))
+                    End Using
+                    FollowPattern = src
+                Else
+                    lblStatus.BackColor = Color.Yellow
+                    lblStatus.Text = "Invalid Pattern E002"
+                    Exit Sub
+                End If
+                CheckFollowPattern = True
+
+                Dim tm As ExhaustiveTemplateMatching = New ExhaustiveTemplateMatching(0.925F)
+                Dim matchings As TemplateMatch() = tm.ProcessImage(pbx.Image, FollowPattern)
+                If matchings.Length = 0 Then
+                    lblStatus.BackColor = Color.Yellow
+                    lblStatus.Text = "Invalid Pattern E003"
+                    Exit Sub
+                End If
+
+                OriginalPatternRect = matchings(0).Rectangle
+            Catch ex As Exception
+                lblStatus.BackColor = Color.Yellow
+                lblStatus.Text = "Invalid Pattern E004"
+                Exit Sub
+            End Try
+            lblStatus.BackColor = Color.LawnGreen
+            lblStatus.Text = "Pattern Loaded"
+        Else
+            Exit Sub
+        End If
     End Sub
 End Class
