@@ -35,6 +35,15 @@ namespace Entroptik
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.trainToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.inspectToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.runToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.runAllToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.stopToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.startOverToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -126,6 +135,15 @@ namespace Entroptik
             this.newToolStripButton,
             this.openToolStripButton,
             this.printToolStripButton,
+            this.toolStripSeparator1,
+            this.trainToolStripButton,
+            this.inspectToolStripButton,
+            this.toolStripSeparator2,
+            this.runToolStripButton,
+            this.runAllToolStripButton,
+            this.stopToolStripButton,
+            this.startOverToolStripButton,
+            this.toolStripSeparator3,
             this.helpToolStripButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
@@ -160,6 +178,75 @@ namespace Entroptik
             this.printToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.printToolStripButton.Text = "&Print";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // trainToolStripButton
+            // 
+            this.trainToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.trainToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_construction_5_24;
+            this.trainToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.trainToolStripButton.Name = "trainToolStripButton";
+            this.trainToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.trainToolStripButton.Text = "&Train";
+            // 
+            // inspectToolStripButton
+            // 
+            this.inspectToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.inspectToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_magnifier_2_24;
+            this.inspectToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.inspectToolStripButton.Name = "inspectToolStripButton";
+            this.inspectToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.inspectToolStripButton.Text = "&Inspect";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // runToolStripButton
+            // 
+            this.runToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.runToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_cursor_7_240;
+            this.runToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.runToolStripButton.Name = "runToolStripButton";
+            this.runToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.runToolStripButton.Text = "&Run";
+            // 
+            // runAllToolStripButton
+            // 
+            this.runAllToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.runAllToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_power_on_off_3_24;
+            this.runAllToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.runAllToolStripButton.Name = "runAllToolStripButton";
+            this.runAllToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.runAllToolStripButton.Text = "&Run All";
+            // 
+            // stopToolStripButton
+            // 
+            this.stopToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.stopToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_stop_4_24;
+            this.stopToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.stopToolStripButton.Name = "stopToolStripButton";
+            this.stopToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.stopToolStripButton.Text = "&Stop";
+            // 
+            // startOverToolStripButton
+            // 
+            this.startOverToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.startOverToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_undo_1_24;
+            this.startOverToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.startOverToolStripButton.Name = "startOverToolStripButton";
+            this.startOverToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.startOverToolStripButton.Text = "&Start Over";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // helpToolStripButton
             // 
             this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -189,7 +276,7 @@ namespace Entroptik
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 29);
             this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
+            this.label1.Text = "Num X";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -200,7 +287,7 @@ namespace Entroptik
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 29);
             this.label2.TabIndex = 3;
-            this.label2.Text = "label2";
+            this.label2.Text = "Num Y";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
@@ -211,7 +298,7 @@ namespace Entroptik
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 29);
             this.label3.TabIndex = 4;
-            this.label3.Text = "label3";
+            this.label3.Text = "Length";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
@@ -222,7 +309,7 @@ namespace Entroptik
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 29);
             this.label4.TabIndex = 5;
-            this.label4.Text = "label4";
+            this.label4.Text = "Width";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
@@ -233,7 +320,7 @@ namespace Entroptik
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 29);
             this.label5.TabIndex = 6;
-            this.label5.Text = "label5";
+            this.label5.Text = "X Pitch";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
@@ -244,7 +331,7 @@ namespace Entroptik
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 29);
             this.label6.TabIndex = 7;
-            this.label6.Text = "label6";
+            this.label6.Text = "Y Pitch";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
@@ -255,7 +342,7 @@ namespace Entroptik
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 29);
             this.label7.TabIndex = 8;
-            this.label7.Text = "label7";
+            this.label7.Text = "Pass Score";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
@@ -266,7 +353,7 @@ namespace Entroptik
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 29);
             this.label8.TabIndex = 9;
-            this.label8.Text = "label8";
+            this.label8.Text = "Pass Tol";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
@@ -277,7 +364,7 @@ namespace Entroptik
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 29);
             this.label9.TabIndex = 10;
-            this.label9.Text = "label9";
+            this.label9.Text = "Fail Score";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
@@ -288,7 +375,7 @@ namespace Entroptik
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(69, 29);
             this.label10.TabIndex = 11;
-            this.label10.Text = "label10";
+            this.label10.Text = "Fail Tol";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numericUpDown1
@@ -299,6 +386,7 @@ namespace Entroptik
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(69, 23);
             this.numericUpDown1.TabIndex = 13;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numericUpDown2
             // 
@@ -308,6 +396,7 @@ namespace Entroptik
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(69, 23);
             this.numericUpDown2.TabIndex = 14;
+            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numericUpDown3
             // 
@@ -317,6 +406,7 @@ namespace Entroptik
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(69, 23);
             this.numericUpDown3.TabIndex = 15;
+            this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numericUpDown4
             // 
@@ -326,6 +416,7 @@ namespace Entroptik
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(69, 23);
             this.numericUpDown4.TabIndex = 16;
+            this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numericUpDown5
             // 
@@ -335,6 +426,7 @@ namespace Entroptik
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(69, 23);
             this.numericUpDown5.TabIndex = 17;
+            this.numericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numericUpDown6
             // 
@@ -344,6 +436,7 @@ namespace Entroptik
             this.numericUpDown6.Name = "numericUpDown6";
             this.numericUpDown6.Size = new System.Drawing.Size(69, 23);
             this.numericUpDown6.TabIndex = 18;
+            this.numericUpDown6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numericUpDown7
             // 
@@ -353,6 +446,7 @@ namespace Entroptik
             this.numericUpDown7.Name = "numericUpDown7";
             this.numericUpDown7.Size = new System.Drawing.Size(69, 23);
             this.numericUpDown7.TabIndex = 19;
+            this.numericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numericUpDown8
             // 
@@ -362,6 +456,7 @@ namespace Entroptik
             this.numericUpDown8.Name = "numericUpDown8";
             this.numericUpDown8.Size = new System.Drawing.Size(69, 23);
             this.numericUpDown8.TabIndex = 20;
+            this.numericUpDown8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numericUpDown9
             // 
@@ -371,6 +466,7 @@ namespace Entroptik
             this.numericUpDown9.Name = "numericUpDown9";
             this.numericUpDown9.Size = new System.Drawing.Size(69, 23);
             this.numericUpDown9.TabIndex = 21;
+            this.numericUpDown9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numericUpDown10
             // 
@@ -380,6 +476,7 @@ namespace Entroptik
             this.numericUpDown10.Name = "numericUpDown10";
             this.numericUpDown10.Size = new System.Drawing.Size(69, 23);
             this.numericUpDown10.TabIndex = 22;
+            this.numericUpDown10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FormMain
             // 
@@ -438,6 +535,15 @@ namespace Entroptik
         private System.Windows.Forms.NumericUpDown numericUpDown8;
         private System.Windows.Forms.NumericUpDown numericUpDown9;
         private System.Windows.Forms.NumericUpDown numericUpDown10;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton trainToolStripButton;
+        private System.Windows.Forms.ToolStripButton runToolStripButton;
+        private System.Windows.Forms.ToolStripButton runAllToolStripButton;
+        private System.Windows.Forms.ToolStripButton stopToolStripButton;
+        private System.Windows.Forms.ToolStripButton startOverToolStripButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton inspectToolStripButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 
