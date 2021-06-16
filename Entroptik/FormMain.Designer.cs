@@ -66,6 +66,7 @@ namespace Entroptik
             this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tlpMain.SuspendLayout();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -109,10 +110,11 @@ namespace Entroptik
             this.tlpMain.Controls.Add(this.numericUpDown8, 1, 8);
             this.tlpMain.Controls.Add(this.numericUpDown9, 1, 9);
             this.tlpMain.Controls.Add(this.numericUpDown10, 1, 10);
+            this.tlpMain.Controls.Add(this.progressBar1, 0, 12);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(0, 0);
             this.tlpMain.Name = "tlpMain";
-            this.tlpMain.RowCount = 12;
+            this.tlpMain.RowCount = 13;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -125,7 +127,8 @@ namespace Entroptik
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpMain.Size = new System.Drawing.Size(659, 480);
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpMain.Size = new System.Drawing.Size(656, 556);
             this.tlpMain.TabIndex = 0;
             // 
             // toolStrip
@@ -147,7 +150,7 @@ namespace Entroptik
             this.helpToolStripButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(659, 25);
+            this.toolStrip.Size = new System.Drawing.Size(656, 25);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -259,12 +262,14 @@ namespace Entroptik
             // pictureBox
             // 
             this.pictureBox.BackColor = System.Drawing.Color.White;
+            this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox.Location = new System.Drawing.Point(153, 33);
             this.pictureBox.Name = "pictureBox";
             this.tlpMain.SetRowSpan(this.pictureBox, 11);
-            this.pictureBox.Size = new System.Drawing.Size(503, 444);
+            this.pictureBox.Size = new System.Drawing.Size(500, 500);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 1;
             this.pictureBox.TabStop = false;
             // 
@@ -478,15 +483,25 @@ namespace Entroptik
             this.numericUpDown10.TabIndex = 22;
             this.numericUpDown10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // progressBar1
+            // 
+            this.tlpMain.SetColumnSpan(this.progressBar1, 3);
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.progressBar1.Location = new System.Drawing.Point(3, 539);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(650, 14);
+            this.progressBar1.TabIndex = 23;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 480);
+            this.ClientSize = new System.Drawing.Size(656, 556);
             this.Controls.Add(this.tlpMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(497, 420);
             this.Name = "FormMain";
-            this.Text = "Entroptik";
+            this.Text = "Entroptik v4.0";
             this.tlpMain.ResumeLayout(false);
             this.tlpMain.PerformLayout();
             this.toolStrip.ResumeLayout(false);
@@ -544,6 +559,7 @@ namespace Entroptik
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton inspectToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 
