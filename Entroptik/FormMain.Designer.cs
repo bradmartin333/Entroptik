@@ -42,8 +42,6 @@ namespace Entroptik
             this.runToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.runAllToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.startOverToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -180,8 +178,6 @@ namespace Entroptik
             this.runToolStripButton,
             this.runAllToolStripButton,
             this.startOverToolStripButton,
-            this.toolStripSeparator3,
-            this.helpToolStripButton,
             this.toolStripTextBox});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
@@ -264,26 +260,11 @@ namespace Entroptik
             this.startOverToolStripButton.Text = "&Start Over";
             this.startOverToolStripButton.Click += new System.EventHandler(this.startOverToolStripButton_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // helpToolStripButton
-            // 
-            this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.helpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton.Image")));
-            this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.helpToolStripButton.Name = "helpToolStripButton";
-            this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.helpToolStripButton.Text = "He&lp";
-            this.helpToolStripButton.Click += new System.EventHandler(this.helpToolStripButton_Click);
-            // 
             // toolStripTextBox
             // 
             this.toolStripTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox.Name = "toolStripTextBox";
-            this.toolStripTextBox.Size = new System.Drawing.Size(172, 25);
+            this.toolStripTextBox.Size = new System.Drawing.Size(150, 25);
             // 
             // pictureBox
             // 
@@ -684,7 +665,6 @@ namespace Entroptik
         private System.Windows.Forms.ToolStripButton newToolStripButton;
         private System.Windows.Forms.ToolStripButton openToolStripButton;
         private System.Windows.Forms.ToolStripButton printToolStripButton;
-        private System.Windows.Forms.ToolStripButton helpToolStripButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -699,7 +679,6 @@ namespace Entroptik
         private System.Windows.Forms.ToolStripButton runToolStripButton;
         private System.Windows.Forms.ToolStripButton runAllToolStripButton;
         private System.Windows.Forms.ToolStripButton startOverToolStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
         public System.Windows.Forms.PictureBox pictureBox;
         public System.Windows.Forms.NumericUpDown numX;

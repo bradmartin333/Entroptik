@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Entroptik
@@ -94,14 +93,6 @@ namespace Entroptik
             FileHandler.Workspace.ImageIndex = 0;
             runToolStripButton.Enabled = true;
             Imaging.ShowImage();
-        }
-
-        private void helpToolStripButton_Click(object sender, EventArgs e)
-        {
-            if (Application.OpenForms.OfType<Tips>().Any())
-                Application.OpenForms.OfType<Tips>().First().BringToFront();
-            else
-                _ = new Tips();
         }
 
         private bool NextImage()
