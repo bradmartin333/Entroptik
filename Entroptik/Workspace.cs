@@ -17,6 +17,7 @@ namespace Entroptik
         public string DirectoryPath = null;
         public string FilePath = null;
         public string[] Images = null;
+        public int ImageIndex = 0;
     }
 
     public static class FileHandler

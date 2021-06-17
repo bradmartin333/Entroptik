@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Entroptik
@@ -68,12 +63,18 @@ namespace Entroptik
 
         private void runToolStripButton_Click(object sender, EventArgs e)
         {
-
+            NextImage();
         }
 
         private void runAllToolStripButton_Click(object sender, EventArgs e)
         {
-
+            if (FileHandler.Workspace.Images != null)
+            {
+                for (int i = FileHandler.Workspace.ImageIndex; i < FileHandler.Workspace.Images.Length - 1; i++)
+                {
+                    NextImage();
+                }
+            }
         }
 
         private void stopToolStripButton_Click(object sender, EventArgs e)
@@ -83,12 +84,28 @@ namespace Entroptik
 
         private void startOverToolStripButton_Click(object sender, EventArgs e)
         {
-
+            FileHandler.Workspace.ImageIndex = 0;
+            runToolStripButton.Enabled = true;
+            NextImage();
         }
 
         private void helpToolStripButton_Click(object sender, EventArgs e)
         {
+            if (Application.OpenForms.OfType<Tips>().Any())
+                Application.OpenForms.OfType<Tips>().First().BringToFront();
+            else
+                _ = new Tips();
+        }
 
+        private void NextImage()
+        {
+            if (FileHandler.Workspace.Images != null)
+            {
+                FileHandler.Workspace.ImageIndex++;
+                Imaging.ShowImage(FileHandler.Workspace.Images[FileHandler.Workspace.ImageIndex]);
+                if (FileHandler.Workspace.ImageIndex == FileHandler.Workspace.Images.Length - 1)
+                    runToolStripButton.Enabled = false;
+            }
         }
 
         private string OpenFile(string title, string filter)
