@@ -75,7 +75,7 @@ namespace Entroptik.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap iconmonstr_construction_5_24 {
             get {
-                object obj = ResourceManager.GetObject("iconmonstr-construction-5-24", resourceCulture);
+                object obj = ResourceManager.GetObject("iconmonstr_construction_5_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,7 +85,7 @@ namespace Entroptik.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap iconmonstr_cursor_7_240 {
             get {
-                object obj = ResourceManager.GetObject("iconmonstr-cursor-7-240", resourceCulture);
+                object obj = ResourceManager.GetObject("iconmonstr_cursor_7_240", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -95,7 +95,7 @@ namespace Entroptik.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap iconmonstr_magnifier_2_24 {
             get {
-                object obj = ResourceManager.GetObject("iconmonstr-magnifier-2-24", resourceCulture);
+                object obj = ResourceManager.GetObject("iconmonstr_magnifier_2_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -105,7 +105,7 @@ namespace Entroptik.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap iconmonstr_power_on_off_3_24 {
             get {
-                object obj = ResourceManager.GetObject("iconmonstr-power-on-off-3-24", resourceCulture);
+                object obj = ResourceManager.GetObject("iconmonstr_power_on_off_3_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -115,7 +115,7 @@ namespace Entroptik.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap iconmonstr_save_1_240 {
             get {
-                object obj = ResourceManager.GetObject("iconmonstr-save-1-240", resourceCulture);
+                object obj = ResourceManager.GetObject("iconmonstr_save_1_240", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -125,7 +125,7 @@ namespace Entroptik.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap iconmonstr_stop_4_24 {
             get {
-                object obj = ResourceManager.GetObject("iconmonstr-stop-4-24", resourceCulture);
+                object obj = ResourceManager.GetObject("iconmonstr_stop_4_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -135,7 +135,7 @@ namespace Entroptik.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap iconmonstr_undo_1_24 {
             get {
-                object obj = ResourceManager.GetObject("iconmonstr-undo-1-24", resourceCulture);
+                object obj = ResourceManager.GetObject("iconmonstr_undo_1_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

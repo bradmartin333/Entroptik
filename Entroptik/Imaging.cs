@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Accord.Imaging;
+using Accord.Imaging.Filters;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace Entroptik
@@ -7,12 +9,22 @@ namespace Entroptik
     {
         public static List<Rectangle> Rectangles = new List<Rectangle>();
 
+        private static double BaseHeight = 400;
         private static Pen Pen = new Pen(Color.HotPink);
 
         public static void ShowImage(string filePath)
         {
             Bitmap img = new Bitmap(filePath);
-            FileHandler.PictureBox.BackgroundImage = img;
+            double heightRatio = BaseHeight / img.Height;
+            Bitmap resize = new Bitmap((int)(heightRatio * img.Width), (int)BaseHeight);
+            using (Graphics g = Graphics.FromImage(resize))
+            {
+                g.DrawImage(img, 0, 0, resize.Width, resize.Height);
+            }
+            img.Dispose();
+            Bitmap working = resize.Clone(new Rectangle(new Point(0, 0), resize.Size), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+            resize.Dispose();
+            FileHandler.PictureBox.BackgroundImage = working;
         }
 
         public static void MakeGrid()

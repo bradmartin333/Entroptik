@@ -15,7 +15,7 @@ namespace Entroptik
         public (int, int) Pass = (10, 2);
         public (int, int) Fail = (5, 2);
         [NonSerialized]
-        public string DirectoryPath = null;
+        public string DirectoryPath = @"C:\";
         public string FilePath = null;
         public string OutputPath = null;
         public string[] Images = null;

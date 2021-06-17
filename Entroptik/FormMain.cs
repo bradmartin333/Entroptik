@@ -27,6 +27,11 @@ namespace Entroptik
             else
                 FileHandler.Workspace.DirectoryPath = pathBuffer;
             FileHandler.Workspace.Images = GetImagesFrom(FileHandler.Workspace.DirectoryPath);
+            if (FileHandler.Workspace.Images.Length == 0)
+            {
+                FileHandler.Workspace.Images = null;
+                return;
+            }
             Imaging.ShowImage(FileHandler.Workspace.Images[0]);
         }
 
@@ -143,6 +148,8 @@ namespace Entroptik
             using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
             {
                 folderBrowserDialog.Description = description;
+                folderBrowserDialog.ShowNewFolderButton = false;
+                folderBrowserDialog.SelectedPath = FileHandler.Workspace.DirectoryPath;
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                     return folderBrowserDialog.SelectedPath;
             }
