@@ -33,6 +33,7 @@ namespace Entroptik
                 FileHandler.Workspace.Images = null;
                 return;
             }
+            progressBar.Maximum = FileHandler.Workspace.Images.Length;
             FileHandler.Workspace.ImageIndex = 0;
             Imaging.ShowImage();
         }
@@ -76,9 +77,10 @@ namespace Entroptik
         {
             if (FileHandler.Workspace.Images != null)
             {
-                for (int i = FileHandler.Workspace.ImageIndex; i < FileHandler.Workspace.Images.Length - 1; i++)
+                while (true)
                 {
-                    NextImage();
+                    if (!NextImage())
+                        break;
                 }
             }
         }
@@ -90,6 +92,7 @@ namespace Entroptik
 
         private void startOverToolStripButton_Click(object sender, EventArgs e)
         {
+            progressBar.Value = 0;
             FileHandler.Workspace.ImageIndex = 0;
             runToolStripButton.Enabled = true;
             NextImage();
@@ -103,15 +106,22 @@ namespace Entroptik
                 _ = new Tips();
         }
 
-        private void NextImage()
+        private bool NextImage()
         {
             if (FileHandler.Workspace.Images != null)
             {
                 FileHandler.Workspace.ImageIndex++;
+                progressBar.PerformStep();
                 Imaging.ShowImage();
                 if (FileHandler.Workspace.ImageIndex == FileHandler.Workspace.Images.Length - 1)
+                {
+                    progressBar.Value = 0;
                     runToolStripButton.Enabled = false;
+                    return false;
+                }
+                return true;
             }
+            return false;
         }
 
         private string OpenFile(string title, string filter)
@@ -257,7 +267,7 @@ namespace Entroptik
 
         private void PictureBox_MouseUp(object sender, MouseEventArgs e)
         {
-            if (!inspectToolStripButton.Checked)
+            if (moveGridToolStripButton.Checked)
             {
                 FileHandler.Workspace.Guide = ZoomMousePos(e.Location);
                 Imaging.ShowImage();;
@@ -298,10 +308,19 @@ namespace Entroptik
         private void inspectToolStripButton_Click(object sender, EventArgs e)
         {
             toolStripTextBox.Visible = inspectToolStripButton.Checked;
+            moveGridToolStripButton.Checked = false;
         }
 
         private void viewFilterToolStripButton_Click(object sender, EventArgs e)
         {
+            moveGridToolStripButton.Checked = false;
+            Imaging.ShowImage();
+        }
+
+        private void moveGridToolStripButton_Click(object sender, EventArgs e)
+        {
+            viewFilterToolStripButton.Checked = false;
+            inspectToolStripButton.Checked = false;
             Imaging.ShowImage();
         }
     }

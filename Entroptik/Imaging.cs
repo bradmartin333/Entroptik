@@ -44,6 +44,7 @@ namespace Entroptik
                 FileHandler.PictureBox.BackgroundImage = working;
 
             MakeGrid();
+            System.Windows.Forms.Application.DoEvents();
         }
         
         private static Bitmap ScanImage(Bitmap img)

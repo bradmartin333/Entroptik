@@ -69,6 +69,7 @@ namespace Entroptik
             this.numFailScore = new System.Windows.Forms.NumericUpDown();
             this.numFailTol = new System.Windows.Forms.NumericUpDown();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.moveGridToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tlpMain.SuspendLayout();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -131,7 +132,7 @@ namespace Entroptik
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
-            this.tlpMain.Size = new System.Drawing.Size(562, 482);
+            this.tlpMain.Size = new System.Drawing.Size(562, 477);
             this.tlpMain.TabIndex = 0;
             // 
             // toolStrip
@@ -143,6 +144,7 @@ namespace Entroptik
             this.saveToolStripButton,
             this.printToolStripButton,
             this.toolStripSeparator1,
+            this.moveGridToolStripButton,
             this.viewFilterToolStripButton,
             this.inspectToolStripButton,
             this.toolStripSeparator2,
@@ -303,7 +305,7 @@ namespace Entroptik
             this.pictureBox.Location = new System.Drawing.Point(131, 29);
             this.pictureBox.Name = "pictureBox";
             this.tlpMain.SetRowSpan(this.pictureBox, 12);
-            this.pictureBox.Size = new System.Drawing.Size(428, 433);
+            this.pictureBox.Size = new System.Drawing.Size(428, 428);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 1;
             this.pictureBox.TabStop = false;
@@ -616,20 +618,31 @@ namespace Entroptik
             // 
             this.tlpMain.SetColumnSpan(this.progressBar, 3);
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar.Location = new System.Drawing.Point(3, 468);
+            this.progressBar.Location = new System.Drawing.Point(3, 463);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(556, 11);
             this.progressBar.Step = 1;
             this.progressBar.TabIndex = 23;
             // 
+            // moveGridToolStripButton
+            // 
+            this.moveGridToolStripButton.CheckOnClick = true;
+            this.moveGridToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.moveGridToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_construction_5_24;
+            this.moveGridToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.moveGridToolStripButton.Name = "moveGridToolStripButton";
+            this.moveGridToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.moveGridToolStripButton.Text = "&Move Grid";
+            this.moveGridToolStripButton.Click += new System.EventHandler(this.moveGridToolStripButton_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 482);
+            this.ClientSize = new System.Drawing.Size(562, 477);
             this.Controls.Add(this.tlpMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(428, 369);
+            this.MinimumSize = new System.Drawing.Size(428, 364);
             this.Name = "FormMain";
             this.Text = "Entroptik v4.0";
             this.tlpMain.ResumeLayout(false);
@@ -692,6 +705,7 @@ namespace Entroptik
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox;
         public System.Windows.Forms.ProgressBar progressBar;
         public System.Windows.Forms.ToolStripButton viewFilterToolStripButton;
+        private System.Windows.Forms.ToolStripButton moveGridToolStripButton;
     }
 }
 
