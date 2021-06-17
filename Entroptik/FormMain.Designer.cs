@@ -521,6 +521,7 @@ namespace Entroptik
             this.viewFilterToolStripButton.Name = "viewFilterToolStripButton";
             this.viewFilterToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.viewFilterToolStripButton.Text = "&View Filter";
+            this.viewFilterToolStripButton.Click += new System.EventHandler(this.viewFilterToolStripButton_Click);
             // 
             // inspectToolStripButton
             // 
@@ -586,7 +587,7 @@ namespace Entroptik
             // pictureBox
             // 
             this.pictureBox.BackColor = System.Drawing.Color.White;
-            this.pictureBox.BackgroundImage = global::Entroptik.Properties.Resources._default;
+            this.pictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox.BackgroundImage")));
             this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;

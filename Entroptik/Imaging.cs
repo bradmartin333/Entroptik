@@ -13,9 +13,13 @@ namespace Entroptik
         private static double BaseHeight = 550;
         private static Pen Pen = new Pen(Color.HotPink);
 
-        public static void ShowImage(string filePath)
+        public static void ShowImage()
         {
-            Bitmap img = new Bitmap(filePath);
+            Bitmap img;
+            if (FileHandler.Workspace.Images == null)
+                img = Properties.Resources._default;
+            else
+                img = new Bitmap(FileHandler.Workspace.Images[FileHandler.Workspace.ImageIndex]);
             double heightRatio = BaseHeight / img.Height;
             Bitmap resize = new Bitmap((int)(heightRatio * img.Width), (int)BaseHeight);
             using (Graphics g = Graphics.FromImage(resize))

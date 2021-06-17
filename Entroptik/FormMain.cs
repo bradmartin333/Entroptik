@@ -33,7 +33,8 @@ namespace Entroptik
                 FileHandler.Workspace.Images = null;
                 return;
             }
-            Imaging.ShowImage(FileHandler.Workspace.Images[0]);
+            FileHandler.Workspace.ImageIndex = 0;
+            Imaging.ShowImage();
             Imaging.MakeGrid();
         }
 
@@ -113,7 +114,7 @@ namespace Entroptik
             if (FileHandler.Workspace.Images != null)
             {
                 FileHandler.Workspace.ImageIndex++;
-                Imaging.ShowImage(FileHandler.Workspace.Images[FileHandler.Workspace.ImageIndex]);
+                Imaging.ShowImage();
                 if (FileHandler.Workspace.ImageIndex == FileHandler.Workspace.Images.Length - 1)
                     runToolStripButton.Enabled = false;
             }
@@ -303,6 +304,11 @@ namespace Entroptik
         private void inspectToolStripButton_Click(object sender, EventArgs e)
         {
             toolStripTextBox.Visible = inspectToolStripButton.Checked;
+        }
+
+        private void viewFilterToolStripButton_Click(object sender, EventArgs e)
+        {
+            Imaging.ShowImage();
         }
     }
 }
