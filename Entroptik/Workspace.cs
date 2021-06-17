@@ -8,12 +8,12 @@ namespace Entroptik
     [Serializable]
     public class Workspace
     {
-        public Point Guide = new Point(75, 75);
+        public Point Guide = new Point(110, 110);
         public Point GridSize = new Point(5, 5);
-        public Size FeatureSize = new Size(50, 50);
-        public Point Pitch = new Point(100, 100);
-        public (double, double) Pass = (4.0, 2.0);
-        public (double, double) Fail = (0.5, 2.0);
+        public Size FeatureSize = new Size(70, 70);
+        public Point Pitch = new Point(145, 145);
+        public (double, double) Pass = (12.0, 2.0);
+        public (double, double) Fail = (2.0, 2.0);
         [NonSerialized]
         public string DirectoryPath = @"C:\";
         public string FilePath = null;
@@ -42,7 +42,6 @@ namespace Entroptik
             FormMain.numFailScore.Value = (decimal)Workspace.Fail.Item1;
             FormMain.numFailTol.Value = (decimal)Workspace.Fail.Item2;
             Data.ClearArray();
-            Imaging.MakeGrid();
             Imaging.ShowImage();
         }
 

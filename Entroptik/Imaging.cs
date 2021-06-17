@@ -1,6 +1,4 @@
-﻿using Accord.Imaging;
-using Accord.Imaging.Filters;
-using MathNet.Numerics.Statistics;
+﻿using MathNet.Numerics.Statistics;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -21,7 +19,7 @@ namespace Entroptik
     {
         public static List<Feature> Features = new List<Feature>();
 
-        private static double BaseHeight = 550;
+        private static double BaseHeight = 800;
         private static Pen Pen = new Pen(Color.HotPink);
         private static Pen PassPen = new Pen(Color.LawnGreen);
         private static Pen FailPen = new Pen(Color.Red);
@@ -46,26 +44,18 @@ namespace Entroptik
             }
             img.Dispose();
 
-            Bitmap working = resize.Clone(new Rectangle(new Point(0, 0), resize.Size), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+            Bitmap working = resize.Clone(new Rectangle(new Point(0, 0), resize.Size), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
             resize.Dispose();
 
             MakeGrid(path);
-            Bitmap scanned = ScanImage(working);
-
-            if (FileHandler.FormMain.viewFilterToolStripButton.Checked)
-                FileHandler.PictureBox.BackgroundImage = scanned;
-            else
-                FileHandler.PictureBox.BackgroundImage = working;
-
+            ScanImage(working);
+            FileHandler.PictureBox.BackgroundImage = working;
             ShowGrid();
             System.Windows.Forms.Application.DoEvents();
         }
         
-        private static Bitmap ScanImage(Bitmap img)
+        private static void ScanImage(Bitmap img)
         {
-            Edges filter = new Edges();
-            Bitmap output = img.Clone(System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-
             foreach (Feature feature in Features)
             {
                 Bitmap bmp = new Bitmap(feature.Rectangle.Width, feature.Rectangle.Height);
@@ -73,8 +63,6 @@ namespace Entroptik
                 {
                     g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height), feature.Rectangle, GraphicsUnit.Pixel);
                 }
-
-                filter.ApplyInPlace(bmp);
 
                 List<double> pixelVals = new List<double>();
                 for (int i = 0; i < bmp.Width; i++)
@@ -86,12 +74,11 @@ namespace Entroptik
                 }
                 feature.Score = Statistics.Entropy(pixelVals.ToArray());
 
-                using (Graphics g = Graphics.FromImage(output))
+                using (Graphics g = Graphics.FromImage(img))
                 {
                     g.DrawImage(bmp, feature.Rectangle);
                 }
             }
-            return output;
         }
 
         public static void MakeGrid(string path = null)

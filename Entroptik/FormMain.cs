@@ -38,6 +38,7 @@ namespace Entroptik
 
             progressBar.Maximum = FileHandler.Workspace.Images.Length;
             FileHandler.Workspace.ImageIndex = 0;
+            Data.ClearArray();
             Imaging.ShowImage();
         }
 
@@ -93,7 +94,7 @@ namespace Entroptik
             progressBar.Value = 0;
             FileHandler.Workspace.ImageIndex = 0;
             runToolStripButton.Enabled = true;
-            NextImage();
+            Imaging.ShowImage();
         }
 
         private void helpToolStripButton_Click(object sender, EventArgs e)
@@ -229,7 +230,7 @@ namespace Entroptik
         {
             if (!FileHandler.DefaultsLoaded)
                 return;
-            FileHandler.Workspace.Pass = ((int)numPassScore.Value, (int)numPassTol.Value);
+            FileHandler.Workspace.Pass = ((double)numPassScore.Value, (double)numPassTol.Value);
             Imaging.ShowImage(); 
         }
 
@@ -237,7 +238,7 @@ namespace Entroptik
         {
             if (!FileHandler.DefaultsLoaded)
                 return;
-            FileHandler.Workspace.Pass = ((int)numPassScore.Value, (int)numPassTol.Value);
+            FileHandler.Workspace.Pass = ((double)numPassScore.Value, (double)numPassTol.Value);
             Imaging.ShowImage(); 
         }
 
@@ -245,7 +246,7 @@ namespace Entroptik
         {
             if (!FileHandler.DefaultsLoaded)
                 return;
-            FileHandler.Workspace.Fail = ((int)numFailScore.Value, (int)numFailTol.Value);
+            FileHandler.Workspace.Fail = ((double)numFailScore.Value, (double)numFailTol.Value);
             Imaging.ShowImage(); 
         }
 
@@ -253,7 +254,7 @@ namespace Entroptik
         {
             if (!FileHandler.DefaultsLoaded)
                 return;
-            FileHandler.Workspace.Fail = ((int)numFailScore.Value, (int)numFailTol.Value);
+            FileHandler.Workspace.Fail = ((double)numFailScore.Value, (double)numFailTol.Value);
             Imaging.ShowImage(); 
         }
 
