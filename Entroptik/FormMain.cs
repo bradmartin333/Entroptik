@@ -15,7 +15,6 @@ namespace Entroptik
             FileHandler.FormMain = this;
             FileHandler.PictureBox = pictureBox;
             pictureBox.MouseDown += PictureBox_MouseDown;
-            pictureBox.MouseUp += PictureBox_MouseUp;
             FileHandler.LoadWorkspaceParameters();
             FileHandler.DefaultsLoaded = true;
         }
@@ -174,6 +173,22 @@ namespace Entroptik
             return filesFound.ToArray();
         }
 
+        private void numGuideX_ValueChanged(object sender, EventArgs e)
+        {
+            if (!FileHandler.DefaultsLoaded)
+                return;
+            FileHandler.Workspace.Guide = new Point((int)numGuideX.Value, (int)numGuideY.Value);
+            Imaging.ShowImage();
+        }
+
+        private void numGuideY_ValueChanged(object sender, EventArgs e)
+        {
+            if (!FileHandler.DefaultsLoaded)
+                return;
+            FileHandler.Workspace.Guide = new Point((int)numGuideX.Value, (int)numGuideY.Value);
+            Imaging.ShowImage();
+        }
+
         private void numX_ValueChanged(object sender, EventArgs e)
         {
             if (!FileHandler.DefaultsLoaded)
@@ -268,15 +283,6 @@ namespace Entroptik
             }
         }
 
-        private void PictureBox_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (moveGridToolStripButton.Checked)
-            {
-                FileHandler.Workspace.Guide = ZoomMousePos(e.Location);
-                Imaging.ShowImage();
-            }
-        }
-
         private Point ZoomMousePos(Point click)
         {
             PictureBox pbx = pictureBox;
@@ -306,18 +312,6 @@ namespace Entroptik
                 pos.X /= scale;
             }
             return new Point((int)pos.X, (int)pos.Y);
-        }
-
-        private void inspectToolStripButton_Click(object sender, EventArgs e)
-        {
-            toolStripTextBox.Visible = inspectToolStripButton.Checked;
-            moveGridToolStripButton.Checked = false;
-        }
-
-        private void moveGridToolStripButton_Click(object sender, EventArgs e)
-        {
-            inspectToolStripButton.Checked = false;
-            Imaging.ShowImage();
         }
     }
 }

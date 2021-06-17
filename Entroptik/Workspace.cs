@@ -31,6 +31,8 @@ namespace Entroptik
 
         public static void LoadWorkspaceParameters()
         {
+            FormMain.numGuideX.Value = Workspace.Guide.X;
+            FormMain.numGuideY.Value = Workspace.Guide.Y;
             FormMain.numX.Value = Workspace.GridSize.X;
             FormMain.numY.Value = Workspace.GridSize.Y;
             FormMain.numWid.Value = Workspace.FeatureSize.Width;
