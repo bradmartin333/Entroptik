@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Entroptik"
-#define MyAppVersion "3.0"
+#define MyAppVersion "4.0"
 #define MyAppPublisher "bradmartin333"
 #define MyAppURL "https://github.com/bradmartin333"
 #define MyAppExeName "Entroptik.exe"
@@ -13,7 +13,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{7906C55F-E8F5-42BD-8CD2-B85E09D97C26}
+AppId={{977492E3-0AD2-407E-8CEA-A3FD44A234B4}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -41,17 +41,13 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\AForge.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\AForge.Imaging.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\AForge.Math.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\Entroptik.deps.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\Entroptik.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\Entroptik.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\Entroptik.runtimeconfig.dev.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\Entroptik.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\MathNet.Numerics.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\net5.0-windows\Tips.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\Entroptik.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\Entroptik.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\MathNet.Numerics.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\MathNet.Numerics.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\System.ValueTuple.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\System.ValueTuple.xml"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
