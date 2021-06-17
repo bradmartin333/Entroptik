@@ -72,7 +72,8 @@ namespace Entroptik
             {
                 case DataType.RawIncremental:
                     int fileNum = int.Parse(cleanPath.Replace("raw", ""));
-                    return (int)(fileNum % Math.Sqrt(FileHandler.Workspace.Images.Length) - 1);
+                    double diff = double.Parse((fileNum / Math.Sqrt(FileHandler.Workspace.Images.Length)).ToString().Split('.').First());
+                    return (int)diff;
                 case DataType.RowCol:
                     return int.Parse(cleanPath.Split('C').First().Replace("R", "").Replace("_","")) - 1;
             }
@@ -86,9 +87,10 @@ namespace Entroptik
             {
                 case DataType.RawIncremental:
                     int fileNum = int.Parse(cleanPath.Replace("raw", ""));
-                    return (int)((fileNum / Math.Sqrt(FileHandler.Workspace.Images.Length)) - 
-                        (fileNum % Math.Sqrt(FileHandler.Workspace.Images.Length)) * 
-                        Math.Sqrt(FileHandler.Workspace.Images.Length) - 1);
+                    double diff = double.Parse((fileNum / Math.Sqrt(FileHandler.Workspace.Images.Length)).ToString().Split('.').First());
+                    double col = (fileNum / Math.Sqrt(FileHandler.Workspace.Images.Length) - diff) *
+                        Math.Sqrt(FileHandler.Workspace.Images.Length);
+                    return (int)col;
                 case DataType.RowCol:
                     return int.Parse(cleanPath.Split('C').Last()) - 1;
             }
