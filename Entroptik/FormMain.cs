@@ -91,7 +91,6 @@ namespace Entroptik
             Data.ClearArray();
             progressBar.Value = 0;
             FileHandler.Workspace.ImageIndex = 0;
-            runToolStripButton.Enabled = true;
             Imaging.ShowImage();
         }
 

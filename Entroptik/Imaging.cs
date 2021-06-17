@@ -50,6 +50,7 @@ namespace Entroptik
             MakeGrid();
             ScanImage(working);
             FileHandler.PictureBox.BackgroundImage = working;
+            FileHandler.FormMain.runToolStripButton.Enabled = true;
             ShowGrid(path);
             System.Windows.Forms.Application.DoEvents();
         }

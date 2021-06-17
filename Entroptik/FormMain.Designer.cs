@@ -676,7 +676,6 @@ namespace Entroptik
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton runToolStripButton;
         private System.Windows.Forms.ToolStripButton runAllToolStripButton;
         private System.Windows.Forms.ToolStripButton startOverToolStripButton;
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
@@ -697,6 +696,7 @@ namespace Entroptik
         private System.Windows.Forms.Label label11;
         public System.Windows.Forms.NumericUpDown numGuideX;
         public System.Windows.Forms.NumericUpDown numGuideY;
+        public System.Windows.Forms.ToolStripButton runToolStripButton;
     }
 }
 
