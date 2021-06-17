@@ -14,6 +14,8 @@ namespace Entroptik
             InitializeComponent();
             FileHandler.FormMain = this;
             FileHandler.PictureBox = pictureBox;
+            pictureBox.MouseDown += PictureBox_MouseDown;
+            pictureBox.MouseUp += PictureBox_MouseUp;
             Imaging.MakeGrid();
         }
 
@@ -54,11 +56,6 @@ namespace Entroptik
         }
 
         private void trainToolStripButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void inspectToolStripButton_Click(object sender, EventArgs e)
         {
 
         }
@@ -219,10 +216,23 @@ namespace Entroptik
             Imaging.MakeGrid(); 
         }
 
+        private void PictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            Point point = ZoomMousePos(e.Location);
+            foreach (Rectangle rectangle in Imaging.Rectangles)
+            {
+                if (rectangle.Contains(point))
+                    toolStripTextBox.Text = point.ToString();
+            }
+        }
+
         private void PictureBox_MouseUp(object sender, MouseEventArgs e)
         {
-            Imaging.Guide = ZoomMousePos(e.Location);
-            Imaging.MakeGrid();
+            if (!inspectToolStripButton.Checked)
+            {
+                Imaging.Guide = ZoomMousePos(e.Location);
+                Imaging.MakeGrid();
+            }
         }
 
         private Point ZoomMousePos(Point click)
@@ -254,6 +264,11 @@ namespace Entroptik
                 pos.X /= scale;
             }
             return new Point((int)pos.X, (int)pos.Y);
+        }
+
+        private void inspectToolStripButton_Click(object sender, EventArgs e)
+        {
+            toolStripTextBox.Visible = inspectToolStripButton.Checked;
         }
     }
 }

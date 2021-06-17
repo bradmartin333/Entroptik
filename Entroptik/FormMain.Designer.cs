@@ -46,6 +46,7 @@ namespace Entroptik
             this.startOverToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -149,7 +150,8 @@ namespace Entroptik
             this.stopToolStripButton,
             this.startOverToolStripButton,
             this.toolStripSeparator3,
-            this.helpToolStripButton});
+            this.helpToolStripButton,
+            this.toolStripTextBox});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(656, 25);
@@ -213,6 +215,7 @@ namespace Entroptik
             // 
             // inspectToolStripButton
             // 
+            this.inspectToolStripButton.CheckOnClick = true;
             this.inspectToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.inspectToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_magnifier_2_24;
             this.inspectToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -281,6 +284,12 @@ namespace Entroptik
             this.helpToolStripButton.Text = "He&lp";
             this.helpToolStripButton.Click += new System.EventHandler(this.helpToolStripButton_Click);
             // 
+            // toolStripTextBox
+            // 
+            this.toolStripTextBox.Name = "toolStripTextBox";
+            this.toolStripTextBox.Size = new System.Drawing.Size(200, 25);
+            this.toolStripTextBox.Visible = false;
+            // 
             // pictureBox
             // 
             this.pictureBox.BackColor = System.Drawing.Color.White;
@@ -295,7 +304,6 @@ namespace Entroptik
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 1;
             this.pictureBox.TabStop = false;
-            this.pictureBox.MouseUp += PictureBox_MouseUp;
             // 
             // label1
             // 
@@ -695,6 +703,7 @@ namespace Entroptik
         public System.Windows.Forms.NumericUpDown numPassTol;
         public System.Windows.Forms.NumericUpDown numFailScore;
         public System.Windows.Forms.NumericUpDown numFailTol;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox;
     }
 }
 
