@@ -10,9 +10,9 @@ namespace Entroptik
     {
         public Point GridSize = new Point(5, 5);
         public Size FeatureSize = new Size(100, 100);
-        public Point Pitch = new Point(50, 50);
-        public (double, double) Pass = (2.0, 0.2);
-        public (double, double) Fail = (1.0, 0.2);
+        public Point Pitch = new Point(200, 200);
+        public (int, int) Pass = (10, 2);
+        public (int, int) Fail = (5, 2);
         [NonSerialized]
         public string DirectoryPath = null;
         public string FilePath = null;
@@ -31,8 +31,8 @@ namespace Entroptik
             Workspace.GridSize = new Point((int)FormMain.numX.Value, (int)FormMain.numY.Value);
             Workspace.FeatureSize = new Size((int)FormMain.numWid.Value, (int)FormMain.numHgt.Value);
             Workspace.Pitch = new Point((int)FormMain.numXpitch.Value, (int)FormMain.numYpitch.Value);
-            Workspace.Pass = ((double)FormMain.numPassScore.Value, (double)FormMain.numPassTol.Value);
-            Workspace.Fail = ((double)FormMain.numFailScore.Value, (double)FormMain.numFailTol.Value);
+            Workspace.Pass = ((int)FormMain.numPassScore.Value, (int)FormMain.numPassTol.Value);
+            Workspace.Fail = ((int)FormMain.numFailScore.Value, (int)FormMain.numFailTol.Value);
 
             using (Stream stream = File.Open(Workspace.FilePath, false ? FileMode.Append : FileMode.Create))
             {

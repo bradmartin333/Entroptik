@@ -410,100 +410,200 @@ namespace Entroptik
             this.numX.AutoSize = true;
             this.numX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numX.Location = new System.Drawing.Point(78, 33);
+            this.numX.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numX.Name = "numX";
             this.numX.Size = new System.Drawing.Size(69, 23);
             this.numX.TabIndex = 13;
             this.numX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numX.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // numY
             // 
             this.numY.AutoSize = true;
             this.numY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numY.Location = new System.Drawing.Point(78, 62);
+            this.numY.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numY.Name = "numY";
             this.numY.Size = new System.Drawing.Size(69, 23);
             this.numY.TabIndex = 14;
             this.numY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numY.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // numWid
             // 
             this.numWid.AutoSize = true;
             this.numWid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numWid.Location = new System.Drawing.Point(78, 91);
+            this.numWid.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numWid.Name = "numWid";
             this.numWid.Size = new System.Drawing.Size(69, 23);
             this.numWid.TabIndex = 15;
             this.numWid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numWid.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // numHgt
             // 
             this.numHgt.AutoSize = true;
             this.numHgt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numHgt.Location = new System.Drawing.Point(78, 120);
+            this.numHgt.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numHgt.Name = "numHgt";
             this.numHgt.Size = new System.Drawing.Size(69, 23);
             this.numHgt.TabIndex = 16;
             this.numHgt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numHgt.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // numXpitch
             // 
             this.numXpitch.AutoSize = true;
             this.numXpitch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numXpitch.Location = new System.Drawing.Point(78, 149);
+            this.numXpitch.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numXpitch.Name = "numXpitch";
             this.numXpitch.Size = new System.Drawing.Size(69, 23);
             this.numXpitch.TabIndex = 17;
             this.numXpitch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numXpitch.Value = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             // 
             // numYpitch
             // 
             this.numYpitch.AutoSize = true;
             this.numYpitch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numYpitch.Location = new System.Drawing.Point(78, 178);
+            this.numYpitch.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numYpitch.Name = "numYpitch";
             this.numYpitch.Size = new System.Drawing.Size(69, 23);
             this.numYpitch.TabIndex = 18;
             this.numYpitch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numYpitch.Value = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             // 
             // numPassScore
             // 
             this.numPassScore.AutoSize = true;
             this.numPassScore.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numPassScore.Location = new System.Drawing.Point(78, 207);
+            this.numPassScore.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numPassScore.Name = "numPassScore";
             this.numPassScore.Size = new System.Drawing.Size(69, 23);
             this.numPassScore.TabIndex = 19;
             this.numPassScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numPassScore.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // numPassTol
             // 
             this.numPassTol.AutoSize = true;
             this.numPassTol.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numPassTol.Location = new System.Drawing.Point(78, 236);
+            this.numPassTol.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numPassTol.Name = "numPassTol";
             this.numPassTol.Size = new System.Drawing.Size(69, 23);
             this.numPassTol.TabIndex = 20;
             this.numPassTol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numPassTol.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // numFailScore
             // 
             this.numFailScore.AutoSize = true;
             this.numFailScore.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numFailScore.Location = new System.Drawing.Point(78, 265);
+            this.numFailScore.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numFailScore.Name = "numFailScore";
             this.numFailScore.Size = new System.Drawing.Size(69, 23);
             this.numFailScore.TabIndex = 21;
             this.numFailScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numFailScore.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // numFailTol
             // 
             this.numFailTol.AutoSize = true;
             this.numFailTol.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numFailTol.Location = new System.Drawing.Point(78, 294);
+            this.numFailTol.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numFailTol.Name = "numFailTol";
             this.numFailTol.Size = new System.Drawing.Size(69, 23);
             this.numFailTol.TabIndex = 22;
             this.numFailTol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numFailTol.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // progressBar1
             // 
