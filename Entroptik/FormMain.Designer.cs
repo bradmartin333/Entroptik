@@ -34,6 +34,7 @@ namespace Entroptik
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.trainToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -56,30 +57,30 @@ namespace Entroptik
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
+            this.numX = new System.Windows.Forms.NumericUpDown();
+            this.numY = new System.Windows.Forms.NumericUpDown();
+            this.numWid = new System.Windows.Forms.NumericUpDown();
+            this.numHgt = new System.Windows.Forms.NumericUpDown();
+            this.numXpitch = new System.Windows.Forms.NumericUpDown();
+            this.numYpitch = new System.Windows.Forms.NumericUpDown();
+            this.numPassScore = new System.Windows.Forms.NumericUpDown();
+            this.numPassTol = new System.Windows.Forms.NumericUpDown();
+            this.numFailScore = new System.Windows.Forms.NumericUpDown();
+            this.numFailTol = new System.Windows.Forms.NumericUpDown();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tlpMain.SuspendLayout();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numWid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numHgt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numXpitch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numYpitch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPassScore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPassTol)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFailScore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFailTol)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpMain
@@ -100,16 +101,16 @@ namespace Entroptik
             this.tlpMain.Controls.Add(this.label8, 0, 8);
             this.tlpMain.Controls.Add(this.label9, 0, 9);
             this.tlpMain.Controls.Add(this.label10, 0, 10);
-            this.tlpMain.Controls.Add(this.numericUpDown1, 1, 1);
-            this.tlpMain.Controls.Add(this.numericUpDown2, 1, 2);
-            this.tlpMain.Controls.Add(this.numericUpDown3, 1, 3);
-            this.tlpMain.Controls.Add(this.numericUpDown4, 1, 4);
-            this.tlpMain.Controls.Add(this.numericUpDown5, 1, 5);
-            this.tlpMain.Controls.Add(this.numericUpDown6, 1, 6);
-            this.tlpMain.Controls.Add(this.numericUpDown7, 1, 7);
-            this.tlpMain.Controls.Add(this.numericUpDown8, 1, 8);
-            this.tlpMain.Controls.Add(this.numericUpDown9, 1, 9);
-            this.tlpMain.Controls.Add(this.numericUpDown10, 1, 10);
+            this.tlpMain.Controls.Add(this.numX, 1, 1);
+            this.tlpMain.Controls.Add(this.numY, 1, 2);
+            this.tlpMain.Controls.Add(this.numWid, 1, 3);
+            this.tlpMain.Controls.Add(this.numHgt, 1, 4);
+            this.tlpMain.Controls.Add(this.numXpitch, 1, 5);
+            this.tlpMain.Controls.Add(this.numYpitch, 1, 6);
+            this.tlpMain.Controls.Add(this.numPassScore, 1, 7);
+            this.tlpMain.Controls.Add(this.numPassTol, 1, 8);
+            this.tlpMain.Controls.Add(this.numFailScore, 1, 9);
+            this.tlpMain.Controls.Add(this.numFailTol, 1, 10);
             this.tlpMain.Controls.Add(this.progressBar1, 0, 12);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(0, 0);
@@ -137,6 +138,7 @@ namespace Entroptik
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripButton,
             this.openToolStripButton,
+            this.saveToolStripButton,
             this.printToolStripButton,
             this.toolStripSeparator1,
             this.trainToolStripButton,
@@ -162,6 +164,7 @@ namespace Entroptik
             this.newToolStripButton.Name = "newToolStripButton";
             this.newToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.newToolStripButton.Text = "&New";
+            this.newToolStripButton.Click += new System.EventHandler(this.newToolStripButton_Click);
             // 
             // openToolStripButton
             // 
@@ -171,6 +174,17 @@ namespace Entroptik
             this.openToolStripButton.Name = "openToolStripButton";
             this.openToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.openToolStripButton.Text = "&Open";
+            this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
+            // 
+            // saveToolStripButton
+            // 
+            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_save_1_240;
+            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripButton.Name = "saveToolStripButton";
+            this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.saveToolStripButton.Text = "%Save";
+            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
             // 
             // printToolStripButton
             // 
@@ -180,6 +194,7 @@ namespace Entroptik
             this.printToolStripButton.Name = "printToolStripButton";
             this.printToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.printToolStripButton.Text = "&Print";
+            this.printToolStripButton.Click += new System.EventHandler(this.printToolStripButton_Click);
             // 
             // toolStripSeparator1
             // 
@@ -194,6 +209,7 @@ namespace Entroptik
             this.trainToolStripButton.Name = "trainToolStripButton";
             this.trainToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.trainToolStripButton.Text = "&Train";
+            this.trainToolStripButton.Click += new System.EventHandler(this.trainToolStripButton_Click);
             // 
             // inspectToolStripButton
             // 
@@ -203,6 +219,7 @@ namespace Entroptik
             this.inspectToolStripButton.Name = "inspectToolStripButton";
             this.inspectToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.inspectToolStripButton.Text = "&Inspect";
+            this.inspectToolStripButton.Click += new System.EventHandler(this.inspectToolStripButton_Click);
             // 
             // toolStripSeparator2
             // 
@@ -217,6 +234,7 @@ namespace Entroptik
             this.runToolStripButton.Name = "runToolStripButton";
             this.runToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.runToolStripButton.Text = "&Run";
+            this.runToolStripButton.Click += new System.EventHandler(this.runToolStripButton_Click);
             // 
             // runAllToolStripButton
             // 
@@ -226,6 +244,7 @@ namespace Entroptik
             this.runAllToolStripButton.Name = "runAllToolStripButton";
             this.runAllToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.runAllToolStripButton.Text = "&Run All";
+            this.runAllToolStripButton.Click += new System.EventHandler(this.runAllToolStripButton_Click);
             // 
             // stopToolStripButton
             // 
@@ -235,6 +254,7 @@ namespace Entroptik
             this.stopToolStripButton.Name = "stopToolStripButton";
             this.stopToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.stopToolStripButton.Text = "&Stop";
+            this.stopToolStripButton.Click += new System.EventHandler(this.stopToolStripButton_Click);
             // 
             // startOverToolStripButton
             // 
@@ -244,6 +264,7 @@ namespace Entroptik
             this.startOverToolStripButton.Name = "startOverToolStripButton";
             this.startOverToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.startOverToolStripButton.Text = "&Start Over";
+            this.startOverToolStripButton.Click += new System.EventHandler(this.startOverToolStripButton_Click);
             // 
             // toolStripSeparator3
             // 
@@ -258,6 +279,7 @@ namespace Entroptik
             this.helpToolStripButton.Name = "helpToolStripButton";
             this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.helpToolStripButton.Text = "He&lp";
+            this.helpToolStripButton.Click += new System.EventHandler(this.helpToolStripButton_Click);
             // 
             // pictureBox
             // 
@@ -303,7 +325,7 @@ namespace Entroptik
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 29);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Length";
+            this.label3.Text = "Width";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
@@ -314,7 +336,7 @@ namespace Entroptik
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 29);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Width";
+            this.label4.Text = "Height";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
@@ -383,105 +405,105 @@ namespace Entroptik
             this.label10.Text = "Fail Tol";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // numericUpDown1
+            // numX
             // 
-            this.numericUpDown1.AutoSize = true;
-            this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown1.Location = new System.Drawing.Point(78, 33);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(69, 23);
-            this.numericUpDown1.TabIndex = 13;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numX.AutoSize = true;
+            this.numX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numX.Location = new System.Drawing.Point(78, 33);
+            this.numX.Name = "numX";
+            this.numX.Size = new System.Drawing.Size(69, 23);
+            this.numX.TabIndex = 13;
+            this.numX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown2
+            // numY
             // 
-            this.numericUpDown2.AutoSize = true;
-            this.numericUpDown2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown2.Location = new System.Drawing.Point(78, 62);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(69, 23);
-            this.numericUpDown2.TabIndex = 14;
-            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numY.AutoSize = true;
+            this.numY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numY.Location = new System.Drawing.Point(78, 62);
+            this.numY.Name = "numY";
+            this.numY.Size = new System.Drawing.Size(69, 23);
+            this.numY.TabIndex = 14;
+            this.numY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown3
+            // numWid
             // 
-            this.numericUpDown3.AutoSize = true;
-            this.numericUpDown3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown3.Location = new System.Drawing.Point(78, 91);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(69, 23);
-            this.numericUpDown3.TabIndex = 15;
-            this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numWid.AutoSize = true;
+            this.numWid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numWid.Location = new System.Drawing.Point(78, 91);
+            this.numWid.Name = "numWid";
+            this.numWid.Size = new System.Drawing.Size(69, 23);
+            this.numWid.TabIndex = 15;
+            this.numWid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown4
+            // numHgt
             // 
-            this.numericUpDown4.AutoSize = true;
-            this.numericUpDown4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown4.Location = new System.Drawing.Point(78, 120);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(69, 23);
-            this.numericUpDown4.TabIndex = 16;
-            this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numHgt.AutoSize = true;
+            this.numHgt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numHgt.Location = new System.Drawing.Point(78, 120);
+            this.numHgt.Name = "numHgt";
+            this.numHgt.Size = new System.Drawing.Size(69, 23);
+            this.numHgt.TabIndex = 16;
+            this.numHgt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown5
+            // numXpitch
             // 
-            this.numericUpDown5.AutoSize = true;
-            this.numericUpDown5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown5.Location = new System.Drawing.Point(78, 149);
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(69, 23);
-            this.numericUpDown5.TabIndex = 17;
-            this.numericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numXpitch.AutoSize = true;
+            this.numXpitch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numXpitch.Location = new System.Drawing.Point(78, 149);
+            this.numXpitch.Name = "numXpitch";
+            this.numXpitch.Size = new System.Drawing.Size(69, 23);
+            this.numXpitch.TabIndex = 17;
+            this.numXpitch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown6
+            // numYpitch
             // 
-            this.numericUpDown6.AutoSize = true;
-            this.numericUpDown6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown6.Location = new System.Drawing.Point(78, 178);
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(69, 23);
-            this.numericUpDown6.TabIndex = 18;
-            this.numericUpDown6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numYpitch.AutoSize = true;
+            this.numYpitch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numYpitch.Location = new System.Drawing.Point(78, 178);
+            this.numYpitch.Name = "numYpitch";
+            this.numYpitch.Size = new System.Drawing.Size(69, 23);
+            this.numYpitch.TabIndex = 18;
+            this.numYpitch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown7
+            // numPassScore
             // 
-            this.numericUpDown7.AutoSize = true;
-            this.numericUpDown7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown7.Location = new System.Drawing.Point(78, 207);
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(69, 23);
-            this.numericUpDown7.TabIndex = 19;
-            this.numericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numPassScore.AutoSize = true;
+            this.numPassScore.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numPassScore.Location = new System.Drawing.Point(78, 207);
+            this.numPassScore.Name = "numPassScore";
+            this.numPassScore.Size = new System.Drawing.Size(69, 23);
+            this.numPassScore.TabIndex = 19;
+            this.numPassScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown8
+            // numPassTol
             // 
-            this.numericUpDown8.AutoSize = true;
-            this.numericUpDown8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown8.Location = new System.Drawing.Point(78, 236);
-            this.numericUpDown8.Name = "numericUpDown8";
-            this.numericUpDown8.Size = new System.Drawing.Size(69, 23);
-            this.numericUpDown8.TabIndex = 20;
-            this.numericUpDown8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numPassTol.AutoSize = true;
+            this.numPassTol.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numPassTol.Location = new System.Drawing.Point(78, 236);
+            this.numPassTol.Name = "numPassTol";
+            this.numPassTol.Size = new System.Drawing.Size(69, 23);
+            this.numPassTol.TabIndex = 20;
+            this.numPassTol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown9
+            // numFailScore
             // 
-            this.numericUpDown9.AutoSize = true;
-            this.numericUpDown9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown9.Location = new System.Drawing.Point(78, 265);
-            this.numericUpDown9.Name = "numericUpDown9";
-            this.numericUpDown9.Size = new System.Drawing.Size(69, 23);
-            this.numericUpDown9.TabIndex = 21;
-            this.numericUpDown9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numFailScore.AutoSize = true;
+            this.numFailScore.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numFailScore.Location = new System.Drawing.Point(78, 265);
+            this.numFailScore.Name = "numFailScore";
+            this.numFailScore.Size = new System.Drawing.Size(69, 23);
+            this.numFailScore.TabIndex = 21;
+            this.numFailScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDown10
+            // numFailTol
             // 
-            this.numericUpDown10.AutoSize = true;
-            this.numericUpDown10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown10.Location = new System.Drawing.Point(78, 294);
-            this.numericUpDown10.Name = "numericUpDown10";
-            this.numericUpDown10.Size = new System.Drawing.Size(69, 23);
-            this.numericUpDown10.TabIndex = 22;
-            this.numericUpDown10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numFailTol.AutoSize = true;
+            this.numFailTol.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numFailTol.Location = new System.Drawing.Point(78, 294);
+            this.numFailTol.Name = "numFailTol";
+            this.numFailTol.Size = new System.Drawing.Size(69, 23);
+            this.numFailTol.TabIndex = 22;
+            this.numFailTol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // progressBar1
             // 
@@ -507,16 +529,16 @@ namespace Entroptik
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numWid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numHgt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numXpitch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numYpitch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPassScore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPassTol)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFailScore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFailTol)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -525,7 +547,6 @@ namespace Entroptik
 
         private System.Windows.Forms.TableLayoutPanel tlpMain;
         private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.ToolStripButton newToolStripButton;
         private System.Windows.Forms.ToolStripButton openToolStripButton;
         private System.Windows.Forms.ToolStripButton printToolStripButton;
@@ -540,16 +561,6 @@ namespace Entroptik
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
-        private System.Windows.Forms.NumericUpDown numericUpDown7;
-        private System.Windows.Forms.NumericUpDown numericUpDown8;
-        private System.Windows.Forms.NumericUpDown numericUpDown9;
-        private System.Windows.Forms.NumericUpDown numericUpDown10;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton trainToolStripButton;
         private System.Windows.Forms.ToolStripButton runToolStripButton;
@@ -560,6 +571,18 @@ namespace Entroptik
         private System.Windows.Forms.ToolStripButton inspectToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ToolStripButton saveToolStripButton;
+        public System.Windows.Forms.PictureBox pictureBox;
+        public System.Windows.Forms.NumericUpDown numX;
+        public System.Windows.Forms.NumericUpDown numY;
+        public System.Windows.Forms.NumericUpDown numWid;
+        public System.Windows.Forms.NumericUpDown numHgt;
+        public System.Windows.Forms.NumericUpDown numXpitch;
+        public System.Windows.Forms.NumericUpDown numYpitch;
+        public System.Windows.Forms.NumericUpDown numPassScore;
+        public System.Windows.Forms.NumericUpDown numPassTol;
+        public System.Windows.Forms.NumericUpDown numFailScore;
+        public System.Windows.Forms.NumericUpDown numFailTol;
     }
 }
 
