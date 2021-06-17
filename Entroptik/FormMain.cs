@@ -314,15 +314,8 @@ namespace Entroptik
             moveGridToolStripButton.Checked = false;
         }
 
-        private void viewFilterToolStripButton_Click(object sender, EventArgs e)
-        {
-            moveGridToolStripButton.Checked = false;
-            Imaging.ShowImage();
-        }
-
         private void moveGridToolStripButton_Click(object sender, EventArgs e)
         {
-            viewFilterToolStripButton.Checked = false;
             inspectToolStripButton.Checked = false;
             Imaging.ShowImage();
         }

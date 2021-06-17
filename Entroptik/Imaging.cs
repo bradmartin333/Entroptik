@@ -47,10 +47,10 @@ namespace Entroptik
             Bitmap working = resize.Clone(new Rectangle(new Point(0, 0), resize.Size), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
             resize.Dispose();
 
-            MakeGrid(path);
+            MakeGrid();
             ScanImage(working);
             FileHandler.PictureBox.BackgroundImage = working;
-            ShowGrid();
+            ShowGrid(path);
             System.Windows.Forms.Application.DoEvents();
         }
         
@@ -81,7 +81,7 @@ namespace Entroptik
             }
         }
 
-        public static void MakeGrid(string path = null)
+        public static void MakeGrid()
         {
             Bitmap grid = new Bitmap(FileHandler.PictureBox.BackgroundImage.Width, FileHandler.PictureBox.BackgroundImage.Height);
             FileHandler.PictureBox.Image = grid;
@@ -105,42 +105,46 @@ namespace Entroptik
                             Col = i
                         };
 
-                        if (path!=null)
-                        {
-                            newFeature.FileRow = Data.GetFileRow(path);
-                            newFeature.FileCol = Data.GetFileCol(path);
-                        }
-
                         Features.Add(newFeature);
                     }
                 }
             }
         }
 
-        public static void ShowGrid()
+        public static void ShowGrid(string path = null)
         {
             foreach (Feature feature in Features)
             {
-                feature.Rectangle = new Rectangle((int)(FileHandler.Workspace.Guide.X + feature.Row * FileHandler.FormMain.numXpitch.Value - FileHandler.FormMain.numWid.Value / 2),
-                        (int)(FileHandler.Workspace.Guide.Y + feature.Col * FileHandler.FormMain.numYpitch.Value - FileHandler.FormMain.numHgt.Value / 2),
+                feature.Rectangle = new Rectangle((int)(FileHandler.Workspace.Guide.X + feature.Col * FileHandler.FormMain.numXpitch.Value - FileHandler.FormMain.numWid.Value / 2),
+                        (int)(FileHandler.Workspace.Guide.Y + feature.Row * FileHandler.FormMain.numYpitch.Value - FileHandler.FormMain.numHgt.Value / 2),
                         (int)FileHandler.FormMain.numWid.Value, (int)FileHandler.FormMain.numHgt.Value);
+
+                if (path != null)
+                {
+                    feature.FileRow = Data.GetFileRow(path);
+                    feature.FileCol = Data.GetFileCol(path);
+                }
+
+                int numX = (int)FileHandler.FormMain.numX.Value;
+                int numY = (int)FileHandler.FormMain.numY.Value;
+
                 using (Graphics g = Graphics.FromImage(FileHandler.PictureBox.Image))
                 {
                     if (Math.Abs(feature.Score - FileHandler.Workspace.Pass.Item1) < FileHandler.Workspace.Pass.Item2)
                     {
                         g.DrawRectangle(PassPen, feature.Rectangle);
-                        Data.DataArray[feature.FileRow + feature.Row, feature.FileCol + feature.Col] = 1;
+                        Data.DataArray[feature.FileRow * numX + feature.Row, feature.FileCol * numY + feature.Col] = 1;
                     }
                     else if (Math.Abs(feature.Score - FileHandler.Workspace.Fail.Item1) < FileHandler.Workspace.Fail.Item2)
                     {
                         g.DrawRectangle(FailPen, feature.Rectangle);
-                        Data.DataArray[feature.FileRow + feature.Row, feature.FileCol + feature.Col] = 0;
-                    }  
+                        Data.DataArray[feature.FileRow * numX + feature.Row, feature.FileCol * numY + feature.Col] = 0;
+                    }
                     else
                     {
                         g.DrawRectangle(Pen, feature.Rectangle);
-                        Data.DataArray[feature.FileRow + feature.Row, feature.FileCol + feature.Col] = -1;
-                    }  
+                        Data.DataArray[feature.FileRow * numX + feature.Row, feature.FileCol * numY + feature.Col] = -1;
+                    }
                 }
             }
         }

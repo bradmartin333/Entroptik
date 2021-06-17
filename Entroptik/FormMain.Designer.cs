@@ -62,7 +62,6 @@ namespace Entroptik
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.moveGridToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.viewFilterToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.inspectToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.runToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.runAllToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -144,7 +143,6 @@ namespace Entroptik
             this.printToolStripButton,
             this.toolStripSeparator1,
             this.moveGridToolStripButton,
-            this.viewFilterToolStripButton,
             this.inspectToolStripButton,
             this.toolStripSeparator2,
             this.runToolStripButton,
@@ -546,17 +544,6 @@ namespace Entroptik
             this.moveGridToolStripButton.Text = "&Move Grid";
             this.moveGridToolStripButton.Click += new System.EventHandler(this.moveGridToolStripButton_Click);
             // 
-            // viewFilterToolStripButton
-            // 
-            this.viewFilterToolStripButton.CheckOnClick = true;
-            this.viewFilterToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.viewFilterToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_eye_6_240;
-            this.viewFilterToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.viewFilterToolStripButton.Name = "viewFilterToolStripButton";
-            this.viewFilterToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.viewFilterToolStripButton.Text = "&View Filter";
-            this.viewFilterToolStripButton.Click += new System.EventHandler(this.viewFilterToolStripButton_Click);
-            // 
             // inspectToolStripButton
             // 
             this.inspectToolStripButton.CheckOnClick = true;
@@ -611,7 +598,7 @@ namespace Entroptik
             // pictureBox
             // 
             this.pictureBox.BackColor = System.Drawing.Color.White;
-            this.pictureBox.BackgroundImage = global::Entroptik.Properties.Resources._default;
+            this.pictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox.BackgroundImage")));
             this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -691,7 +678,6 @@ namespace Entroptik
         public System.Windows.Forms.NumericUpDown numFailTol;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox;
         public System.Windows.Forms.ProgressBar progressBar;
-        public System.Windows.Forms.ToolStripButton viewFilterToolStripButton;
         private System.Windows.Forms.ToolStripButton moveGridToolStripButton;
     }
 }
