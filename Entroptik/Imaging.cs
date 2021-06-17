@@ -6,9 +6,9 @@ namespace Entroptik
     public static class Imaging
     {
         public static List<Rectangle> Rectangles = new List<Rectangle>();
+        public static Point Guide = new Point(150, 150);
 
         private static Pen Pen = new Pen(Color.HotPink);
-        private static Point Guide = new Point(150, 150);
 
         public static void ShowImage(string filePath)
         {

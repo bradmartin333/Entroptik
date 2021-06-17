@@ -218,5 +218,42 @@ namespace Entroptik
             FileHandler.Workspace.Fail = ((int)numFailScore.Value, (int)numFailTol.Value);
             Imaging.MakeGrid(); 
         }
+
+        private void PictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            Imaging.Guide = ZoomMousePos(e.Location);
+            Imaging.MakeGrid();
+        }
+
+        private Point ZoomMousePos(Point click)
+        {
+            PictureBox pbx = pictureBox;
+            float BackgroundImageAspect = pbx.BackgroundImage.Width / (float)pbx.BackgroundImage.Height;
+            float controlAspect = pbx.Width / (float)pbx.Height;
+            PointF pos = new PointF(click.X, click.Y);
+            if (BackgroundImageAspect > controlAspect)
+            {
+                float ratioWidth = pbx.BackgroundImage.Width / (float)pbx.Width;
+                pos.X *= ratioWidth;
+                float scale = pbx.Width / (float)pbx.BackgroundImage.Width;
+                float displayHeight = scale * pbx.BackgroundImage.Height;
+                float diffHeight = pbx.Height - displayHeight;
+                diffHeight /= 2;
+                pos.Y -= diffHeight;
+                pos.Y /= scale;
+            }
+            else
+            {
+                float ratioHeight = pbx.BackgroundImage.Height / (float)pbx.Height;
+                pos.Y *= ratioHeight;
+                float scale = pbx.Height / (float)pbx.BackgroundImage.Height;
+                float displayWidth = scale * pbx.BackgroundImage.Width;
+                float diffWidth = pbx.Width - displayWidth;
+                diffWidth /= 2;
+                pos.X -= diffWidth;
+                pos.X /= scale;
+            }
+            return new Point((int)pos.X, (int)pos.Y);
+        }
     }
 }

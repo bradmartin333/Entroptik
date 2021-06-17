@@ -295,6 +295,7 @@ namespace Entroptik
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 1;
             this.pictureBox.TabStop = false;
+            this.pictureBox.MouseUp += PictureBox_MouseUp;
             // 
             // label1
             // 
