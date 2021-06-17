@@ -68,11 +68,6 @@ namespace Entroptik
             // Write to file
         }
 
-        private void trainToolStripButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void runToolStripButton_Click(object sender, EventArgs e)
         {
             NextImage();
@@ -257,7 +252,7 @@ namespace Entroptik
             foreach (Rectangle rectangle in Imaging.Rectangles)
             {
                 if (rectangle.Contains(point))
-                    toolStripTextBox.Text = point.ToString();
+                    toolStripTextBox.Text = Imaging.Scores[Imaging.Rectangles.IndexOf(rectangle)].ToString();
             }
         }
 

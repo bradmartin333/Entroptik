@@ -42,6 +42,7 @@ namespace Entroptik
             FormMain.numFailScore.Value = Workspace.Fail.Item1;
             FormMain.numFailTol.Value = Workspace.Fail.Item2;
             Imaging.MakeGrid();
+            Imaging.ShowImage();
         }
 
         public static void WriteParametersToBinaryFile()
