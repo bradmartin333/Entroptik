@@ -16,7 +16,6 @@ namespace Entroptik
             FileHandler.PictureBox = pictureBox;
             pictureBox.MouseDown += PictureBox_MouseDown;
             FileHandler.LoadWorkspaceParameters();
-            FileHandler.DefaultsLoaded = true;
         }
 
         private void newToolStripButton_Click(object sender, EventArgs e)
@@ -48,6 +47,7 @@ namespace Entroptik
                 return;
             else
                 FileHandler.Workspace.FilePath = pathBuffer;
+            FileHandler.Loaded = false;
             FileHandler.ReadParametersFromBinaryFile();
             Data.ClearArray();
         }
@@ -175,7 +175,7 @@ namespace Entroptik
 
         private void numGuideX_ValueChanged(object sender, EventArgs e)
         {
-            if (!FileHandler.DefaultsLoaded)
+            if (!FileHandler.Loaded)
                 return;
             FileHandler.Workspace.Guide = new Point((int)numGuideX.Value, (int)numGuideY.Value);
             Imaging.ShowImage();
@@ -183,7 +183,7 @@ namespace Entroptik
 
         private void numGuideY_ValueChanged(object sender, EventArgs e)
         {
-            if (!FileHandler.DefaultsLoaded)
+            if (!FileHandler.Loaded)
                 return;
             FileHandler.Workspace.Guide = new Point((int)numGuideX.Value, (int)numGuideY.Value);
             Imaging.ShowImage();
@@ -191,7 +191,7 @@ namespace Entroptik
 
         private void numX_ValueChanged(object sender, EventArgs e)
         {
-            if (!FileHandler.DefaultsLoaded)
+            if (!FileHandler.Loaded)
                 return;
             numY.Value = numX.Value;
             FileHandler.Workspace.GridSize = new Point((int)numX.Value, (int)numY.Value);
@@ -201,7 +201,7 @@ namespace Entroptik
 
         private void numY_ValueChanged(object sender, EventArgs e)
         {
-            if (!FileHandler.DefaultsLoaded)
+            if (!FileHandler.Loaded)
                 return;
             numX.Value = numY.Value;
             FileHandler.Workspace.GridSize = new Point((int)numX.Value, (int)numY.Value);
@@ -211,7 +211,7 @@ namespace Entroptik
 
         private void numWid_ValueChanged(object sender, EventArgs e)
         {
-            if (!FileHandler.DefaultsLoaded)
+            if (!FileHandler.Loaded)
                 return;
             FileHandler.Workspace.FeatureSize = new Size((int)numWid.Value, (int)numHgt.Value);
             Imaging.ShowImage();
@@ -219,7 +219,7 @@ namespace Entroptik
 
         private void numHgt_ValueChanged(object sender, EventArgs e)
         {
-            if (!FileHandler.DefaultsLoaded)
+            if (!FileHandler.Loaded)
                 return;
             FileHandler.Workspace.FeatureSize = new Size((int)numWid.Value, (int)numHgt.Value);
             Imaging.ShowImage(); 
@@ -227,7 +227,7 @@ namespace Entroptik
 
         private void numXpitch_ValueChanged(object sender, EventArgs e)
         {
-            if (!FileHandler.DefaultsLoaded)
+            if (!FileHandler.Loaded)
                 return;
             FileHandler.Workspace.Pitch = new Point((int)numXpitch.Value, (int)numYpitch.Value);
             Imaging.ShowImage(); 
@@ -235,7 +235,7 @@ namespace Entroptik
 
         private void numYpitch_ValueChanged(object sender, EventArgs e)
         {
-            if (!FileHandler.DefaultsLoaded)
+            if (!FileHandler.Loaded)
                 return;
             FileHandler.Workspace.Pitch = new Point((int)numXpitch.Value, (int)numYpitch.Value);
             Imaging.ShowImage(); 
@@ -243,7 +243,7 @@ namespace Entroptik
 
         private void numPassScore_ValueChanged(object sender, EventArgs e)
         {
-            if (!FileHandler.DefaultsLoaded)
+            if (!FileHandler.Loaded)
                 return;
             FileHandler.Workspace.Pass = ((double)numPassScore.Value, (double)numPassTol.Value);
             Imaging.ShowImage(); 
@@ -251,7 +251,7 @@ namespace Entroptik
 
         private void numPassTol_ValueChanged(object sender, EventArgs e)
         {
-            if (!FileHandler.DefaultsLoaded)
+            if (!FileHandler.Loaded)
                 return;
             FileHandler.Workspace.Pass = ((double)numPassScore.Value, (double)numPassTol.Value);
             Imaging.ShowImage(); 
@@ -259,7 +259,7 @@ namespace Entroptik
 
         private void numFailScore_ValueChanged(object sender, EventArgs e)
         {
-            if (!FileHandler.DefaultsLoaded)
+            if (!FileHandler.Loaded)
                 return;
             FileHandler.Workspace.Fail = ((double)numFailScore.Value, (double)numFailTol.Value);
             Imaging.ShowImage(); 
@@ -267,7 +267,7 @@ namespace Entroptik
 
         private void numFailTol_ValueChanged(object sender, EventArgs e)
         {
-            if (!FileHandler.DefaultsLoaded)
+            if (!FileHandler.Loaded)
                 return;
             FileHandler.Workspace.Fail = ((double)numFailScore.Value, (double)numFailTol.Value);
             Imaging.ShowImage(); 

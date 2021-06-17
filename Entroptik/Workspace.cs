@@ -27,7 +27,7 @@ namespace Entroptik
         public static Workspace Workspace = new Workspace();
         public static FormMain FormMain = null;
         public static PictureBox PictureBox = null;
-        public static bool DefaultsLoaded = false;
+        public static bool Loaded = false;
 
         public static void LoadWorkspaceParameters()
         {
@@ -45,6 +45,7 @@ namespace Entroptik
             FormMain.numFailTol.Value = (decimal)Workspace.Fail.Item2;
             Data.ClearArray();
             Imaging.ShowImage();
+            Loaded = true;
         }
 
         public static void WriteParametersToBinaryFile()
