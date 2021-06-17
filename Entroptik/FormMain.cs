@@ -35,7 +35,6 @@ namespace Entroptik
             }
             FileHandler.Workspace.ImageIndex = 0;
             Imaging.ShowImage();
-            Imaging.MakeGrid();
         }
 
         private void openToolStripButton_Click(object sender, EventArgs e)
@@ -171,7 +170,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.GridSize = new Point((int)numX.Value, (int)numY.Value);
-            Imaging.MakeGrid();
+            Imaging.ShowImage();;
         }
 
         private void numY_ValueChanged(object sender, EventArgs e)
@@ -179,7 +178,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.GridSize = new Point((int)numX.Value, (int)numY.Value);
-            Imaging.MakeGrid(); 
+            Imaging.ShowImage();; 
         }
 
         private void numWid_ValueChanged(object sender, EventArgs e)
@@ -187,7 +186,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.FeatureSize = new Size((int)numWid.Value, (int)numHgt.Value);
-            Imaging.MakeGrid(); 
+            Imaging.ShowImage();; 
         }
 
         private void numHgt_ValueChanged(object sender, EventArgs e)
@@ -195,7 +194,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.FeatureSize = new Size((int)numWid.Value, (int)numHgt.Value);
-            Imaging.MakeGrid(); 
+            Imaging.ShowImage();; 
         }
 
         private void numXpitch_ValueChanged(object sender, EventArgs e)
@@ -203,7 +202,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.Pitch = new Point((int)numXpitch.Value, (int)numYpitch.Value);
-            Imaging.MakeGrid(); 
+            Imaging.ShowImage();; 
         }
 
         private void numYpitch_ValueChanged(object sender, EventArgs e)
@@ -211,7 +210,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.Pitch = new Point((int)numXpitch.Value, (int)numYpitch.Value);
-            Imaging.MakeGrid(); 
+            Imaging.ShowImage();; 
         }
 
         private void numPassScore_ValueChanged(object sender, EventArgs e)
@@ -219,7 +218,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.Pass = ((int)numPassScore.Value, (int)numPassTol.Value);
-            Imaging.MakeGrid(); 
+            Imaging.ShowImage();; 
         }
 
         private void numPassTol_ValueChanged(object sender, EventArgs e)
@@ -227,7 +226,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.Pass = ((int)numPassScore.Value, (int)numPassTol.Value);
-            Imaging.MakeGrid(); 
+            Imaging.ShowImage();; 
         }
 
         private void numFailScore_ValueChanged(object sender, EventArgs e)
@@ -235,7 +234,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.Fail = ((int)numFailScore.Value, (int)numFailTol.Value);
-            Imaging.MakeGrid(); 
+            Imaging.ShowImage();; 
         }
 
         private void numFailTol_ValueChanged(object sender, EventArgs e)
@@ -243,7 +242,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.Fail = ((int)numFailScore.Value, (int)numFailTol.Value);
-            Imaging.MakeGrid(); 
+            Imaging.ShowImage();; 
         }
 
         private void PictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -261,7 +260,7 @@ namespace Entroptik
             if (!inspectToolStripButton.Checked)
             {
                 FileHandler.Workspace.Guide = ZoomMousePos(e.Location);
-                Imaging.MakeGrid();
+                Imaging.ShowImage();;
             }
         }
 

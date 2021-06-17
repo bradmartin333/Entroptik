@@ -98,25 +98,25 @@ namespace Entroptik
             this.tlpMain.Controls.Add(this.label4, 0, 4);
             this.tlpMain.Controls.Add(this.label5, 0, 5);
             this.tlpMain.Controls.Add(this.label6, 0, 6);
-            this.tlpMain.Controls.Add(this.label7, 0, 7);
-            this.tlpMain.Controls.Add(this.label8, 0, 8);
-            this.tlpMain.Controls.Add(this.label9, 0, 9);
-            this.tlpMain.Controls.Add(this.label10, 0, 10);
+            this.tlpMain.Controls.Add(this.label7, 0, 8);
+            this.tlpMain.Controls.Add(this.label8, 0, 9);
+            this.tlpMain.Controls.Add(this.label9, 0, 10);
+            this.tlpMain.Controls.Add(this.label10, 0, 11);
             this.tlpMain.Controls.Add(this.numX, 1, 1);
             this.tlpMain.Controls.Add(this.numY, 1, 2);
             this.tlpMain.Controls.Add(this.numWid, 1, 3);
             this.tlpMain.Controls.Add(this.numHgt, 1, 4);
             this.tlpMain.Controls.Add(this.numXpitch, 1, 5);
             this.tlpMain.Controls.Add(this.numYpitch, 1, 6);
-            this.tlpMain.Controls.Add(this.numPassScore, 1, 7);
-            this.tlpMain.Controls.Add(this.numPassTol, 1, 8);
-            this.tlpMain.Controls.Add(this.numFailScore, 1, 9);
-            this.tlpMain.Controls.Add(this.numFailTol, 1, 10);
-            this.tlpMain.Controls.Add(this.progressBar, 0, 12);
+            this.tlpMain.Controls.Add(this.numPassScore, 1, 8);
+            this.tlpMain.Controls.Add(this.numPassTol, 1, 9);
+            this.tlpMain.Controls.Add(this.numFailScore, 1, 10);
+            this.tlpMain.Controls.Add(this.numFailTol, 1, 11);
+            this.tlpMain.Controls.Add(this.progressBar, 0, 13);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(0, 0);
             this.tlpMain.Name = "tlpMain";
-            this.tlpMain.RowCount = 13;
+            this.tlpMain.RowCount = 14;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -124,6 +124,7 @@ namespace Entroptik
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -301,7 +302,7 @@ namespace Entroptik
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox.Location = new System.Drawing.Point(131, 29);
             this.pictureBox.Name = "pictureBox";
-            this.tlpMain.SetRowSpan(this.pictureBox, 11);
+            this.tlpMain.SetRowSpan(this.pictureBox, 12);
             this.pictureBox.Size = new System.Drawing.Size(428, 433);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 1;
@@ -311,6 +312,7 @@ namespace Entroptik
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 26);
@@ -322,6 +324,7 @@ namespace Entroptik
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 26);
@@ -333,6 +336,7 @@ namespace Entroptik
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 26);
@@ -344,6 +348,7 @@ namespace Entroptik
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(3, 104);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 26);
@@ -355,6 +360,7 @@ namespace Entroptik
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(3, 130);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 26);
@@ -366,6 +372,7 @@ namespace Entroptik
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(3, 156);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 26);
@@ -377,7 +384,8 @@ namespace Entroptik
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(3, 182);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(3, 202);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 26);
             this.label7.TabIndex = 8;
@@ -388,7 +396,8 @@ namespace Entroptik
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(3, 208);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(3, 228);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 26);
             this.label8.TabIndex = 9;
@@ -399,7 +408,8 @@ namespace Entroptik
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(3, 234);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(3, 254);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(58, 26);
             this.label9.TabIndex = 10;
@@ -410,7 +420,8 @@ namespace Entroptik
             // 
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Location = new System.Drawing.Point(3, 260);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(3, 280);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 26);
             this.label10.TabIndex = 11;
@@ -516,8 +527,14 @@ namespace Entroptik
             // numPassScore
             // 
             this.numPassScore.AutoSize = true;
+            this.numPassScore.DecimalPlaces = 1;
             this.numPassScore.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numPassScore.Location = new System.Drawing.Point(67, 185);
+            this.numPassScore.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numPassScore.Location = new System.Drawing.Point(67, 205);
             this.numPassScore.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -532,8 +549,14 @@ namespace Entroptik
             // numPassTol
             // 
             this.numPassTol.AutoSize = true;
+            this.numPassTol.DecimalPlaces = 1;
             this.numPassTol.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numPassTol.Location = new System.Drawing.Point(67, 211);
+            this.numPassTol.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numPassTol.Location = new System.Drawing.Point(67, 231);
             this.numPassTol.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -548,8 +571,14 @@ namespace Entroptik
             // numFailScore
             // 
             this.numFailScore.AutoSize = true;
+            this.numFailScore.DecimalPlaces = 1;
             this.numFailScore.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numFailScore.Location = new System.Drawing.Point(67, 237);
+            this.numFailScore.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numFailScore.Location = new System.Drawing.Point(67, 257);
             this.numFailScore.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -564,8 +593,14 @@ namespace Entroptik
             // numFailTol
             // 
             this.numFailTol.AutoSize = true;
+            this.numFailTol.DecimalPlaces = 1;
             this.numFailTol.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numFailTol.Location = new System.Drawing.Point(67, 263);
+            this.numFailTol.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numFailTol.Location = new System.Drawing.Point(67, 283);
             this.numFailTol.Maximum = new decimal(new int[] {
             100000,
             0,

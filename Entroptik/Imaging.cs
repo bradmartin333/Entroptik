@@ -14,6 +14,8 @@ namespace Entroptik
 
         private static double BaseHeight = 550;
         private static Pen Pen = new Pen(Color.HotPink);
+        private static Pen PassPen = new Pen(Color.LawnGreen);
+        private static Pen FailPen = new Pen(Color.Red);
 
         public static void ShowImage()
         {
@@ -40,7 +42,10 @@ namespace Entroptik
                 FileHandler.PictureBox.BackgroundImage = scanned;
             else
                 FileHandler.PictureBox.BackgroundImage = working;
+
+            MakeGrid();
         }
+        
         private static Bitmap ScanImage(Bitmap img)
         {
             Edges filter = new Edges();
@@ -83,7 +88,9 @@ namespace Entroptik
 
             Bitmap grid = new Bitmap(FileHandler.PictureBox.BackgroundImage.Width, FileHandler.PictureBox.BackgroundImage.Height);
             FileHandler.PictureBox.Image = grid;
-            Pen.Width = grid.Width / 250;
+            Pen.Width = grid.Width / 150;
+            PassPen.Width = grid.Width / 150;
+            FailPen.Width = grid.Width / 150;
 
             for (int i = 0; i < FileHandler.FormMain.numX.Value; i++)
             {
@@ -102,7 +109,15 @@ namespace Entroptik
             {
                 using (Graphics g = Graphics.FromImage(FileHandler.PictureBox.Image))
                 {
-                    g.DrawRectangle(Pen, rectangle);
+                    if (Scores.Count == Rectangles.Count)
+                        if (Math.Abs(Scores[Rectangles.IndexOf(rectangle)] - FileHandler.Workspace.Pass.Item1) < FileHandler.Workspace.Pass.Item2)
+                            g.DrawRectangle(PassPen, rectangle);
+                        else if (Math.Abs(Scores[Rectangles.IndexOf(rectangle)] - FileHandler.Workspace.Fail.Item1) < FileHandler.Workspace.Fail.Item2)
+                            g.DrawRectangle(FailPen, rectangle);
+                        else
+                            g.DrawRectangle(Pen, rectangle);
+                    else
+                        g.DrawRectangle(Pen, rectangle);
                 }
             }
         }
