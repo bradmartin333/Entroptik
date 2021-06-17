@@ -18,6 +18,24 @@ namespace Entroptik
 
         public static int[,] DataArray = new int[5,5];
 
+        public static void ClearArray()
+        {
+            int len = 1;
+            if (FileHandler.Workspace.Images != null)
+                len = (int)Math.Sqrt(FileHandler.Workspace.Images.Length);
+
+            DataArray = new int[(int)(len * (double)FileHandler.FormMain.numX.Value),
+                (int)(len * (double)FileHandler.FormMain.numY.Value)];
+        }
+
+        public static IEnumerable<string> ToCsv()
+        {
+            for (int i = 0; i < DataArray.GetLength(0); ++i)
+                yield return string.Join(",", Enumerable
+                  .Range(0, DataArray.GetLength(1))
+                  .Select(j => DataArray[i, j]));
+        }
+
         public static bool VerifyFiles()
         {
             bool isRawIncremental = true;
@@ -45,6 +63,36 @@ namespace Entroptik
                 Type = DataType.Invalid; 
 
             return true;
+        }
+
+        public static int GetFileRow(string path)
+        {
+            string cleanPath = path.Split('\\').Last().Split('.').First();
+            switch (Type)
+            {
+                case DataType.RawIncremental:
+                    int fileNum = int.Parse(cleanPath.Replace("raw", ""));
+                    return (int)(fileNum % Math.Sqrt(FileHandler.Workspace.Images.Length) + 1);
+                case DataType.RowCol:
+                    return int.Parse(cleanPath.Split('C').First().Replace("_R", ""));
+            }
+            return 0;
+        }
+
+        public static int GetFileCol(string path)
+        {
+            string cleanPath = path.Split('\\').Last().Split('.').First();
+            switch (Type)
+            {
+                case DataType.RawIncremental:
+                    int fileNum = int.Parse(cleanPath.Replace("raw", ""));
+                    return (int)((fileNum / Math.Sqrt(FileHandler.Workspace.Images.Length)) - 
+                        (fileNum % Math.Sqrt(FileHandler.Workspace.Images.Length)) * 
+                        Math.Sqrt(FileHandler.Workspace.Images.Length));
+                case DataType.RowCol:
+                    return int.Parse(cleanPath.Split('C').Last());
+            }
+            return 0;
         }
     }
 }

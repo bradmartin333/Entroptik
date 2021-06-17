@@ -41,6 +41,7 @@ namespace Entroptik
             FormMain.numPassTol.Value = (decimal)Workspace.Pass.Item2;
             FormMain.numFailScore.Value = (decimal)Workspace.Fail.Item1;
             FormMain.numFailTol.Value = (decimal)Workspace.Fail.Item2;
+            Data.ClearArray();
             Imaging.MakeGrid();
             Imaging.ShowImage();
         }

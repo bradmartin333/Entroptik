@@ -13,6 +13,8 @@ namespace Entroptik
         public double Score;
         public int Row;
         public int Col;
+        public int FileRow;
+        public int FileCol;
     }
 
     public static class Imaging
@@ -27,10 +29,14 @@ namespace Entroptik
         public static void ShowImage()
         {
             Bitmap img;
+            string path = null;
             if (FileHandler.Workspace.Images == null)
                 img = Properties.Resources._default;
             else
-                img = new Bitmap(FileHandler.Workspace.Images[FileHandler.Workspace.ImageIndex]);
+            {
+                path = FileHandler.Workspace.Images[FileHandler.Workspace.ImageIndex];
+                img = new Bitmap(path);
+            }
 
             double heightRatio = BaseHeight / img.Height;
             Bitmap resize = new Bitmap((int)(heightRatio * img.Width), (int)BaseHeight);
@@ -43,7 +49,7 @@ namespace Entroptik
             Bitmap working = resize.Clone(new Rectangle(new Point(0, 0), resize.Size), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
             resize.Dispose();
 
-            MakeGrid();
+            MakeGrid(path);
             Bitmap scanned = ScanImage(working);
 
             if (FileHandler.FormMain.viewFilterToolStripButton.Checked)
@@ -88,7 +94,7 @@ namespace Entroptik
             return output;
         }
 
-        public static void MakeGrid()
+        public static void MakeGrid(string path = null)
         {
             Bitmap grid = new Bitmap(FileHandler.PictureBox.BackgroundImage.Width, FileHandler.PictureBox.BackgroundImage.Height);
             FileHandler.PictureBox.Image = grid;
@@ -111,6 +117,13 @@ namespace Entroptik
                             Row = j,
                             Col = i
                         };
+
+                        if (path!=null)
+                        {
+                            newFeature.FileRow = Data.GetFileRow(path);
+                            newFeature.FileCol = Data.GetFileCol(path);
+                        }
+
                         Features.Add(newFeature);
                     }
                 }
@@ -127,11 +140,20 @@ namespace Entroptik
                 using (Graphics g = Graphics.FromImage(FileHandler.PictureBox.Image))
                 {
                     if (Math.Abs(feature.Score - FileHandler.Workspace.Pass.Item1) < FileHandler.Workspace.Pass.Item2)
+                    {
                         g.DrawRectangle(PassPen, feature.Rectangle);
+                        Data.DataArray[feature.FileRow + feature.Row, feature.FileCol + feature.Col] = 1;
+                    }
                     else if (Math.Abs(feature.Score - FileHandler.Workspace.Fail.Item1) < FileHandler.Workspace.Fail.Item2)
+                    {
                         g.DrawRectangle(FailPen, feature.Rectangle);
+                        Data.DataArray[feature.FileRow + feature.Row, feature.FileCol + feature.Col] = 0;
+                    }  
                     else
+                    {
                         g.DrawRectangle(Pen, feature.Rectangle);
+                        Data.DataArray[feature.FileRow + feature.Row, feature.FileCol + feature.Col] = -1;
+                    }  
                 }
             }
         }

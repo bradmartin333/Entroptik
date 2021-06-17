@@ -49,9 +49,7 @@ namespace Entroptik
             else
                 FileHandler.Workspace.FilePath = pathBuffer;
             FileHandler.ReadParametersFromBinaryFile();
-
-            Data.DataArray = new int[(int)(Math.Sqrt(FileHandler.Workspace.Images.Length) * (double)FileHandler.FormMain.numX.Value),
-                (int)(Math.Sqrt(FileHandler.Workspace.Images.Length) * (double)FileHandler.FormMain.numY.Value)];
+            Data.ClearArray();
         }
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
@@ -71,7 +69,7 @@ namespace Entroptik
                 return;
             else
                 FileHandler.Workspace.OutputPath = pathBuffer;
-            // Write to file
+            File.WriteAllLines(FileHandler.Workspace.OutputPath, Data.ToCsv());
         }
 
         private void runToolStripButton_Click(object sender, EventArgs e)
@@ -82,20 +80,16 @@ namespace Entroptik
         private void runAllToolStripButton_Click(object sender, EventArgs e)
         {
             if (FileHandler.Workspace.Images != null)
-            {
                 while (true)
                 {
                     if (!NextImage())
                         break;
                 }
-            }
         }
 
         private void startOverToolStripButton_Click(object sender, EventArgs e)
         {
-            Data.DataArray = new int[(int)(Math.Sqrt(FileHandler.Workspace.Images.Length) * (double)FileHandler.FormMain.numX.Value),
-                (int)(Math.Sqrt(FileHandler.Workspace.Images.Length) * (double)FileHandler.FormMain.numY.Value)];
-
+            Data.ClearArray();
             progressBar.Value = 0;
             FileHandler.Workspace.ImageIndex = 0;
             runToolStripButton.Enabled = true;
@@ -183,16 +177,20 @@ namespace Entroptik
         {
             if (!FileHandler.DefaultsLoaded)
                 return;
+            numY.Value = numX.Value;
             FileHandler.Workspace.GridSize = new Point((int)numX.Value, (int)numY.Value);
-            Imaging.ShowImage();;
+            Data.ClearArray();
+            Imaging.ShowImage();
         }
 
         private void numY_ValueChanged(object sender, EventArgs e)
         {
             if (!FileHandler.DefaultsLoaded)
                 return;
+            numX.Value = numY.Value;
             FileHandler.Workspace.GridSize = new Point((int)numX.Value, (int)numY.Value);
-            Imaging.ShowImage();; 
+            Data.ClearArray();
+            Imaging.ShowImage();
         }
 
         private void numWid_ValueChanged(object sender, EventArgs e)
@@ -200,7 +198,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.FeatureSize = new Size((int)numWid.Value, (int)numHgt.Value);
-            Imaging.ShowImage();; 
+            Imaging.ShowImage();
         }
 
         private void numHgt_ValueChanged(object sender, EventArgs e)
@@ -208,7 +206,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.FeatureSize = new Size((int)numWid.Value, (int)numHgt.Value);
-            Imaging.ShowImage();; 
+            Imaging.ShowImage(); 
         }
 
         private void numXpitch_ValueChanged(object sender, EventArgs e)
@@ -216,7 +214,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.Pitch = new Point((int)numXpitch.Value, (int)numYpitch.Value);
-            Imaging.ShowImage();; 
+            Imaging.ShowImage(); 
         }
 
         private void numYpitch_ValueChanged(object sender, EventArgs e)
@@ -224,7 +222,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.Pitch = new Point((int)numXpitch.Value, (int)numYpitch.Value);
-            Imaging.ShowImage();; 
+            Imaging.ShowImage(); 
         }
 
         private void numPassScore_ValueChanged(object sender, EventArgs e)
@@ -232,7 +230,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.Pass = ((int)numPassScore.Value, (int)numPassTol.Value);
-            Imaging.ShowImage();; 
+            Imaging.ShowImage(); 
         }
 
         private void numPassTol_ValueChanged(object sender, EventArgs e)
@@ -240,7 +238,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.Pass = ((int)numPassScore.Value, (int)numPassTol.Value);
-            Imaging.ShowImage();; 
+            Imaging.ShowImage(); 
         }
 
         private void numFailScore_ValueChanged(object sender, EventArgs e)
@@ -248,7 +246,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.Fail = ((int)numFailScore.Value, (int)numFailTol.Value);
-            Imaging.ShowImage();; 
+            Imaging.ShowImage(); 
         }
 
         private void numFailTol_ValueChanged(object sender, EventArgs e)
@@ -256,7 +254,7 @@ namespace Entroptik
             if (!FileHandler.DefaultsLoaded)
                 return;
             FileHandler.Workspace.Fail = ((int)numFailScore.Value, (int)numFailTol.Value);
-            Imaging.ShowImage();; 
+            Imaging.ShowImage(); 
         }
 
         private void PictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -274,7 +272,7 @@ namespace Entroptik
             if (moveGridToolStripButton.Checked)
             {
                 FileHandler.Workspace.Guide = ZoomMousePos(e.Location);
-                Imaging.ShowImage();;
+                Imaging.ShowImage();
             }
         }
 
