@@ -8,6 +8,7 @@ namespace Entroptik
     [Serializable]
     public class Workspace
     {
+        public Point Guide = new Point(150, 150);
         public Point GridSize = new Point(5, 5);
         public Size FeatureSize = new Size(100, 100);
         public Point Pitch = new Point(200, 200);
@@ -16,6 +17,7 @@ namespace Entroptik
         [NonSerialized]
         public string DirectoryPath = null;
         public string FilePath = null;
+        public string OutputPath = null;
         public string[] Images = null;
         public int ImageIndex = 0;
     }
@@ -49,10 +51,12 @@ namespace Entroptik
             FormMain.numHgt.Value = Workspace.FeatureSize.Height;
             FormMain.numXpitch.Value = Workspace.Pitch.X;
             FormMain.numYpitch.Value = Workspace.Pitch.Y;
-            FormMain.numPassScore.Value = (decimal)Workspace.Pass.Item1;
-            FormMain.numPassTol.Value = (decimal)Workspace.Pass.Item2;
-            FormMain.numFailScore.Value = (decimal)Workspace.Fail.Item1;
-            FormMain.numFailTol.Value = (decimal)Workspace.Fail.Item2;
+            FormMain.numPassScore.Value = Workspace.Pass.Item1;
+            FormMain.numPassTol.Value = Workspace.Pass.Item2;
+            FormMain.numFailScore.Value = Workspace.Fail.Item1;
+            FormMain.numFailTol.Value = Workspace.Fail.Item2;
+
+            Imaging.MakeGrid();
         }
     }
 }

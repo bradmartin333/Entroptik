@@ -52,7 +52,12 @@ namespace Entroptik
 
         private void printToolStripButton_Click(object sender, EventArgs e)
         {
-
+            string pathBuffer = SaveFile("Save output CSV", "Comma Separated Values(*.csv) | *.csv");
+            if (pathBuffer == null)
+                return;
+            else
+                FileHandler.Workspace.OutputPath = pathBuffer;
+            // Write to file
         }
 
         private void trainToolStripButton_Click(object sender, EventArgs e)
@@ -230,7 +235,7 @@ namespace Entroptik
         {
             if (!inspectToolStripButton.Checked)
             {
-                Imaging.Guide = ZoomMousePos(e.Location);
+                FileHandler.Workspace.Guide = ZoomMousePos(e.Location);
                 Imaging.MakeGrid();
             }
         }

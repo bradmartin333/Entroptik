@@ -68,7 +68,7 @@ namespace Entroptik
             this.numPassTol = new System.Windows.Forms.NumericUpDown();
             this.numFailScore = new System.Windows.Forms.NumericUpDown();
             this.numFailTol = new System.Windows.Forms.NumericUpDown();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.tlpMain.SuspendLayout();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -112,7 +112,7 @@ namespace Entroptik
             this.tlpMain.Controls.Add(this.numPassTol, 1, 8);
             this.tlpMain.Controls.Add(this.numFailScore, 1, 9);
             this.tlpMain.Controls.Add(this.numFailTol, 1, 10);
-            this.tlpMain.Controls.Add(this.progressBar1, 0, 12);
+            this.tlpMain.Controls.Add(this.progressBar, 0, 12);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpMain.Location = new System.Drawing.Point(0, 0);
             this.tlpMain.Name = "tlpMain";
@@ -185,7 +185,7 @@ namespace Entroptik
             this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripButton.Name = "saveToolStripButton";
             this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.saveToolStripButton.Text = "%Save";
+            this.saveToolStripButton.Text = "&Save";
             this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
             // 
             // printToolStripButton
@@ -625,14 +625,15 @@ namespace Entroptik
             0});
             this.numFailTol.ValueChanged += new System.EventHandler(this.numFailTol_ValueChanged);
             // 
-            // progressBar1
+            // progressBar
             // 
-            this.tlpMain.SetColumnSpan(this.progressBar1, 3);
-            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(3, 539);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(650, 14);
-            this.progressBar1.TabIndex = 23;
+            this.tlpMain.SetColumnSpan(this.progressBar, 3);
+            this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.progressBar.Location = new System.Drawing.Point(3, 539);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(650, 14);
+            this.progressBar.Step = 1;
+            this.progressBar.TabIndex = 23;
             // 
             // FormMain
             // 
@@ -690,7 +691,6 @@ namespace Entroptik
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton inspectToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ToolStripButton saveToolStripButton;
         public System.Windows.Forms.PictureBox pictureBox;
         public System.Windows.Forms.NumericUpDown numX;
@@ -704,6 +704,7 @@ namespace Entroptik
         public System.Windows.Forms.NumericUpDown numFailScore;
         public System.Windows.Forms.NumericUpDown numFailTol;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox;
+        public System.Windows.Forms.ProgressBar progressBar;
     }
 }
 
