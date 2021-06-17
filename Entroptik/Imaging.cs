@@ -36,6 +36,7 @@ namespace Entroptik
             Bitmap working = resize.Clone(new Rectangle(new Point(0, 0), resize.Size), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
             resize.Dispose();
 
+            MakeGrid();
             Bitmap scanned = ScanImage(working);
 
             if (FileHandler.FormMain.viewFilterToolStripButton.Checked)
