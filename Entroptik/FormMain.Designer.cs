@@ -37,12 +37,12 @@ namespace Entroptik
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.moveGridToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.viewFilterToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.inspectToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.runToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.runAllToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.stopToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.startOverToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -69,7 +69,6 @@ namespace Entroptik
             this.numFailScore = new System.Windows.Forms.NumericUpDown();
             this.numFailTol = new System.Windows.Forms.NumericUpDown();
             this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.moveGridToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tlpMain.SuspendLayout();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -150,7 +149,6 @@ namespace Entroptik
             this.toolStripSeparator2,
             this.runToolStripButton,
             this.runAllToolStripButton,
-            this.stopToolStripButton,
             this.startOverToolStripButton,
             this.toolStripSeparator3,
             this.helpToolStripButton,
@@ -206,6 +204,17 @@ namespace Entroptik
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
+            // moveGridToolStripButton
+            // 
+            this.moveGridToolStripButton.CheckOnClick = true;
+            this.moveGridToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.moveGridToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_construction_5_24;
+            this.moveGridToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.moveGridToolStripButton.Name = "moveGridToolStripButton";
+            this.moveGridToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.moveGridToolStripButton.Text = "&Move Grid";
+            this.moveGridToolStripButton.Click += new System.EventHandler(this.moveGridToolStripButton_Click);
+            // 
             // viewFilterToolStripButton
             // 
             this.viewFilterToolStripButton.CheckOnClick = true;
@@ -252,16 +261,6 @@ namespace Entroptik
             this.runAllToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.runAllToolStripButton.Text = "&Run All";
             this.runAllToolStripButton.Click += new System.EventHandler(this.runAllToolStripButton_Click);
-            // 
-            // stopToolStripButton
-            // 
-            this.stopToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.stopToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_stop_4_24;
-            this.stopToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.stopToolStripButton.Name = "stopToolStripButton";
-            this.stopToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.stopToolStripButton.Text = "&Stop";
-            this.stopToolStripButton.Click += new System.EventHandler(this.stopToolStripButton_Click);
             // 
             // startOverToolStripButton
             // 
@@ -624,17 +623,6 @@ namespace Entroptik
             this.progressBar.Step = 1;
             this.progressBar.TabIndex = 23;
             // 
-            // moveGridToolStripButton
-            // 
-            this.moveGridToolStripButton.CheckOnClick = true;
-            this.moveGridToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.moveGridToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_construction_5_24;
-            this.moveGridToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.moveGridToolStripButton.Name = "moveGridToolStripButton";
-            this.moveGridToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.moveGridToolStripButton.Text = "&Move Grid";
-            this.moveGridToolStripButton.Click += new System.EventHandler(this.moveGridToolStripButton_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -685,7 +673,6 @@ namespace Entroptik
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton runToolStripButton;
         private System.Windows.Forms.ToolStripButton runAllToolStripButton;
-        private System.Windows.Forms.ToolStripButton stopToolStripButton;
         private System.Windows.Forms.ToolStripButton startOverToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton inspectToolStripButton;

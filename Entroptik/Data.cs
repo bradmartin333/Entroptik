@@ -6,20 +6,28 @@ using System.Threading.Tasks;
 
 namespace Entroptik
 {
-    class Data
+    static class Data
     {
-        public DataType Type = DataType.Standard;
+        public static DataType Type = DataType.Invalid;
         public enum DataType
         {
-            Standard,
             RawIncremental,
-            RowCol
+            RowCol,
+            Invalid
         }
 
-        public Data()
+        public static int[,] DataArray = new int[5,5];
+
+        public static bool VerifyFiles()
         {
             bool isRawIncremental = true;
             bool isRowCol = true;
+
+            if (FileHandler.Workspace.Images.Length == 0)
+            {
+                Type = DataType.Invalid;
+                return false;
+            }
 
             foreach (string file in FileHandler.Workspace.Images)
             {
@@ -34,8 +42,9 @@ namespace Entroptik
             else if (isRowCol)
                 Type = DataType.RowCol;
             else
-                Type = DataType.Standard;
+                Type = DataType.Invalid; 
 
+            return true;
         }
     }
 }

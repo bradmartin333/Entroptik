@@ -7,10 +7,17 @@ using System.Drawing;
 
 namespace Entroptik
 {
+    public class Feature
+    {
+        public Rectangle Rectangle;
+        public double Score;
+        public int Row;
+        public int Col;
+    }
+
     public static class Imaging
     {
-        public static List<Rectangle> Rectangles = new List<Rectangle>();
-        public static List<double> Scores = new List<double>();
+        public static List<Feature> Features = new List<Feature>();
 
         private static double BaseHeight = 550;
         private static Pen Pen = new Pen(Color.HotPink);
@@ -44,41 +51,38 @@ namespace Entroptik
             else
                 FileHandler.PictureBox.BackgroundImage = working;
 
-            MakeGrid();
+            ShowGrid();
             System.Windows.Forms.Application.DoEvents();
         }
         
         private static Bitmap ScanImage(Bitmap img)
         {
             Edges filter = new Edges();
-
-            Scores.Clear();
-
             Bitmap output = img.Clone(System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 
-            foreach (Rectangle rectangle in Rectangles)
+            foreach (Feature feature in Features)
             {
-                Bitmap feature = new Bitmap(rectangle.Width, rectangle.Height);
-                using (Graphics g = Graphics.FromImage(feature))
+                Bitmap bmp = new Bitmap(feature.Rectangle.Width, feature.Rectangle.Height);
+                using (Graphics g = Graphics.FromImage(bmp))
                 {
-                    g.DrawImage(img, new Rectangle(0, 0, feature.Width, feature.Height), rectangle, GraphicsUnit.Pixel);
+                    g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height), feature.Rectangle, GraphicsUnit.Pixel);
                 }
 
-                filter.ApplyInPlace(feature);
+                filter.ApplyInPlace(bmp);
 
                 List<double> pixelVals = new List<double>();
-                for (int i = 0; i < feature.Width; i++)
+                for (int i = 0; i < bmp.Width; i++)
                 {
-                    for (int j = 0; j < feature.Height; j++)
+                    for (int j = 0; j < bmp.Height; j++)
                     {
-                        pixelVals.Add(feature.GetPixel(i, j).ToArgb());
+                        pixelVals.Add(bmp.GetPixel(i, j).ToArgb());
                     }
                 }
-                Scores.Add(Statistics.Entropy(pixelVals.ToArray()));
+                feature.Score = Statistics.Entropy(pixelVals.ToArray());
 
                 using (Graphics g = Graphics.FromImage(output))
                 {
-                    g.DrawImage(feature, rectangle);
+                    g.DrawImage(bmp, feature.Rectangle);
                 }
             }
             return output;
@@ -86,40 +90,48 @@ namespace Entroptik
 
         public static void MakeGrid()
         {
-            Rectangles.Clear();
-
             Bitmap grid = new Bitmap(FileHandler.PictureBox.BackgroundImage.Width, FileHandler.PictureBox.BackgroundImage.Height);
             FileHandler.PictureBox.Image = grid;
             Pen.Width = grid.Width / 150;
             PassPen.Width = grid.Width / 150;
             FailPen.Width = grid.Width / 150;
 
+            Features.Clear();
             for (int i = 0; i < FileHandler.FormMain.numX.Value; i++)
             {
                 for (int j = 0; j < FileHandler.FormMain.numY.Value; j++)
                 {
                     using (Graphics g = Graphics.FromImage(grid))
                     {
-                        Rectangles.Add(new Rectangle((int)(FileHandler.Workspace.Guide.X + i * FileHandler.FormMain.numXpitch.Value - FileHandler.FormMain.numWid.Value / 2),
-                            (int)(FileHandler.Workspace.Guide.Y + j * FileHandler.FormMain.numYpitch.Value - FileHandler.FormMain.numHgt.Value / 2),
-                            (int)FileHandler.FormMain.numWid.Value, (int)FileHandler.FormMain.numHgt.Value));
+                        Feature newFeature = new Feature
+                        {
+                            Rectangle = new Rectangle((int)(FileHandler.Workspace.Guide.X + i * FileHandler.FormMain.numXpitch.Value - FileHandler.FormMain.numWid.Value / 2),
+                                (int)(FileHandler.Workspace.Guide.Y + j * FileHandler.FormMain.numYpitch.Value - FileHandler.FormMain.numHgt.Value / 2),
+                                (int)FileHandler.FormMain.numWid.Value, (int)FileHandler.FormMain.numHgt.Value),
+                            Row = j,
+                            Col = i
+                        };
+                        Features.Add(newFeature);
                     }
                 }
             }
+        }
 
-            foreach (Rectangle rectangle in Rectangles)
+        public static void ShowGrid()
+        {
+            foreach (Feature feature in Features)
             {
+                feature.Rectangle = new Rectangle((int)(FileHandler.Workspace.Guide.X + feature.Row * FileHandler.FormMain.numXpitch.Value - FileHandler.FormMain.numWid.Value / 2),
+                        (int)(FileHandler.Workspace.Guide.Y + feature.Col * FileHandler.FormMain.numYpitch.Value - FileHandler.FormMain.numHgt.Value / 2),
+                        (int)FileHandler.FormMain.numWid.Value, (int)FileHandler.FormMain.numHgt.Value);
                 using (Graphics g = Graphics.FromImage(FileHandler.PictureBox.Image))
                 {
-                    if (Scores.Count == Rectangles.Count)
-                        if (Math.Abs(Scores[Rectangles.IndexOf(rectangle)] - FileHandler.Workspace.Pass.Item1) < FileHandler.Workspace.Pass.Item2)
-                            g.DrawRectangle(PassPen, rectangle);
-                        else if (Math.Abs(Scores[Rectangles.IndexOf(rectangle)] - FileHandler.Workspace.Fail.Item1) < FileHandler.Workspace.Fail.Item2)
-                            g.DrawRectangle(FailPen, rectangle);
-                        else
-                            g.DrawRectangle(Pen, rectangle);
+                    if (Math.Abs(feature.Score - FileHandler.Workspace.Pass.Item1) < FileHandler.Workspace.Pass.Item2)
+                        g.DrawRectangle(PassPen, feature.Rectangle);
+                    else if (Math.Abs(feature.Score - FileHandler.Workspace.Fail.Item1) < FileHandler.Workspace.Fail.Item2)
+                        g.DrawRectangle(FailPen, feature.Rectangle);
                     else
-                        g.DrawRectangle(Pen, rectangle);
+                        g.DrawRectangle(Pen, feature.Rectangle);
                 }
             }
         }

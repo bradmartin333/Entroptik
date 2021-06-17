@@ -27,12 +27,15 @@ namespace Entroptik
                 return;
             else
                 FileHandler.Workspace.DirectoryPath = pathBuffer;
+
             FileHandler.Workspace.Images = GetImagesFrom(FileHandler.Workspace.DirectoryPath);
-            if (FileHandler.Workspace.Images.Length == 0)
+            if (!Data.VerifyFiles())
             {
-                FileHandler.Workspace.Images = null;
+                progressBar.Value = 0;
+                MessageBox.Show("Invalid Directory Contents");
                 return;
             }
+
             progressBar.Maximum = FileHandler.Workspace.Images.Length;
             FileHandler.Workspace.ImageIndex = 0;
             Imaging.ShowImage();
@@ -46,6 +49,9 @@ namespace Entroptik
             else
                 FileHandler.Workspace.FilePath = pathBuffer;
             FileHandler.ReadParametersFromBinaryFile();
+
+            Data.DataArray = new int[(int)(Math.Sqrt(FileHandler.Workspace.Images.Length) * (double)FileHandler.FormMain.numX.Value),
+                (int)(Math.Sqrt(FileHandler.Workspace.Images.Length) * (double)FileHandler.FormMain.numY.Value)];
         }
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
@@ -85,13 +91,11 @@ namespace Entroptik
             }
         }
 
-        private void stopToolStripButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void startOverToolStripButton_Click(object sender, EventArgs e)
         {
+            Data.DataArray = new int[(int)(Math.Sqrt(FileHandler.Workspace.Images.Length) * (double)FileHandler.FormMain.numX.Value),
+                (int)(Math.Sqrt(FileHandler.Workspace.Images.Length) * (double)FileHandler.FormMain.numY.Value)];
+
             progressBar.Value = 0;
             FileHandler.Workspace.ImageIndex = 0;
             runToolStripButton.Enabled = true;
@@ -258,10 +262,10 @@ namespace Entroptik
         private void PictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             Point point = ZoomMousePos(e.Location);
-            foreach (Rectangle rectangle in Imaging.Rectangles)
+            foreach (Feature feature in Imaging.Features)
             {
-                if (rectangle.Contains(point))
-                    toolStripTextBox.Text = Imaging.Scores[Imaging.Rectangles.IndexOf(rectangle)].ToString();
+                if (feature.Rectangle.Contains(point))
+                    toolStripTextBox.Text = feature.Score.ToString();
             }
         }
 
