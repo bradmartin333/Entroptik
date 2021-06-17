@@ -284,6 +284,7 @@ namespace Entroptik
             // pictureBox
             // 
             this.pictureBox.BackColor = System.Drawing.Color.White;
+            this.pictureBox.BackgroundImage = global::Entroptik.Properties.Resources._R1_C1;
             this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -424,6 +425,7 @@ namespace Entroptik
             0,
             0,
             0});
+            this.numX.ValueChanged += new System.EventHandler(this.numX_ValueChanged);
             // 
             // numY
             // 
@@ -444,6 +446,7 @@ namespace Entroptik
             0,
             0,
             0});
+            this.numY.ValueChanged += new System.EventHandler(this.numY_ValueChanged);
             // 
             // numWid
             // 
@@ -464,6 +467,7 @@ namespace Entroptik
             0,
             0,
             0});
+            this.numWid.ValueChanged += new System.EventHandler(this.numWid_ValueChanged);
             // 
             // numHgt
             // 
@@ -484,6 +488,7 @@ namespace Entroptik
             0,
             0,
             0});
+            this.numHgt.ValueChanged += new System.EventHandler(this.numHgt_ValueChanged);
             // 
             // numXpitch
             // 
@@ -504,6 +509,7 @@ namespace Entroptik
             0,
             0,
             0});
+            this.numXpitch.ValueChanged += new System.EventHandler(this.numXpitch_ValueChanged);
             // 
             // numYpitch
             // 
@@ -524,6 +530,7 @@ namespace Entroptik
             0,
             0,
             0});
+            this.numYpitch.ValueChanged += new System.EventHandler(this.numYpitch_ValueChanged);
             // 
             // numPassScore
             // 
@@ -544,6 +551,7 @@ namespace Entroptik
             0,
             0,
             0});
+            this.numPassScore.ValueChanged += new System.EventHandler(this.numPassScore_ValueChanged);
             // 
             // numPassTol
             // 
@@ -564,6 +572,7 @@ namespace Entroptik
             0,
             0,
             0});
+            this.numPassTol.ValueChanged += new System.EventHandler(this.numPassTol_ValueChanged);
             // 
             // numFailScore
             // 
@@ -584,6 +593,7 @@ namespace Entroptik
             0,
             0,
             0});
+            this.numFailScore.ValueChanged += new System.EventHandler(this.numFailScore_ValueChanged);
             // 
             // numFailTol
             // 
@@ -604,6 +614,7 @@ namespace Entroptik
             0,
             0,
             0});
+            this.numFailTol.ValueChanged += new System.EventHandler(this.numFailTol_ValueChanged);
             // 
             // progressBar1
             // 

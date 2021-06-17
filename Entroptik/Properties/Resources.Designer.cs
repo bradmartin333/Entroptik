@@ -63,6 +63,16 @@ namespace Entroptik.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _R1_C1 {
+            get {
+                object obj = ResourceManager.GetObject("_R1_C1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconmonstr_construction_5_24 {
             get {
                 object obj = ResourceManager.GetObject("iconmonstr-construction-5-24", resourceCulture);

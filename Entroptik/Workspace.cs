@@ -28,12 +28,6 @@ namespace Entroptik
 
         public static void WriteParametersToBinaryFile()
         {
-            Workspace.GridSize = new Point((int)FormMain.numX.Value, (int)FormMain.numY.Value);
-            Workspace.FeatureSize = new Size((int)FormMain.numWid.Value, (int)FormMain.numHgt.Value);
-            Workspace.Pitch = new Point((int)FormMain.numXpitch.Value, (int)FormMain.numYpitch.Value);
-            Workspace.Pass = ((int)FormMain.numPassScore.Value, (int)FormMain.numPassTol.Value);
-            Workspace.Fail = ((int)FormMain.numFailScore.Value, (int)FormMain.numFailTol.Value);
-
             using (Stream stream = File.Open(Workspace.FilePath, false ? FileMode.Append : FileMode.Create))
             {
                 var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();

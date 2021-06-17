@@ -121,6 +121,9 @@
   <data name="iconmonstr-construction-5-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconmonstr-construction-5-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconmonstr-save-1-240" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconmonstr-save-1-240.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconmonstr-power-on-off-3-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconmonstr-power-on-off-3-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -136,7 +139,7 @@
   <data name="iconmonstr-magnifier-2-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconmonstr-magnifier-2-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconmonstr-save-1-240" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconmonstr-save-1-240.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_R1_C1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_R1_C1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

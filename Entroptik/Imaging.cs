@@ -14,15 +14,16 @@ namespace Entroptik
         {
             Bitmap img = new Bitmap(filePath);
             FileHandler.PictureBox.BackgroundImage = img;
-            MakeGrid();
-            ShowGrid();
         }
 
-        private static void MakeGrid()
+        public static void MakeGrid()
         {
+            Rectangles.Clear();
+
             Bitmap grid = new Bitmap(FileHandler.PictureBox.BackgroundImage.Width, FileHandler.PictureBox.BackgroundImage.Height);
             FileHandler.PictureBox.Image = grid;
             Pen.Width = grid.Width / 250;
+
             for (int i = 0; i <= FileHandler.FormMain.numX.Value - 1; i++)
             {
                 for (int j = 0; j <= FileHandler.FormMain.numY.Value - 1; j++)
@@ -35,19 +36,14 @@ namespace Entroptik
                     }
                 }
             }
-        }
 
-        private static void ShowGrid()
-        {
-            Bitmap grid = new Bitmap(FileHandler.PictureBox.Image.Width, FileHandler.PictureBox.Image.Height);
             foreach (Rectangle rectangle in Rectangles)
             {
-                using (Graphics g = Graphics.FromImage(grid))
+                using (Graphics g = Graphics.FromImage(FileHandler.PictureBox.Image))
                 {
                     g.DrawRectangle(Pen, rectangle);
                 }
             }
-            FileHandler.PictureBox.Image = grid;
         }
     }
 }

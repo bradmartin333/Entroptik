@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,6 +14,7 @@ namespace Entroptik
             InitializeComponent();
             FileHandler.FormMain = this;
             FileHandler.PictureBox = pictureBox;
+            Imaging.MakeGrid();
         }
 
         private void newToolStripButton_Click(object sender, EventArgs e)
@@ -155,6 +157,66 @@ namespace Entroptik
                 filesFound.AddRange(Directory.GetFiles(searchFolder, string.Format("*.{0}", filter), searchOption));
             }
             return filesFound.ToArray();
+        }
+
+        private void numX_ValueChanged(object sender, EventArgs e)
+        {
+            FileHandler.Workspace.GridSize = new Point((int)numX.Value, (int)numY.Value);
+            Imaging.MakeGrid();
+        }
+
+        private void numY_ValueChanged(object sender, EventArgs e)
+        {
+            FileHandler.Workspace.GridSize = new Point((int)numX.Value, (int)numY.Value);
+            Imaging.MakeGrid(); 
+        }
+
+        private void numWid_ValueChanged(object sender, EventArgs e)
+        {
+            FileHandler.Workspace.FeatureSize = new Size((int)numWid.Value, (int)numHgt.Value);
+            Imaging.MakeGrid(); 
+        }
+
+        private void numHgt_ValueChanged(object sender, EventArgs e)
+        {
+            FileHandler.Workspace.FeatureSize = new Size((int)numWid.Value, (int)numHgt.Value);
+            Imaging.MakeGrid(); 
+        }
+
+        private void numXpitch_ValueChanged(object sender, EventArgs e)
+        {
+            FileHandler.Workspace.Pitch = new Point((int)numXpitch.Value, (int)numYpitch.Value);
+            Imaging.MakeGrid(); 
+        }
+
+        private void numYpitch_ValueChanged(object sender, EventArgs e)
+        {
+            FileHandler.Workspace.Pitch = new Point((int)numXpitch.Value, (int)numYpitch.Value);
+            Imaging.MakeGrid(); 
+        }
+
+        private void numPassScore_ValueChanged(object sender, EventArgs e)
+        {
+            FileHandler.Workspace.Pass = ((int)numPassScore.Value, (int)numPassTol.Value);
+            Imaging.MakeGrid(); 
+        }
+
+        private void numPassTol_ValueChanged(object sender, EventArgs e)
+        {
+            FileHandler.Workspace.Pass = ((int)numPassScore.Value, (int)numPassTol.Value);
+            Imaging.MakeGrid(); 
+        }
+
+        private void numFailScore_ValueChanged(object sender, EventArgs e)
+        {
+            FileHandler.Workspace.Fail = ((int)numFailScore.Value, (int)numFailTol.Value);
+            Imaging.MakeGrid(); 
+        }
+
+        private void numFailTol_ValueChanged(object sender, EventArgs e)
+        {
+            FileHandler.Workspace.Fail = ((int)numFailScore.Value, (int)numFailTol.Value);
+            Imaging.MakeGrid(); 
         }
     }
 }
