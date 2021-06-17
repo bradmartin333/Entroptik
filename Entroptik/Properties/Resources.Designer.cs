@@ -63,9 +63,9 @@ namespace Entroptik.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _R1_C1 {
+        internal static System.Drawing.Bitmap _default {
             get {
-                object obj = ResourceManager.GetObject("_R1_C1", resourceCulture);
+                object obj = ResourceManager.GetObject("default", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,6 +86,16 @@ namespace Entroptik.Properties {
         internal static System.Drawing.Bitmap iconmonstr_cursor_7_240 {
             get {
                 object obj = ResourceManager.GetObject("iconmonstr_cursor_7_240", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconmonstr_eye_6_240 {
+            get {
+                object obj = ResourceManager.GetObject("iconmonstr-eye-6-240", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
