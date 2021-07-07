@@ -284,7 +284,7 @@ namespace Entroptik
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MapFlip";
-            this.Text = "Modify Output Map";
+            this.Text = "Edit Data Grid";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
