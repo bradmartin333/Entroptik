@@ -122,19 +122,20 @@ namespace Entroptik
 
                 if (path != null)
                 {
-                    feature.FileRow = Data.GetFileRow(path);
-                    feature.FileCol = Data.GetFileCol(path);
-                }
+                    int[] originalRowCol = Data.GetFileRowCol(path);
+                    feature.FileRow = originalRowCol[0];
+                    feature.FileCol = originalRowCol[1];
 
-                int originalIdx = Data.OriginalDataMap[feature.FileCol, feature.FileRow];
-                for (int i = 0; i < Data.DataMap.GetLength(0); i++)
-                {
-                    for (int j = 0; j < Data.DataMap.GetLength(1); j++)
+                    int originalIdx = Data.OriginalDataMap[feature.FileCol, feature.FileRow];
+                    for (int i = 0; i < Data.DataMap.GetLength(0); i++)
                     {
-                        if (Data.DataMap[i,j] == originalIdx)
+                        for (int j = 0; j < Data.DataMap.GetLength(1); j++)
                         {
-                            feature.FileRow = i;
-                            feature.FileCol = j;
+                            if (Data.DataMap[i, j] == originalIdx)
+                            {
+                                feature.FileRow = i;
+                                feature.FileCol = j;
+                            }
                         }
                     }
                 }
