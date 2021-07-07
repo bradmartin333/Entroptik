@@ -36,6 +36,7 @@ namespace Entroptik
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.editDataGridToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -172,6 +173,7 @@ namespace Entroptik
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripButton,
             this.openToolStripButton,
+            this.editDataGridToolStripButton,
             this.saveToolStripButton,
             this.printToolStripButton,
             this.toolStripSeparator1,
@@ -204,6 +206,16 @@ namespace Entroptik
             this.openToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.openToolStripButton.Text = "&Open";
             this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
+            // 
+            // editDataGridToolStripButton
+            // 
+            this.editDataGridToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.editDataGridToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_map_5_16;
+            this.editDataGridToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.editDataGridToolStripButton.Name = "editDataGridToolStripButton";
+            this.editDataGridToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.editDataGridToolStripButton.Text = "Edit Data Grid";
+            this.editDataGridToolStripButton.Click += new System.EventHandler(this.editDataGridToolStripButton_Click);
             // 
             // saveToolStripButton
             // 
@@ -636,7 +648,7 @@ namespace Entroptik
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(428, 364);
             this.Name = "FormMain";
-            this.Text = "Entroptik v4.0";
+            this.Text = "Entroptik v4.2";
             this.tlpMain.ResumeLayout(false);
             this.tlpMain.PerformLayout();
             this.toolStrip.ResumeLayout(false);
@@ -697,6 +709,7 @@ namespace Entroptik
         public System.Windows.Forms.NumericUpDown numGuideX;
         public System.Windows.Forms.NumericUpDown numGuideY;
         public System.Windows.Forms.ToolStripButton runToolStripButton;
+        private System.Windows.Forms.ToolStripButton editDataGridToolStripButton;
     }
 }
 

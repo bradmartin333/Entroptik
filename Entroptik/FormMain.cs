@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Entroptik
@@ -37,6 +38,7 @@ namespace Entroptik
             FileHandler.Workspace.ImageIndex = 0;
             Data.ClearArray();
             Imaging.ShowImage();
+            editDataGridToolStripButton.Enabled = true;
         }
 
         private void openToolStripButton_Click(object sender, EventArgs e)
@@ -49,6 +51,7 @@ namespace Entroptik
             FileHandler.Loaded = false;
             FileHandler.ReadParametersFromBinaryFile();
             Data.ClearArray();
+            editDataGridToolStripButton.Enabled = true;
         }
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
@@ -74,6 +77,7 @@ namespace Entroptik
         private void runToolStripButton_Click(object sender, EventArgs e)
         {
             NextImage();
+            editDataGridToolStripButton.Enabled = false;
         }
 
         private void runAllToolStripButton_Click(object sender, EventArgs e)
@@ -84,6 +88,7 @@ namespace Entroptik
                     if (!NextImage())
                         break;
                 }
+            editDataGridToolStripButton.Enabled = false;
         }
 
         private void startOverToolStripButton_Click(object sender, EventArgs e)
@@ -92,6 +97,7 @@ namespace Entroptik
             progressBar.Value = 0;
             FileHandler.Workspace.ImageIndex = 0;
             Imaging.ShowImage();
+            editDataGridToolStripButton.Enabled = true;
         }
 
         private bool NextImage()
@@ -302,6 +308,14 @@ namespace Entroptik
                 pos.X /= scale;
             }
             return new Point((int)pos.X, (int)pos.Y);
+        }
+
+        private void editDataGridToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms.OfType<MapFlip>().Any())
+                Application.OpenForms.OfType<MapFlip>().First().BringToFront();
+            else
+                _ = new MapFlip(true);
         }
     }
 }

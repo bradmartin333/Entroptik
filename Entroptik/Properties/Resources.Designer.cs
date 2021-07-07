@@ -73,6 +73,16 @@ namespace Entroptik.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap horizFlip {
+            get {
+                object obj = ResourceManager.GetObject("horizFlip", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconmonstr_construction_5_24 {
             get {
                 object obj = ResourceManager.GetObject("iconmonstr_construction_5_24", resourceCulture);
@@ -113,6 +123,26 @@ namespace Entroptik.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconmonstr_map_10_240 {
+            get {
+                object obj = ResourceManager.GetObject("iconmonstr-map-10-240", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconmonstr_map_5_16 {
+            get {
+                object obj = ResourceManager.GetObject("iconmonstr-map-5-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconmonstr_power_on_off_3_24 {
             get {
                 object obj = ResourceManager.GetObject("iconmonstr_power_on_off_3_24", resourceCulture);
@@ -146,6 +176,26 @@ namespace Entroptik.Properties {
         internal static System.Drawing.Bitmap iconmonstr_undo_1_24 {
             get {
                 object obj = ResourceManager.GetObject("iconmonstr_undo_1_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rotateArrow {
+            get {
+                object obj = ResourceManager.GetObject("rotateArrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vertFlip {
+            get {
+                object obj = ResourceManager.GetObject("vertFlip", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

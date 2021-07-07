@@ -126,6 +126,19 @@ namespace Entroptik
                     feature.FileCol = Data.GetFileCol(path);
                 }
 
+                int originalIdx = Data.OriginalDataMap[feature.FileCol, feature.FileRow];
+                for (int i = 0; i < Data.DataMap.GetLength(0); i++)
+                {
+                    for (int j = 0; j < Data.DataMap.GetLength(1); j++)
+                    {
+                        if (Data.DataMap[i,j] == originalIdx)
+                        {
+                            feature.FileRow = i;
+                            feature.FileCol = j;
+                        }
+                    }
+                }
+
                 int numX = (int)FileHandler.FormMain.numX.Value;
                 int numY = (int)FileHandler.FormMain.numY.Value;
 
