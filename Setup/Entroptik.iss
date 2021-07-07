@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Entroptik"
-#define MyAppVersion "4.1"
+#define MyAppVersion "4.2"
 #define MyAppPublisher "bradmartin333"
 #define MyAppURL "https://github.com/bradmartin333"
 #define MyAppExeName "Entroptik.exe"
@@ -28,7 +28,7 @@ DisableProgramGroupPage=yes
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-OutputDir=S:\Entroptik\Setup
+OutputDir=C:\Repos\Entroptik\Setup
 OutputBaseFilename=EntroptikSetup
 Compression=lzma
 SolidCompression=yes
@@ -41,13 +41,13 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "S:\Entroptik\Entroptik\bin\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\Entroptik.exe.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\Entroptik.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\MathNet.Numerics.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\MathNet.Numerics.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\System.ValueTuple.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "S:\Entroptik\Entroptik\bin\Release\System.ValueTuple.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Repos\Entroptik\Entroptik\bin\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Repos\Entroptik\Entroptik\bin\Release\Entroptik.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Repos\Entroptik\Entroptik\bin\Release\Entroptik.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Repos\Entroptik\Entroptik\bin\Release\MathNet.Numerics.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Repos\Entroptik\Entroptik\bin\Release\MathNet.Numerics.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Repos\Entroptik\Entroptik\bin\Release\System.ValueTuple.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Repos\Entroptik\Entroptik\bin\Release\System.ValueTuple.xml"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
