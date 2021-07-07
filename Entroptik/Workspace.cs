@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -14,11 +15,16 @@ namespace Entroptik
         public Point Pitch = new Point(145, 145);
         public (double, double) Pass = (12.0, 2.0);
         public (double, double) Fail = (2.0, 2.0);
+        public List<int> DataOrientation = new List<int>();
         [NonSerialized]
         public string DirectoryPath = @"C:\";
+        [NonSerialized]
         public string FilePath = null;
+        [NonSerialized]
         public string OutputPath = null;
+        [NonSerialized]
         public string[] Images = null;
+        [NonSerialized]
         public int ImageIndex = 0;
     }
 

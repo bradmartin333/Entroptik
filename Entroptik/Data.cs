@@ -16,7 +16,9 @@ namespace Entroptik
             Invalid
         }
 
-        public static int[,] DataArray = new int[5,5];
+        public static int[,] DataArray = new int[5, 5];
+        public static int[,] OriginalDataMap = new int[1, 1];
+        public static int[,] DataMap = new int[1, 1];
 
         public static void ClearArray()
         {
@@ -26,6 +28,22 @@ namespace Entroptik
 
             DataArray = new int[(int)(len * (double)FileHandler.FormMain.numX.Value),
                 (int)(len * (double)FileHandler.FormMain.numY.Value)];
+
+            DataMap = new int[len, len];
+
+            int idx = 0;
+            for (int i = 0; i < len; i++)
+            {
+                for (int j = 0; j < len; j++)
+                {
+                    DataMap[i, j] = idx;
+                    idx++;
+                }
+            }
+
+            OriginalDataMap = (int[,])DataMap.Clone();
+
+            _ = new MapFlip();
         }
 
         public static IEnumerable<string> ToCsv()
