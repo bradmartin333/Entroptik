@@ -648,7 +648,7 @@ namespace Entroptik
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(428, 364);
             this.Name = "FormMain";
-            this.Text = "Entroptik v4.2";
+            this.Text = "Entroptik v4.3";
             this.tlpMain.ResumeLayout(false);
             this.tlpMain.PerformLayout();
             this.toolStrip.ResumeLayout(false);

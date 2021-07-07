@@ -83,36 +83,29 @@ namespace Entroptik
             return true;
         }
 
-        public static int GetFileRow(string path)
+        public static int[] GetFileRowCol(string path)
         {
             string cleanPath = path.Split('\\').Last().Split('.').First();
             switch (Type)
             {
                 case DataType.RawIncremental:
                     int fileNum = int.Parse(cleanPath.Replace("raw", ""));
-                    double diff = double.Parse((fileNum / Math.Sqrt(FileHandler.Workspace.Images.Length)).ToString().Split('.').First());
-                    return (int)diff;
+                    for (int i = 0; i < OriginalDataMap.GetLength(0); i++)
+                    {
+                        for (int j = 0; j < OriginalDataMap.GetLength(1); j++)
+                        {
+                            if (OriginalDataMap[i, j] == fileNum)
+                            {
+                                return new int[] { i, j };
+                            }
+                        }
+                    }
+                    return new int[] { 0, 0 };
                 case DataType.RowCol:
-                    return int.Parse(cleanPath.Split('C').First().Replace("R", "").Replace("_","")) - 1;
+                    return new int[] { int.Parse(cleanPath.Split('C').First().Replace("R", "").Replace("_", "")) - 1, 
+                        int.Parse(cleanPath.Split('C').Last()) - 1 };
             }
-            return 0;
-        }
-
-        public static int GetFileCol(string path)
-        {
-            string cleanPath = path.Split('\\').Last().Split('.').First();
-            switch (Type)
-            {
-                case DataType.RawIncremental:
-                    int fileNum = int.Parse(cleanPath.Replace("raw", ""));
-                    double diff = double.Parse((fileNum / Math.Sqrt(FileHandler.Workspace.Images.Length)).ToString().Split('.').First());
-                    double col = (fileNum / Math.Sqrt(FileHandler.Workspace.Images.Length) - diff) *
-                        Math.Sqrt(FileHandler.Workspace.Images.Length);
-                    return (int)col;
-                case DataType.RowCol:
-                    return int.Parse(cleanPath.Split('C').Last()) - 1;
-            }
-            return 0;
+            return new int[] { 0, 0 };
         }
     }
 }
