@@ -317,5 +317,14 @@ namespace Entroptik
             else
                 _ = new MapFlip(true);
         }
+
+        private void uploadToolStripButton_Click(object sender, EventArgs e)
+        {
+            string pathBuffer = OpenFile("Open CSV to Plot", "Comma Separated Values(*.csv) | *.csv");
+            if (pathBuffer == null)
+                return;
+            else
+                _ = new Plotter(pathBuffer);
+        }
     }
 }
