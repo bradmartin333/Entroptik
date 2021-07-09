@@ -183,6 +183,16 @@ namespace Entroptik.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconmonstr_upload_21_16 {
+            get {
+                object obj = ResourceManager.GetObject("iconmonstr-upload-21-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap rotateArrow {
             get {
                 object obj = ResourceManager.GetObject("rotateArrow", resourceCulture);

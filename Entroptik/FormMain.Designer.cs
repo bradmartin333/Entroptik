@@ -34,17 +34,8 @@ namespace Entroptik
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.editDataGridToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.runToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.runAllToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.startOverToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -68,9 +59,18 @@ namespace Entroptik
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.numGuideX = new System.Windows.Forms.NumericUpDown();
             this.numGuideY = new System.Windows.Forms.NumericUpDown();
+            this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.editDataGridToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.uploadToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.runToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.runAllToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.startOverToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.tlpMain.SuspendLayout();
             this.toolStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numWid)).BeginInit();
@@ -83,6 +83,7 @@ namespace Entroptik
             ((System.ComponentModel.ISupportInitialize)(this.numFailTol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGuideX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGuideY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpMain
@@ -176,6 +177,7 @@ namespace Entroptik
             this.editDataGridToolStripButton,
             this.saveToolStripButton,
             this.printToolStripButton,
+            this.uploadToolStripButton,
             this.toolStripSeparator1,
             this.runToolStripButton,
             this.runAllToolStripButton,
@@ -187,111 +189,16 @@ namespace Entroptik
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
             // 
-            // newToolStripButton
-            // 
-            this.newToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.newToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripButton.Image")));
-            this.newToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.newToolStripButton.Name = "newToolStripButton";
-            this.newToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.newToolStripButton.Text = "&New";
-            this.newToolStripButton.Click += new System.EventHandler(this.newToolStripButton_Click);
-            // 
-            // openToolStripButton
-            // 
-            this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.openToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripButton.Image")));
-            this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.openToolStripButton.Name = "openToolStripButton";
-            this.openToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.openToolStripButton.Text = "&Open";
-            this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
-            // 
-            // editDataGridToolStripButton
-            // 
-            this.editDataGridToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.editDataGridToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_map_5_16;
-            this.editDataGridToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.editDataGridToolStripButton.Name = "editDataGridToolStripButton";
-            this.editDataGridToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.editDataGridToolStripButton.Text = "Edit Data Grid";
-            this.editDataGridToolStripButton.Click += new System.EventHandler(this.editDataGridToolStripButton_Click);
-            // 
-            // saveToolStripButton
-            // 
-            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.saveToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_save_1_240;
-            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveToolStripButton.Name = "saveToolStripButton";
-            this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.saveToolStripButton.Text = "&Save";
-            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
-            // 
-            // printToolStripButton
-            // 
-            this.printToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.printToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripButton.Image")));
-            this.printToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.printToolStripButton.Name = "printToolStripButton";
-            this.printToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.printToolStripButton.Text = "&Print";
-            this.printToolStripButton.Click += new System.EventHandler(this.printToolStripButton_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // runToolStripButton
-            // 
-            this.runToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.runToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_cursor_7_240;
-            this.runToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.runToolStripButton.Name = "runToolStripButton";
-            this.runToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.runToolStripButton.Text = "&Run";
-            this.runToolStripButton.Click += new System.EventHandler(this.runToolStripButton_Click);
-            // 
-            // runAllToolStripButton
-            // 
-            this.runAllToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.runAllToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_power_on_off_3_24;
-            this.runAllToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.runAllToolStripButton.Name = "runAllToolStripButton";
-            this.runAllToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.runAllToolStripButton.Text = "&Run All";
-            this.runAllToolStripButton.Click += new System.EventHandler(this.runAllToolStripButton_Click);
-            // 
-            // startOverToolStripButton
-            // 
-            this.startOverToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.startOverToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_undo_1_24;
-            this.startOverToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.startOverToolStripButton.Name = "startOverToolStripButton";
-            this.startOverToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.startOverToolStripButton.Text = "&Start Over";
-            this.startOverToolStripButton.Click += new System.EventHandler(this.startOverToolStripButton_Click);
             // 
             // toolStripTextBox
             // 
             this.toolStripTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox.Name = "toolStripTextBox";
             this.toolStripTextBox.Size = new System.Drawing.Size(150, 25);
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.BackColor = System.Drawing.Color.White;
-            this.pictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox.BackgroundImage")));
-            this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox.Location = new System.Drawing.Point(131, 28);
-            this.pictureBox.Name = "pictureBox";
-            this.tlpMain.SetRowSpan(this.pictureBox, 15);
-            this.pictureBox.Size = new System.Drawing.Size(428, 426);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox.TabIndex = 1;
-            this.pictureBox.TabStop = false;
             // 
             // label1
             // 
@@ -639,6 +546,111 @@ namespace Entroptik
             this.numGuideY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numGuideY.ValueChanged += new System.EventHandler(this.numGuideY_ValueChanged);
             // 
+            // newToolStripButton
+            // 
+            this.newToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.newToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripButton.Image")));
+            this.newToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.newToolStripButton.Name = "newToolStripButton";
+            this.newToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.newToolStripButton.Text = "&New";
+            this.newToolStripButton.Click += new System.EventHandler(this.newToolStripButton_Click);
+            // 
+            // openToolStripButton
+            // 
+            this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.openToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripButton.Image")));
+            this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.openToolStripButton.Name = "openToolStripButton";
+            this.openToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.openToolStripButton.Text = "&Open";
+            this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
+            // 
+            // editDataGridToolStripButton
+            // 
+            this.editDataGridToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.editDataGridToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_map_5_16;
+            this.editDataGridToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.editDataGridToolStripButton.Name = "editDataGridToolStripButton";
+            this.editDataGridToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.editDataGridToolStripButton.Text = "Edit Data Grid";
+            this.editDataGridToolStripButton.Click += new System.EventHandler(this.editDataGridToolStripButton_Click);
+            // 
+            // saveToolStripButton
+            // 
+            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_save_1_240;
+            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripButton.Name = "saveToolStripButton";
+            this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.saveToolStripButton.Text = "&Save";
+            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
+            // 
+            // printToolStripButton
+            // 
+            this.printToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.printToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripButton.Image")));
+            this.printToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.printToolStripButton.Name = "printToolStripButton";
+            this.printToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.printToolStripButton.Text = "&Print";
+            this.printToolStripButton.Click += new System.EventHandler(this.printToolStripButton_Click);
+            // 
+            // uploadToolStripButton
+            // 
+            this.uploadToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.uploadToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_upload_21_16;
+            this.uploadToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.uploadToolStripButton.Name = "uploadToolStripButton";
+            this.uploadToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.uploadToolStripButton.Text = "CSV to Plot";
+            this.uploadToolStripButton.Click += new System.EventHandler(this.uploadToolStripButton_Click);
+            // 
+            // runToolStripButton
+            // 
+            this.runToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.runToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_cursor_7_240;
+            this.runToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.runToolStripButton.Name = "runToolStripButton";
+            this.runToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.runToolStripButton.Text = "&Run";
+            this.runToolStripButton.Click += new System.EventHandler(this.runToolStripButton_Click);
+            // 
+            // runAllToolStripButton
+            // 
+            this.runAllToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.runAllToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_power_on_off_3_24;
+            this.runAllToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.runAllToolStripButton.Name = "runAllToolStripButton";
+            this.runAllToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.runAllToolStripButton.Text = "&Run All";
+            this.runAllToolStripButton.Click += new System.EventHandler(this.runAllToolStripButton_Click);
+            // 
+            // startOverToolStripButton
+            // 
+            this.startOverToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.startOverToolStripButton.Image = global::Entroptik.Properties.Resources.iconmonstr_undo_1_24;
+            this.startOverToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.startOverToolStripButton.Name = "startOverToolStripButton";
+            this.startOverToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.startOverToolStripButton.Text = "&Start Over";
+            this.startOverToolStripButton.Click += new System.EventHandler(this.startOverToolStripButton_Click);
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.BackColor = System.Drawing.Color.White;
+            this.pictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox.BackgroundImage")));
+            this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox.Location = new System.Drawing.Point(131, 28);
+            this.pictureBox.Name = "pictureBox";
+            this.tlpMain.SetRowSpan(this.pictureBox, 15);
+            this.pictureBox.Size = new System.Drawing.Size(428, 426);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox.TabIndex = 1;
+            this.pictureBox.TabStop = false;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -648,12 +660,11 @@ namespace Entroptik
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(428, 364);
             this.Name = "FormMain";
-            this.Text = "Entroptik v4.3";
+            this.Text = "Entroptik v4.4";
             this.tlpMain.ResumeLayout(false);
             this.tlpMain.PerformLayout();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numWid)).EndInit();
@@ -666,6 +677,7 @@ namespace Entroptik
             ((System.ComponentModel.ISupportInitialize)(this.numFailTol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGuideX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGuideY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -710,6 +722,7 @@ namespace Entroptik
         public System.Windows.Forms.NumericUpDown numGuideY;
         public System.Windows.Forms.ToolStripButton runToolStripButton;
         private System.Windows.Forms.ToolStripButton editDataGridToolStripButton;
+        private System.Windows.Forms.ToolStripButton uploadToolStripButton;
     }
 }
 

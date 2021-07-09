@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Entroptik"
-#define MyAppVersion "4.2"
+#define MyAppVersion "4.4"
 #define MyAppPublisher "bradmartin333"
 #define MyAppURL "https://github.com/bradmartin333"
 #define MyAppExeName "Entroptik.exe"
@@ -48,6 +48,10 @@ Source: "S:\Entroptik\Entroptik\bin\Release\MathNet.Numerics.dll"; DestDir: "{ap
 Source: "S:\Entroptik\Entroptik\bin\Release\MathNet.Numerics.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "S:\Entroptik\Entroptik\bin\Release\System.ValueTuple.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "S:\Entroptik\Entroptik\bin\Release\System.ValueTuple.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\OxyPlot.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\OxyPlot.WindowsForms.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\OxyPlot.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "S:\Entroptik\Entroptik\bin\Release\OxyPlot.WindowsForms.xml"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
