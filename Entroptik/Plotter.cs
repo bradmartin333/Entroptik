@@ -1,4 +1,5 @@
 ﻿using OxyPlot;
+using OxyPlot.Axes;
 using OxyPlot.Series;
 using System.IO;
 using System.Linq;
@@ -49,6 +50,14 @@ namespace Entroptik
                 }
             }
 
+            LinearAxis YAxis = new LinearAxis()
+            {
+                Position = AxisPosition.Left,
+                StartPosition = 1,
+                EndPosition = 0,
+            };
+
+            plotModel.Axes.Add(YAxis);
             plotView.Model = plotModel;
 
             Show();
